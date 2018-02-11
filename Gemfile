@@ -29,6 +29,7 @@ gem 'omniauth-facebook'
 gem 'validates_email_format_of'
 gem 'dotenv-rails'
 gem 'active_model_serializers'
+gem 'foreman', '~> 0.82.0'
 
 
 group :development, :test do
