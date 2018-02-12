@@ -1,10 +1,47 @@
+* {
+  font-family: 'Cabin', sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
+
+/* HEADER */
 
 .header {
   display: flex;
-  border: 2px solid rgb(0, 0, 0);
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.logo-div {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  height: 45px;
+}
+
+#logo {
+  margin: 0;
+  font-size: 1.75em;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  height: 20px;
+}
+
+.sign-in-and-out {
+  display: flex;
+  justify-content: flex-end;
+  width: 20%;
+  height: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
 }
