@@ -11,15 +11,17 @@ body {
 
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 45px 0;
+  margin-bottom: 40px;
 }
 
 .logo-div {
   display: flex;
   align-items: center;
   width: 20%;
+  margin-left: 5%;
   height: 45px;
 }
 
@@ -36,6 +38,7 @@ body {
 }
 
 .sign-in-and-out {
+  margin-right: 5%;
   display: flex;
   justify-content: flex-end;
   width: 20%;
@@ -44,4 +47,16 @@ body {
 
 .navbar a {
   text-decoration: none;
+}
+
+/* DATE LIST (HOMEPAGE) */
+
+.date-list {
+  margin-top: 0;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
 }
