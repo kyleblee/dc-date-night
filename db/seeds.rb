@@ -11,4 +11,5 @@ new_user = User.create(name: "Michael Scott", email: "hello@michaelscott.com", p
 brewery = Category.create(name: "Brewery")
 neighborhood = Neighborhood.create(name: "Shaw")
 right_proper = Spot.create(name: "Right Proper Brewing Company", category_id: 1, neighborhood_id: 1)
-date1 = DateEntry.create(title: "Brewery Hops in Shaw", spots: "1", neighborhood_id: 1)
+date1 = DateEntry.create(title: "Brewery Hops in Shaw", neighborhood_id: 1)
+DateEntrySpot.create(date_entry_id: 1, spot_id: 1)

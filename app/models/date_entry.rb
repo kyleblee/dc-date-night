@@ -1,7 +1,8 @@
 class DateEntry < ApplicationRecord
   belongs_to :expert, required: false
   belongs_to :neighborhood
+  has_many :date_entry_spots
+  has_many :spots, through: :date_entry_spots
 
-  validates :title, :spots, :neighborhood_id, presence: true
-  #  The spot property is expected to be a string of spot_ids separated by spaces
+  validates :title, :neighborhood_id, presence: true
 end
