@@ -1,5 +1,6 @@
 class DateEntriesController < ApplicationController
   def index
-    binding.pry
+    @dates = DateEntry.all
+    render json: @dates, status: 200
   end
 end
