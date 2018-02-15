@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './containers/header';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import DatesList from './containers/DatesList';
+import Homepage from './containers/Homepage';
 import './App.css';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Router>
-          <Route exact path="/" component={DatesList} />
+          <Route exact path="/" component={Homepage} />
         </Router>
       </div>
     );
