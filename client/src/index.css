@@ -97,3 +97,14 @@ body {
   margin-bottom: 80px;
   font-size: 1.25em;
 }
+
+/* FOOTER */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer .social-icons {
+  margin-right: 5%;
+}
