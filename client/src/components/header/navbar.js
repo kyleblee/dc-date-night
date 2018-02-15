@@ -3,10 +3,10 @@ import React from 'react';
 const NavBar = props => {
   return (
     <nav className='navbar'>
-      <a href='#'>Link 1</a>
-      <a href='#'>Link 2</a>
-      <a href='#'>Link 3</a>
-      <a href='#'>Link 3</a>
+      <a href='#'>Create</a>
+      <a href='#'>Expert Picks</a>
+      <a href='#'>Share</a>
+      <a href='#'>About</a>
     </nav>
   )
 }

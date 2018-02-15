@@ -33,8 +33,13 @@ body {
 .navbar {
   display: flex;
   justify-content: space-around;
-  width: 40%;
+  width: 35%;
   height: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .sign-in-and-out {
@@ -45,9 +50,11 @@ body {
   height: 20px;
 }
 
-.navbar a {
+.sign-in-and-out a {
   text-decoration: none;
+  font-weight: 600;
 }
+
 
 /* DATE LIST (HOMEPAGE) */
 
@@ -59,4 +66,10 @@ body {
   flex-wrap: wrap;
   align-content: center;
   justify-content: space-between;
+}
+
+.date-card h4 {
+  margin-top: 15px;
+  margin-bottom: 80px;
+  font-size: 1.25em;
 }
