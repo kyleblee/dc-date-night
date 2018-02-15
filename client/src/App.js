@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './containers/header';
+import Footer from './containers/footer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Homepage from './containers/Homepage';
@@ -13,6 +14,7 @@ class App extends Component {
         <Router>
           <Route exact path="/" component={Homepage} />
         </Router>
+        <Footer />
       </div>
     );
   }
