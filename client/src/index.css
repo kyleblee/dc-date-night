@@ -26,7 +26,6 @@ body {
 .logo-div {
   display: flex;
   align-items: center;
-  width: 20%;
   margin-left: 5%;
   height: 45px;
 }
@@ -47,7 +46,6 @@ body {
   margin-right: 5%;
   display: flex;
   justify-content: flex-end;
-  width: 20%;
   height: 20px;
 }
 
