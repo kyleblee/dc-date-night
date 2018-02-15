@@ -13,7 +13,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 45px 0;
+  padding: 35px 0 45px;
   margin-bottom: 40px;
 }
 
@@ -56,7 +56,35 @@ body {
 }
 
 
-/* DATE LIST (HOMEPAGE) */
+/* HOMEPAGE */
+
+.shady-bg {
+  padding: 150px 0;
+  background-color: rgb(247, 246, 246);
+}
+
+.quick-about {
+  width: 63%;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.quick-about h2 {
+  margin: 0 0 40px;
+  font-size: 3em;
+}
+
+.quick-about p {
+  margin: 0;
+  font-size: 1.75em;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+
+/* DATE LIST */
 
 .date-list {
   margin-top: 0;
