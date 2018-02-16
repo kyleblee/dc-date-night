@@ -1,29 +1,49 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { generateDate, collectDateOptions } from '../actions/dateActions';
 
 class GenerateDate extends React.Component {
+  constructor() {
+    super();
 
+    this.state = {
+      customDate: {}
+    }
+  }
+
+  componentDidMount() {
+    this.props.collectDateOptions();
+  }
+
+  createNeighborhoodOptions() {
+    let neighborhoods = [];
+
+  }
 
   render() {
     return (
       <div>
-        <p>You made it to the Generate Date page.</p>
+        <form id="generate-date-form">
+          <label>Pick a Neighborhood:</label>
+          <input></input>
+        </form>
       </div>
     )
   }
 }
 
-// update once you know what you'll call them
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({
-//     fetchDates: fetchDates
-//   }, dispatch);
-// }
-//
-// const mapStateToProps = (state) => {
-//   return {dates: state.dates}
-// }
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    generateDate: generateDate,
+    collectDateOptions: collectDateOptions
+  }, dispatch);
+}
+
+const mapStateToProps = (state) => {
+  return {customDate: state.customDate}
+}
 
 //make sure to add mapDispatchToProps and mapStateToProps in here, once ready
-export default connect(null, null)(GenerateDate);
+export default connect(mapStateToProps, mapDispatchToProps)(GenerateDate);

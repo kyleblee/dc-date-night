@@ -9,3 +9,17 @@ export function fetchDates() {
       })
   }
 }
+
+export function collectDateOptions() {
+  return (dispatch) => {
+    return fetch('/neighborhoods/options')
+      .then(response => response.json())
+      .then(responseJSON => {
+        debugger;
+      })
+  }
+}
+
+export function generateDate() {
+  debugger;
+}
