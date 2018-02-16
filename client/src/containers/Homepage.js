@@ -11,8 +11,6 @@ class Homepage extends React.Component {
   }
 
   render() {
-
-    debugger;
     return (
       <div>
         <DateList dates={this.props.dates}/>

@@ -3,9 +3,9 @@ import React from 'react';
 const SocialIcons = props => {
   return (
     <div className="social-icons">
-      <p>INSTAGRAM</p>
-      <p>TWITTER</p>
-      <p>FACEBOOK</p>
+      <img src="https://i.imgur.com/SnmTgvu.png"/>
+      <img src="https://i.imgur.com/n60wD0V.png"/>
+      <img src="https://i.imgur.com/WbBOZvk.png"/>
     </div>
   )
 }

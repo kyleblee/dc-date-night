@@ -2,7 +2,6 @@ import React from 'react';
 import DateCard from './DateCard';
 
 const DatesList = props => {
-  debugger;
   const datesHTML = props.dates.map(date =>
     <DateCard date={date} key={date.id}/>
   );

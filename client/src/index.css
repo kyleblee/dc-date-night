@@ -33,6 +33,11 @@ body {
 #logo {
   margin: 0;
   font-size: 2em;
+  color: rgb(18, 18, 18);
+}
+
+.logo-div a:link {
+  text-decoration: none;
 }
 
 .navbar {
@@ -101,8 +106,22 @@ body {
 .footer {
   display: flex;
   justify-content: space-between;
+  padding: 20px 0;
 }
 
 .footer .social-icons {
+  display: flex;
+  justify-content: space-between;
   margin-right: 5%;
+  align-items: center;
+}
+
+.footer .social-icons img {
+  height: 35px;
+  width: 35px;
+  margin-right: 10px;
+}
+
+.footer .social-icons img:last-child {
+  margin-right: 0;
 }
