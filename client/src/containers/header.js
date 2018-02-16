@@ -1,7 +1,7 @@
 import React from 'react';
-import NavBar from '../components/header/navbar';
+import NavBar from '../components/header/NavBar';
 import LogoDiv from '../components/LogoDiv';
-import SignInAndOut from '../components/header/sign-in-and-out';
+import SignInAndOut from '../components/header/SignInAndOut';
 
 class Header extends React.Component {
   render() {
