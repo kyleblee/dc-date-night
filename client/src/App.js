@@ -4,6 +4,7 @@ import Footer from './containers/footer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Homepage from './containers/Homepage';
+import GenerateDate from './containers/GenerateDate';
 import './App.css';
 
 class App extends Component {
@@ -12,7 +13,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <Router>
-          <Route exact path="/" component={Homepage} />
+          <div>
+            <Route exact path="/" component={Homepage} />
+            <Route path="/plan-a-date" component={GenerateDate} />
+          </div>
         </Router>
         <Footer />
       </div>
