@@ -32,6 +32,6 @@ export function collectCategoryOptions() {
   }
 }
 
-export function generateDate() {
+export function generateDate(dateChoices) {
   debugger;
 }

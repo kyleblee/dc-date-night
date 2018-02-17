@@ -65,10 +65,17 @@ class GenerateDate extends React.Component {
     }
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.generateDate(this.state);
+  }
+
   render() {
     return (
       <div>
-        <form id="generate-date-form">
+        <form
+          id="generate-date-form"
+          onSubmit={(event) => this.handleSubmit(event)}>
           <label>Pick a Neighborhood:</label>
           <select
             value={this.state.neighborhood}
@@ -78,6 +85,7 @@ class GenerateDate extends React.Component {
           </select>
           <label>Choose a few activities:</label>
           {this.createCategoryOptions()}
+          <input type="submit" value="Play my date!"/>
         </form>
       </div>
     )
@@ -89,7 +97,8 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     generateDate: generateDate,
     collectNeighborhoodOptions: collectNeighborhoodOptions,
-    collectCategoryOptions: collectCategoryOptions
+    collectCategoryOptions: collectCategoryOptions,
+    generateDate: generateDate
   }, dispatch);
 }
 
