@@ -10,12 +10,13 @@ export function fetchDates() {
   }
 }
 
-export function collectDateOptions() {
+export function collectNeighborhoodOptions() {
   return (dispatch) => {
     return fetch('/neighborhoods/options')
       .then(response => response.json())
       .then(responseJSON => {
-        debugger;
+        let options = responseJSON.map(n => n.name);
+        dispatch({type: 'COLLECT_NEIGHBORHOOD_OPTIONS', payload: options})
       })
   }
 }

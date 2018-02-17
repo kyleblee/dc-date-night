@@ -15,7 +15,7 @@ class App extends Component {
         <Router>
           <div>
             <Route exact path="/" component={Homepage} />
-            <Route path="/plan-a-date" component={GenerateDate} />
+            <Route path="/plan-my-date" component={GenerateDate} />
           </div>
         </Router>
         <Footer />

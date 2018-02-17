@@ -1,32 +1,54 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { generateDate, collectDateOptions } from '../actions/dateActions';
+import { generateDate, collectNeighborhoodOptions } from '../actions/dateActions';
 
 class GenerateDate extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      customDate: {}
+      neighborhood: "",
+      activities: []
     }
   }
 
   componentDidMount() {
-    this.props.collectDateOptions();
+    this.props.collectNeighborhoodOptions();
   }
 
   createNeighborhoodOptions() {
-    let neighborhoods = [];
+    let neighborhoodOptions = [];
+
+    if (this.props.options.neighborhoods) {
+      for (let n of this.props.options.neighborhoods) {
+        neighborhoodOptions.push(<option key={n} value={n}>{n}</option>);
+      }
+    }
+
+    return neighborhoodOptions;
 
   }
 
+  updateNeighborhood = event => {
+    this.setState({
+      neighborhood: event.target.value
+    });
+  }
+
   render() {
+    this.createNeighborhoodOptions();
+
     return (
       <div>
         <form id="generate-date-form">
           <label>Pick a Neighborhood:</label>
-          <input></input>
+          <select
+            value={this.state.neighborhood}
+            onChange={this.updateNeighborhood}>
+            <option value=""></option>
+            {this.createNeighborhoodOptions()}
+          </select>
         </form>
       </div>
     )
@@ -37,12 +59,15 @@ class GenerateDate extends React.Component {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     generateDate: generateDate,
-    collectDateOptions: collectDateOptions
+    collectNeighborhoodOptions: collectNeighborhoodOptions
   }, dispatch);
 }
 
 const mapStateToProps = (state) => {
-  return {customDate: state.customDate}
+  return {
+    customDate: state.dates.customDate,
+    options: state.dates.options
+  }
 }
 
 //make sure to add mapDispatchToProps and mapStateToProps in here, once ready
