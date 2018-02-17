@@ -21,6 +21,17 @@ export function collectNeighborhoodOptions() {
   }
 }
 
+export function collectCategoryOptions() {
+  return (dispatch) => {
+    return fetch('/categories/options')
+      .then(response => response.json())
+      .then(responseJSON => {
+        let options = responseJSON.map(n => n.name);
+        dispatch({type: 'COLLECT_CATEGORY_OPTIONS', payload: options});
+      })
+  }
+}
+
 export function generateDate() {
   debugger;
 }

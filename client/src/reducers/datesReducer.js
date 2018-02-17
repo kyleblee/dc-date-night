@@ -12,6 +12,12 @@ export default function datesReducer(state = {
           neighborhoods: action.payload
         })
       });
+    case 'COLLECT_CATEGORY_OPTIONS':
+      return Object.assign({}, state, {
+        options: Object.assign({}, state.options, {
+          categories: action.payload
+        })
+      });
     default:
       return state;
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { generateDate, collectNeighborhoodOptions } from '../actions/dateActions';
+import { generateDate, collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';
 
 class GenerateDate extends React.Component {
   constructor() {
@@ -15,6 +15,7 @@ class GenerateDate extends React.Component {
 
   componentDidMount() {
     this.props.collectNeighborhoodOptions();
+    this.props.collectCategoryOptions();
   }
 
   createNeighborhoodOptions() {
@@ -27,7 +28,23 @@ class GenerateDate extends React.Component {
     }
 
     return neighborhoodOptions;
+  }
 
+  createCategoryOptions() {
+    let categoryCheckboxes = []
+
+    if (this.props.options.categories) {
+      for (let c of this.props.options.categories) {
+        categoryCheckboxes.push(
+          <label>
+            {c}
+            <input name={c} type="checkbox" checked={this.state.activities.includes(c)} onChange={this.addOrRemoveActivity} />
+          </label>
+        )
+      }
+    }
+
+    return categoryCheckboxes;
   }
 
   updateNeighborhood = event => {
@@ -36,9 +53,19 @@ class GenerateDate extends React.Component {
     });
   }
 
-  render() {
-    this.createNeighborhoodOptions();
+  addOrRemoveActivity = event => {
+    if (event.target.checked) {
+      this.setState({
+        activities: [].concat(this.state.activities, event.target.name)
+      });
+    } else {
+      this.setState({
+        activities: this.state.activities.filter(c => c !== event.target.name)
+      });
+    }
+  }
 
+  render() {
     return (
       <div>
         <form id="generate-date-form">
@@ -46,9 +73,11 @@ class GenerateDate extends React.Component {
           <select
             value={this.state.neighborhood}
             onChange={this.updateNeighborhood}>
-            <option value=""></option>
-            {this.createNeighborhoodOptions()}
+              <option value=""></option>
+              {this.createNeighborhoodOptions()}
           </select>
+          <label>Choose a few activities:</label>
+          {this.createCategoryOptions()}
         </form>
       </div>
     )
@@ -59,7 +88,8 @@ class GenerateDate extends React.Component {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     generateDate: generateDate,
-    collectNeighborhoodOptions: collectNeighborhoodOptions
+    collectNeighborhoodOptions: collectNeighborhoodOptions,
+    collectCategoryOptions: collectCategoryOptions
   }, dispatch);
 }
 
