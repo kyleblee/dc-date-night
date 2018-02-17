@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { generateDate, collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';
+import Errors from '../components/Errors';
 
 class GenerateDate extends React.Component {
   constructor() {
@@ -9,7 +10,8 @@ class GenerateDate extends React.Component {
 
     this.state = {
       neighborhood: "",
-      activities: []
+      activities: [],
+      error: undefined
     }
   }
 
@@ -67,12 +69,19 @@ class GenerateDate extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.generateDate(this.state);
+    if (this.state.neighborhood === "") {
+      this.setState({
+        error: "Please pick a neighborhood!"
+      });
+    } else {
+      this.props.generateDate(this.state);
+    }
   }
 
   render() {
     return (
       <div>
+        <Errors errors={this.state.error}/>
         <form
           id="generate-date-form"
           onSubmit={(event) => this.handleSubmit(event)}>
