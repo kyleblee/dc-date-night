@@ -69,7 +69,7 @@ class GenerateDateForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    debugger;
+
     if (this.state.neighborhood === "") {
       this.setState({
         error: "Please pick a neighborhood!"
