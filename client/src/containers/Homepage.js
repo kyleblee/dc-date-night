@@ -27,7 +27,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-  return {dates: state.dates}
+  return {
+    dates: state.dates.curatedDates
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);

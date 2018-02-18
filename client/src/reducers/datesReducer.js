@@ -1,11 +1,11 @@
 export default function datesReducer(state = {
-  dates: [],
+  curatedDates: [],
   customDate: undefined,
   options: {}
 }, action) {
   switch(action.type) {
     case 'FETCH_DATES':
-      return Object.assign({}, state, {dates: action.payload})
+      return Object.assign({}, state, {curatedDates: action.payload})
     case 'COLLECT_NEIGHBORHOOD_OPTIONS':
       return Object.assign({}, state, {
         options: Object.assign({}, state.options, {

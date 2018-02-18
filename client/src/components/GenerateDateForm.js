@@ -74,9 +74,6 @@ class GenerateDateForm extends React.Component {
         error: "Please pick a neighborhood!"
       });
     } else {
-      this.setState({
-        error: undefined
-      })
       this.props.generateDate(this.state);
     }
   }
