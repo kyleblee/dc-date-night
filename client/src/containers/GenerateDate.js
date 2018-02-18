@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { generateDate, collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';
+import CustomDate from '../components/CustomDate';
 import Errors from '../components/Errors';
 
 class GenerateDate extends React.Component {
@@ -79,7 +80,6 @@ class GenerateDate extends React.Component {
   }
 
   render() {
-    debugger;
     return (
       <div>
         <Errors errors={this.state.error}/>
@@ -97,6 +97,7 @@ class GenerateDate extends React.Component {
           {this.createCategoryOptions()}
           <input type="submit" value="Plan my date!"/>
         </form>
+        <CustomDate customDate={this.props.customDate}/>
       </div>
     )
   }
