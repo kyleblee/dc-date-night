@@ -18,6 +18,8 @@ export default function datesReducer(state = {
           categories: action.payload
         })
       });
+    case 'TEST':
+      debugger;
     default:
       return state;
   }

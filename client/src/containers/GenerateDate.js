@@ -94,7 +94,7 @@ class GenerateDate extends React.Component {
           </select>
           <label>Choose a few activities:</label>
           {this.createCategoryOptions()}
-          <input type="submit" value="Play my date!"/>
+          <input type="submit" value="Plan my date!"/>
         </form>
       </div>
     )

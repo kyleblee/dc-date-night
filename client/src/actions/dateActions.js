@@ -33,5 +33,20 @@ export function collectCategoryOptions() {
 }
 
 export function generateDate(dateChoices) {
-  debugger;
+  return (dispatch) => {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return fetch('/date-generate', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(dateChoices)
+    })
+    .then(response => response.json())
+    .then(responseJSON => {
+      debugger;
+    })
+    // ok, dateChoices are making it here; even though it doesn't work in debugger, it is accessible in scope
+    // however, it might get tripped up when you call fetch... not sure, but at least it is making it here.
+  }
 }
