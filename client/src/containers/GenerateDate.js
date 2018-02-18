@@ -75,6 +75,9 @@ class GenerateDate extends React.Component {
         error: "Please pick a neighborhood!"
       });
     } else {
+      this.setState({
+        error: undefined
+      })
       this.props.generateDate(this.state);
     }
   }
@@ -83,20 +86,22 @@ class GenerateDate extends React.Component {
     return (
       <div>
         <Errors errors={this.state.error}/>
-        <form
-          id="generate-date-form"
-          onSubmit={(event) => this.handleSubmit(event)}>
-          <label>Pick a Neighborhood:</label>
-          <select
-            value={this.state.neighborhood}
-            onChange={this.updateNeighborhood}>
-              <option value=""></option>
-              {this.createNeighborhoodOptions()}
-          </select>
-          <label>Choose a few activities:</label>
-          {this.createCategoryOptions()}
-          <input type="submit" value="Plan my date!"/>
-        </form>
+        {!this.props.customDate &&
+          <form
+            id="generate-date-form"
+            onSubmit={(event) => this.handleSubmit(event)}>
+            <label>Pick a Neighborhood:</label>
+            <select
+              value={this.state.neighborhood}
+              onChange={this.updateNeighborhood}>
+                <option value=""></option>
+                {this.createNeighborhoodOptions()}
+            </select>
+            <label>Choose a few activities:</label>
+            {this.createCategoryOptions()}
+            <input type="submit" value="Plan my date!"/>
+          </form>
+        }
         <CustomDate customDate={this.props.customDate}/>
       </div>
     )
