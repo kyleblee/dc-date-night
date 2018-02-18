@@ -69,10 +69,15 @@ class GenerateDateForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    debugger;
     if (this.state.neighborhood === "") {
       this.setState({
         error: "Please pick a neighborhood!"
       });
+    } else if (this.state.activities.length === 0) {
+      this.setState({
+        error: "Please select a few activities you would like to include!"
+      })
     } else {
       this.props.generateDate(this.state);
     }
