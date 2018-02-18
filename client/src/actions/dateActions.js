@@ -44,9 +44,15 @@ export function generateDate(dateChoices) {
     })
     .then(response => response.json())
     .then(responseJSON => {
-      debugger;
+      let date = responseJSON.map(spot => {
+        return {
+          name: spot.name,
+          description: spot.description,
+          category: spot.category.name,
+          neighborhood: spot.neighborhood.name
+        }
+      });
+      dispatch({type: 'STORE_DATE', payload: date})
     })
-    // ok, dateChoices are making it here; even though it doesn't work in debugger, it is accessible in scope
-    // however, it might get tripped up when you call fetch... not sure, but at least it is making it here.
   }
 }

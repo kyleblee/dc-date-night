@@ -18,8 +18,10 @@ export default function datesReducer(state = {
           categories: action.payload
         })
       });
-    case 'TEST':
-      debugger;
+    case 'STORE_DATE':
+      return Object.assign({} , state, {
+        customDate: action.payload
+      });
     default:
       return state;
   }

@@ -79,6 +79,7 @@ class GenerateDate extends React.Component {
   }
 
   render() {
+    debugger;
     return (
       <div>
         <Errors errors={this.state.error}/>

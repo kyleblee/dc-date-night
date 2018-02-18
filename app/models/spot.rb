@@ -21,7 +21,7 @@ class Spot < ApplicationRecord
         category_id = Category.find_by(name: category).id
         neighborhood_id = Neighborhood.find_by(name: neighborhood).id
         Spot.new(
-          name: "No spot found for this category/neighborhood",
+          name: "No spot found.",
           category_id: category_id,
           neighborhood_id: neighborhood_id
         )
