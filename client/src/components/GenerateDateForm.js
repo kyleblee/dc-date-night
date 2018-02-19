@@ -38,7 +38,7 @@ class GenerateDateForm extends React.Component {
       for (let c of this.props.options.categories) {
         categoryCheckboxes.push(
           <div>
-            <input id={"category-" + c} name={c} type="checkbox" checked={this.state.activities.includes(c)} onChange={this.addOrRemoveActivity} />
+            <input key={"category-" + c} name={c} type="checkbox" checked={this.state.activities.includes(c)} onChange={this.addOrRemoveActivity} />
             <label htmlFor={"category-" + c}>{c}</label>
           </div>
         )
@@ -54,7 +54,8 @@ class GenerateDateForm extends React.Component {
 
   updateNeighborhood = event => {
     this.setState({
-      neighborhood: event.target.value
+      neighborhood: event.target.value,
+      activities: []
     }, () => {
       if (this.state.neighborhood !== "") {
         this.props.collectCategoryOptions({neighborhood: this.state.neighborhood})
@@ -130,8 +131,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     generateDate: generateDate,
     collectNeighborhoodOptions: collectNeighborhoodOptions,
-    collectCategoryOptions: collectCategoryOptions,
-    generateDate: generateDate
+    collectCategoryOptions: collectCategoryOptions
   }, dispatch);
 }
 

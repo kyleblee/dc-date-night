@@ -22,6 +22,10 @@ export default function datesReducer(state = {
       return Object.assign({} , state, {
         customDate: action.payload
       });
+    case 'RESET_CUSTOM_DATE':
+      return Object.assign({}, state, {
+        customDate: undefined
+      })
     default:
       return state;
   }

@@ -63,3 +63,9 @@ export function generateDate(dateChoices) {
     })
   }
 }
+
+export function resetGenerate() {
+  return (dispatch) => {
+    dispatch({type: 'RESET_CUSTOM_DATE'})
+  }
+}
