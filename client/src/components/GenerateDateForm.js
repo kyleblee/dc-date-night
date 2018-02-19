@@ -52,7 +52,9 @@ class GenerateDateForm extends React.Component {
     this.setState({
       neighborhood: event.target.value
     }, () => {
-      this.props.collectCategoryOptions({neighborhood: this.state.neighborhood});
+      if (this.state.neighborhood !== "") {
+        this.props.collectCategoryOptions({neighborhood: this.state.neighborhood})
+      };
     });
   }
 
