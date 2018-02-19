@@ -251,3 +251,11 @@ body {
 .custom-date button.start-over-button {
   margin-top: 30px;
 }
+
+/* CURATE DATE FORM */
+
+.curated-date-form h3 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+}
