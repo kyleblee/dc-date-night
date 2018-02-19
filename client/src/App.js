@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Homepage from './containers/Homepage';
 import GenerateDate from './containers/GenerateDate';
+import CuratedDateForm from './containers/CuratedDateForm';
 import './App.css';
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
             <Header />
             <Route exact path="/" component={Homepage} />
             <Route path="/plan-my-date" component={GenerateDate} />
+            <Route path="/curated/new" component={CuratedDateForm} />
             <Footer />
           </div>
         </Router>
