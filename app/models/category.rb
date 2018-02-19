@@ -5,6 +5,10 @@ class Category < ApplicationRecord
   validates :name, presence: true
 
   def self.collect_relevant_categories(neighborhood)
-    Neighborhood.find_by(name: neighborhood).categories
+    if neighborhood.empty?
+      Category.all
+    else
+      Neighborhood.find_by(name: neighborhood).categories
+    end
   end
 end

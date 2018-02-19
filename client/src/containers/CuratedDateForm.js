@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SpotForm } from '../components/SpotForm';
+import { collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';
 
 class CuratedDateForm extends React.Component {
   constructor() {
@@ -18,6 +19,12 @@ class CuratedDateForm extends React.Component {
       }],
       error: undefined
     }
+  }
+
+  componentDidMount() {
+    this.props.collectNeighborhoodOptions();
+    // passing in hard-coded empty string so that all categories are retrieved
+    this.props.collectCategoryOptions({neighborhood: ""})
   }
 
   updateInput = e => {
@@ -48,14 +55,16 @@ class CuratedDateForm extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({
+    collectNeighborhoodOptions: collectNeighborhoodOptions,
+    collectCategoryOptions: collectCategoryOptions
+  }, dispatch);
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     customDate: state.dates.customDate,
-//     options: state.dates.options
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    options: state.dates.options
+  }
+}
 
-export default connect(null, mapDispatchToProps)(CuratedDateForm);
+export default connect(mapStateToProps, mapDispatchToProps)(CuratedDateForm);
