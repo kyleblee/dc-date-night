@@ -32,9 +32,9 @@ class GenerateDateForm extends React.Component {
   }
 
   createCategoryOptions() {
-    let categoryCheckboxes = []
+    if (this.props.options.categories && this.props.options.categories.length > 0) {
+      let categoryCheckboxes = []
 
-    if (this.props.options.categories) {
       for (let c of this.props.options.categories) {
         categoryCheckboxes.push(
           <div>
@@ -43,9 +43,13 @@ class GenerateDateForm extends React.Component {
           </div>
         )
       }
-    }
 
-    return categoryCheckboxes;
+      return categoryCheckboxes;
+    } else {
+      return (
+        <p>Oops... There aren't any activities for this neighborhood. Maybe Netflix and chill?</p>
+      )
+    }
   }
 
   updateNeighborhood = event => {
