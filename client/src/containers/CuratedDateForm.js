@@ -10,8 +10,20 @@ class CuratedDateForm extends React.Component {
     this.state = {
       title: "",
       description: "",
+      neighborhood: "",
+      spots: [{
+        title: "",
+        description: "",
+        category: ""
+      }],
       error: undefined
     }
+  }
+
+  updateInput = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   }
 
   render() {
@@ -20,9 +32,9 @@ class CuratedDateForm extends React.Component {
         <h3>Curate a Date</h3>
         <form>
             <label htmlFor="date-title">What should we call this date?</label>
-            <input id="date-title" type="text" value={this.state.title} />
+            <input id="date-title" type="text" value={this.state.title} name="title" onChange={this.updateInput}/>
             <label htmlFor="date-description">Tell our users what this date is all about:</label>
-            <textarea id="date-description" value={this.state.description}></textarea>
+            <textarea id="date-description" value={this.state.description} name="description" onChange={this.updateInput}></textarea>
             <label htmlFor="neighborhood-select">Which neighborhood of DC is this date in?</label>
             <select id="neighborhood-select">
               <option>Insert a function here that builds option tags for each neighborhood that is collected from db.</option>
