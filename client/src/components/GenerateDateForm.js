@@ -38,10 +38,10 @@ class GenerateDateForm extends React.Component {
     if (this.props.options.categories) {
       for (let c of this.props.options.categories) {
         categoryCheckboxes.push(
-          <label>
-            {c}
-            <input name={c} type="checkbox" checked={this.state.activities.includes(c)} onChange={this.addOrRemoveActivity} />
-          </label>
+          <div>
+            <input id={"category-" + c} name={c} type="checkbox" checked={this.state.activities.includes(c)} onChange={this.addOrRemoveActivity} />
+            <label htmlFor={"category-" + c}>{c}</label>
+          </div>
         )
       }
     }
@@ -89,19 +89,24 @@ class GenerateDateForm extends React.Component {
     } else {
       return (
         <div className="generate-date-form">
+          <h3>Generate a Date</h3>
           <Errors errors={this.state.error}/>
-          <form
-            id="generate-date-form"
-            onSubmit={(event) => this.handleSubmit(event)}>
-            <label>Pick a Neighborhood:</label>
-            <select
-              value={this.state.neighborhood}
-              onChange={this.updateNeighborhood}>
-                <option value=""></option>
-                {this.createNeighborhoodOptions()}
-            </select>
-            <label>Choose a few activities:</label>
-            {this.createCategoryOptions()}
+          <form onSubmit={(event) => this.handleSubmit(event)}>
+            <div className="neighborhood-select">
+              <label className="main-labels">Pick a Neighborhood:</label>
+              <select
+                value={this.state.neighborhood}
+                onChange={this.updateNeighborhood}>
+                  <option value=""></option>
+                  {this.createNeighborhoodOptions()}
+              </select>
+            </div>
+            <div className="category-selects">
+              <label className="main-labels">Choose a few activities:</label>
+              <div className="category-options">
+                {this.createCategoryOptions()}
+              </div>
+            </div>
             <input type="submit" value="Plan my date!"/>
           </form>
         </div>

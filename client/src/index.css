@@ -14,7 +14,6 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 35px 0 45px;
-  margin-bottom: 30px;
 }
 
 .header a {
@@ -131,6 +130,71 @@ body {
 
 .footer .social-icons img:last-child {
   margin-right: 0;
+}
+
+/* GENERATE DATE FORM */
+
+.generate-date-form h3 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+}
+
+.generate-date-form form {
+  margin-top: 20px;
+}
+
+.generate-date-form form label.main-labels {
+  display: block;
+  font-size: 1.25em;
+  margin-bottom: 10px;
+}
+
+.generate-date-form form div.neighborhood-select {
+  margin-bottom: 50px;
+}
+
+.generate-date-form form div.neighborhood-select select {
+  width: 225px;
+  height: 40px;
+  cursor: pointer;
+  background-color: white;
+  /* box-shadow: 0 2px 0 white; */
+  border-radius: 2px;
+  font-size: 1.15em;
+  text-align-last: center;
+}
+
+.generate-date-form form div.category-selects {
+  margin-bottom: 50px;
+}
+
+.generate-date-form form div.category-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 66%;
+}
+
+.generate-date-form form div.category-options div {
+  margin-left: 20px;
+}
+
+.generate-date-form form div.category-options div:first-child {
+  margin-left: 0;
+}
+
+.generate-date-form form input[type="submit"] {
+  width: 225px;
+  height: 40px;
+  cursor: pointer;
+  background-color: white;
+  /* box-shadow: 0 2px 0 white; */
+  border-radius: 2px;
+  font-size: 1.15em;
+  text-align-last: center;
+  margin-bottom: 50px;
 }
 
 /* GENERATED CUSTOM DATE */
