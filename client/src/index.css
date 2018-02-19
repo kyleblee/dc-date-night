@@ -185,7 +185,8 @@ body {
   margin-left: 0;
 }
 
-.generate-date-form form input[type="submit"] {
+.generate-date-form form input[type="submit"],
+.custom-date button.start-over-button {
   width: 225px;
   height: 40px;
   cursor: pointer;
@@ -245,4 +246,8 @@ body {
 .spot-card .spot-text p {
   font-size: 1.05em;
   line-height: 1.75;
+}
+
+.custom-date button.start-over-button {
+  margin-top: 30px;
 }
