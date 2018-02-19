@@ -21,9 +21,16 @@ export function collectNeighborhoodOptions() {
   }
 }
 
-export function collectCategoryOptions() {
+export function collectCategoryOptions(neighborhood) {
   return (dispatch) => {
-    return fetch('/categories/options')
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return fetch('/categories/options', {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(neighborhood)
+    })
       .then(response => response.json())
       .then(responseJSON => {
         let options = responseJSON.map(n => n.name);

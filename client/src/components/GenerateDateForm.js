@@ -17,7 +17,6 @@ class GenerateDateForm extends React.Component {
 
   componentDidMount() {
     this.props.collectNeighborhoodOptions();
-    this.props.collectCategoryOptions();
   }
 
   createNeighborhoodOptions() {
@@ -52,6 +51,8 @@ class GenerateDateForm extends React.Component {
   updateNeighborhood = event => {
     this.setState({
       neighborhood: event.target.value
+    }, () => {
+      this.props.collectCategoryOptions({neighborhood: this.state.neighborhood});
     });
   }
 
@@ -101,13 +102,17 @@ class GenerateDateForm extends React.Component {
                   {this.createNeighborhoodOptions()}
               </select>
             </div>
-            <div className="category-selects">
-              <label className="main-labels">Choose a few activities:</label>
-              <div className="category-options">
-                {this.createCategoryOptions()}
+            {this.state.neighborhood !== "" &&
+              <div className="category-selects">
+                <label className="main-labels">Choose a few activities:</label>
+                <div className="category-options">
+                  {this.createCategoryOptions()}
+                </div>
               </div>
-            </div>
-            <input type="submit" value="Plan my date!"/>
+            }
+            {(this.state.neighborhood !== "" && this.state.activities.length !== 0) &&
+              <input type="submit" value="Plan my date!"/>
+            }
           </form>
         </div>
       )
