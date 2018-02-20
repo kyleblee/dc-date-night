@@ -17,10 +17,6 @@ class CuratedDateForm extends React.Component {
         title: "",
         description: "",
         category: ""
-      }, {
-        title: "",
-        description: "",
-        category: ""
       }],
       error: undefined
     }
@@ -68,6 +64,17 @@ class CuratedDateForm extends React.Component {
     return spotForms;
   }
 
+  addAdditionalSpot = e => {
+    e.preventDefault();
+    this.setState({
+      spots: this.state.spots.concat({
+        title: "",
+        description: "",
+        category: ""
+      })
+    })
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.createCuratedDate(this.state);
@@ -89,6 +96,7 @@ class CuratedDateForm extends React.Component {
               selectedNeighborhood={this.state.neighborhood}
               updateNeighborhood={this.updateInput.bind(this)}/>
             {this.generateSpotForms()}
+            <button onClick={this.addAdditionalSpot}>Add Spot</button>
             <input type="submit" />
         </form>
       </div>
