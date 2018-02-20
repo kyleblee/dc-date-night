@@ -38,9 +38,9 @@ class CuratedDateForm extends React.Component {
     })
   }
 
-  updateSpotCategory = (spotIndex, event) => {
+  updateSpotAttributes = (spotIndex, event) => {
     let updatedSpot = this.state.spots[spotIndex]
-    updatedSpot.category = event.target.value;
+    updatedSpot[event.target.name] = event.target.value;
     this.setState({
       spots: [
         ...this.state.spots.slice(0, spotIndex),
@@ -54,7 +54,14 @@ class CuratedDateForm extends React.Component {
     const categories = this.props.options.categories;
 
     const spotForms = this.state.spots.map((spot, index) => {
-      return <SpotForm categories={categories} index={index} selectedCategory={spot.category} updateSpotCategory={this.updateSpotCategory.bind()}/>
+      return (
+       <SpotForm
+         title={spot.title}
+         updateSpotAttributes={this.updateSpotAttributes.bind(this)}
+         categories={categories}
+         index={index}
+         selectedCategory={spot.category} />
+      )
     })
 
     return spotForms;

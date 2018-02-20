@@ -11,7 +11,7 @@ export const CategorySelect = props => {
 
   let handleChange = function(index) {
     return function(event) {
-      props.updateSpotCategory(index, event);
+      props.updateSpotAttributes(index, event);
     }
   }
 
