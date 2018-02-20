@@ -71,6 +71,7 @@ class CuratedDateForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.createCuratedDate(this.state);
+    this.props.history.push('/');
   }
 
   render() {

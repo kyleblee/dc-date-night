@@ -71,5 +71,14 @@ export function resetGenerate() {
 }
 
 export function createCuratedDate(curatedDate) {
-  debugger;
+  return (dispatch) => {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return fetch('/date_entries', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({date: curatedDate})
+    });
+  }
 }
