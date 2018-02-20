@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SpotForm } from '../components/SpotForm';
 import { collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';
+import { NeighborhoodSelect } from '../components/NeighborhoodSelect';
 
 class CuratedDateForm extends React.Component {
   constructor() {
@@ -13,6 +14,10 @@ class CuratedDateForm extends React.Component {
       description: "",
       neighborhood: "",
       spots: [{
+        title: "",
+        description: "",
+        category: ""
+      }, {
         title: "",
         description: "",
         category: ""
@@ -33,6 +38,28 @@ class CuratedDateForm extends React.Component {
     })
   }
 
+  updateSpotCategory = (spotIndex, event) => {
+    let updatedSpot = this.state.spots[spotIndex]
+    updatedSpot.category = event.target.value;
+    this.setState({
+      spots: [
+        ...this.state.spots.slice(0, spotIndex),
+        updatedSpot,
+        ...this.state.spots.slice(spotIndex + 1, this.state.spots.length)
+      ]
+    })
+  };
+
+  generateSpotForms() {
+    const categories = this.props.options.categories;
+
+    const spotForms = this.state.spots.map((spot, index) => {
+      return <SpotForm categories={categories} index={index} selectedCategory={spot.category} updateSpotCategory={this.updateSpotCategory.bind()}/>
+    })
+
+    return spotForms;
+  }
+
   render() {
     return (
       <div className="curated-date-form">
@@ -43,10 +70,11 @@ class CuratedDateForm extends React.Component {
             <label htmlFor="date-description">Tell our users what this date is all about:</label>
             <textarea id="date-description" value={this.state.description} name="description" onChange={this.updateInput}></textarea>
             <label htmlFor="neighborhood-select">Which neighborhood of DC is this date in?</label>
-            <select id="neighborhood-select">
-              <option>Insert a function here that builds option tags for each neighborhood that is collected from db.</option>
-            </select>
-            <SpotForm />
+            <NeighborhoodSelect
+              neighborhoods={this.props.options.neighborhoods}
+              selectedNeighborhood={this.state.neighborhood}
+              updateNeighborhood={this.updateInput.bind(this)}/>
+            {this.generateSpotForms()}
             <input type="submit" />
         </form>
       </div>

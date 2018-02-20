@@ -3,6 +3,8 @@ import Errors from './Errors';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { generateDate, collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';
+import { NeighborhoodSelect } from './NeighborhoodSelect';
+import { CategoryCheckboxes } from './CategoryCheckboxes';
 
 class GenerateDateForm extends React.Component {
   constructor() {
@@ -17,39 +19,6 @@ class GenerateDateForm extends React.Component {
 
   componentDidMount() {
     this.props.collectNeighborhoodOptions();
-  }
-
-  createNeighborhoodOptions() {
-    let neighborhoodOptions = [];
-
-    if (this.props.options.neighborhoods) {
-      for (let n of this.props.options.neighborhoods) {
-        neighborhoodOptions.push(<option key={n} value={n}>{n}</option>);
-      }
-    }
-
-    return neighborhoodOptions;
-  }
-
-  createCategoryOptions() {
-    if (this.props.options.categories && this.props.options.categories.length > 0) {
-      let categoryCheckboxes = []
-
-      for (let c of this.props.options.categories) {
-        categoryCheckboxes.push(
-          <div>
-            <input key={"category-" + c} name={c} type="checkbox" checked={this.state.activities.includes(c)} onChange={this.addOrRemoveActivity} />
-            <label htmlFor={"category-" + c}>{c}</label>
-          </div>
-        )
-      }
-
-      return categoryCheckboxes;
-    } else {
-      return (
-        <p>Oops... There aren't any activities for this neighborhood. Maybe Netflix and chill?</p>
-      )
-    }
   }
 
   updateNeighborhood = event => {
@@ -100,22 +69,15 @@ class GenerateDateForm extends React.Component {
           <h3>Generate a Date</h3>
           <Errors errors={this.state.error}/>
           <form onSubmit={(event) => this.handleSubmit(event)}>
-            <div className="neighborhood-select">
-              <label className="main-labels">Pick a Neighborhood:</label>
-              <select
-                value={this.state.neighborhood}
-                onChange={this.updateNeighborhood}>
-                  <option value=""></option>
-                  {this.createNeighborhoodOptions()}
-              </select>
-            </div>
+            <NeighborhoodSelect
+              neighborhoods={this.props.options.neighborhoods}
+              selectedNeighborhood={this.state.neighborhood}
+              updateNeighborhood={this.updateNeighborhood.bind(this)} />
             {this.state.neighborhood !== "" &&
-              <div className="category-selects">
-                <label className="main-labels">Choose a few activities:</label>
-                <div className="category-options">
-                  {this.createCategoryOptions()}
-                </div>
-              </div>
+              <CategoryCheckboxes
+                categories={this.props.options.categories}
+                activities={this.state.activities}
+                addOrRemoveActivity={this.addOrRemoveActivity.bind(this)} />
             }
             {(this.state.neighborhood !== "" && this.state.activities.length !== 0) &&
               <input type="submit" value="Plan my date!"/>
