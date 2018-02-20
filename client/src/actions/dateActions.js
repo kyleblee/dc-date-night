@@ -69,3 +69,7 @@ export function resetGenerate() {
     dispatch({type: 'RESET_CUSTOM_DATE'})
   }
 }
+
+export function createCuratedDate(curatedDate) {
+  debugger;
+}

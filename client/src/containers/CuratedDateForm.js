@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SpotForm } from '../components/SpotForm';
-import { collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';
+import { collectNeighborhoodOptions, collectCategoryOptions, createCuratedDate } from '../actions/dateActions';
 import { NeighborhoodSelect } from '../components/NeighborhoodSelect';
 
 class CuratedDateForm extends React.Component {
@@ -56,6 +56,7 @@ class CuratedDateForm extends React.Component {
     const spotForms = this.state.spots.map((spot, index) => {
       return (
        <SpotForm
+         key={index}
          title={spot.title}
          updateSpotAttributes={this.updateSpotAttributes.bind(this)}
          categories={categories}
@@ -67,11 +68,16 @@ class CuratedDateForm extends React.Component {
     return spotForms;
   }
 
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.createCuratedDate(this.state);
+  }
+
   render() {
     return (
       <div className="curated-date-form">
         <h3>Curate a Date</h3>
-        <form>
+        <form onSubmit={this.handleSubmit}>
             <label htmlFor="date-title">What should we call this date?</label>
             <input id="date-title" type="text" value={this.state.title} name="title" onChange={this.updateInput}/>
             <label htmlFor="date-description">Tell our users what this date is all about:</label>
@@ -92,7 +98,8 @@ class CuratedDateForm extends React.Component {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     collectNeighborhoodOptions: collectNeighborhoodOptions,
-    collectCategoryOptions: collectCategoryOptions
+    collectCategoryOptions: collectCategoryOptions,
+    createCuratedDate: createCuratedDate
   }, dispatch);
 }
 
