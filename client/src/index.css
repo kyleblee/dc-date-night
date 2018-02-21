@@ -299,7 +299,9 @@ button#add-spot-button {
 }
 
 .curated-date-form form .curated-date-spots .spot-form {
-  margin: 0 20px;
+  margin: 35px 20px 0;
+  border: 1px solid black;
+  padding: 0 20px;
 }
 
 .curated-date-form form .curated-date-spots .spot-form .category-select {
@@ -318,7 +320,7 @@ button#add-spot-button {
 .curated-date-form textarea {
   width: 400px;
   height: 150px;
-  margin: 0 auto 20px;
+  margin: 0 auto 10px;
   font-size: 1.15em;
   background-color: rgba(232, 230, 230, 0.35);
   border: 0px solid rgba(18, 18, 18, 1);
@@ -330,9 +332,17 @@ button#add-spot-button {
 }
 
 .curated-date-form .neighborhood-select select {
-  margin-bottom: 50px;
+  margin-bottom: 15px;
 }
 
-.curated-date-form .curated-date-spots button#add-spot-button {
-  margin: 0 auto 50px;
+.curated-date-form button#add-spot-button {
+  margin: 0 auto 20px;
+}
+
+.delete-button {
+  display: block;
+  margin: 0 auto 10px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
 }

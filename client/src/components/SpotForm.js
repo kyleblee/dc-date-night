@@ -9,6 +9,12 @@ export const SpotForm = props => {
     }
   }
 
+  let handleDelete = function(index) {
+    return function(event) {
+      props.deleteSpot(index, event);
+    }
+  }
+
   return (
     <div className="spot-form">
       <h4>Spot #{props.index + 1}</h4>
@@ -33,6 +39,10 @@ export const SpotForm = props => {
         value={props.description}
         name="description"
         onChange={handleChange(props.index)}></textarea>
+        <img
+          className="delete-button"
+          src="https://i.imgur.com/rdvbV7K.png"
+          onClick={handleDelete(props.index)} />
     </div>
   )
 }

@@ -47,6 +47,17 @@ class CuratedDateForm extends React.Component {
     })
   };
 
+  deleteSpot = (spotIndex, event) => {
+    if (spotIndex > 0) {
+      this.setState({
+        spots: [
+          ...this.state.spots.slice(0, spotIndex),
+          ...this.state.spots.slice(spotIndex + 1, this.state.spots.length)
+        ]
+      });
+    }
+  }
+
   generateSpotForms() {
     const categories = this.props.options.categories;
 
@@ -58,7 +69,8 @@ class CuratedDateForm extends React.Component {
          updateSpotAttributes={this.updateSpotAttributes.bind(this)}
          categories={categories}
          index={index}
-         selectedCategory={spot.category} />
+         selectedCategory={spot.category}
+         deleteSpot={this.deleteSpot.bind(this)} />
       )
     })
 
