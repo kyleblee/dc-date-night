@@ -99,8 +99,16 @@ body {
   margin-right: 5%;
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+.date-list .date-card {
+  margin-left: 4.5%;
+}
+
+.date-list .date-card:first-child,
+.date-list .date-card:nth-child(3n+1) {
+  margin-left: 0;
 }
 
 .date-card h4 {
