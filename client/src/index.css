@@ -203,6 +203,11 @@ button#add-spot-button {
   margin-bottom: 50px;
 }
 
+.errors {
+  color: red;
+  font-style: italic;
+}
+
 /* GENERATED CUSTOM DATE */
 
 .custom-date {

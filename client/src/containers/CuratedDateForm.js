@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { SpotForm } from '../components/SpotForm';
 import { collectNeighborhoodOptions, collectCategoryOptions, createCuratedDate } from '../actions/dateActions';
 import { NeighborhoodSelect } from '../components/NeighborhoodSelect';
+import Errors from '../components/Errors';
 
 class CuratedDateForm extends React.Component {
   constructor() {
@@ -77,14 +78,34 @@ class CuratedDateForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.createCuratedDate(this.state);
-    this.props.history.push('/');
+
+    const invalidSpot = this.state.spots.find(spot => {
+      return spot.title === "" || spot.category === "";
+    })
+
+    if (this.state.title === "") {
+      this.setState({
+        error: "Please set a title for this date."
+      })
+    } else if (this.state.neighborhood === "") {
+      this.setState({
+        error: "Please choose a neighborhood for this date."
+      })
+    } else if (invalidSpot) {
+      this.setState({
+        error: "Please make sure that all spots have a title and category."
+      });
+    } else {
+      this.props.createCuratedDate(this.state);
+      this.props.history.push('/');
+    }
   }
 
   render() {
     return (
       <div className="curated-date-form">
         <h3>Curate a Date</h3>
+        <Errors errors={this.state.error}/>
         <form onSubmit={this.handleSubmit}>
             <label
               className="form-labels"
