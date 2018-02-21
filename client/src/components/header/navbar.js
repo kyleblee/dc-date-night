@@ -5,7 +5,7 @@ const NavBar = props => {
   return (
     <nav className='navbar'>
       <Link to='/plan-my-date'>Create</Link>
-      <Link to='#'>Browse</Link>
+      <Link to='/dates'>Browse</Link>
       <Link to='/curated/new'>Share</Link>
       <Link to='#'>About</Link>
     </nav>
