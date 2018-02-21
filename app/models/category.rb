@@ -8,7 +8,7 @@ class Category < ApplicationRecord
     if neighborhood.empty?
       Category.all
     else
-      Neighborhood.find_by(name: neighborhood).categories
+      Neighborhood.find_by(name: neighborhood).categories.uniq
     end
   end
 end
