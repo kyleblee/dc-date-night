@@ -86,17 +86,31 @@ class CuratedDateForm extends React.Component {
       <div className="curated-date-form">
         <h3>Curate a Date</h3>
         <form onSubmit={this.handleSubmit}>
-            <label htmlFor="date-title">What should we call this date?</label>
-            <input id="date-title" type="text" value={this.state.title} name="title" onChange={this.updateInput}/>
-            <label htmlFor="date-description">Tell our users what this date is all about:</label>
-            <textarea id="date-description" value={this.state.description} name="description" onChange={this.updateInput}></textarea>
-            <label htmlFor="neighborhood-select">Which neighborhood of DC is this date in?</label>
+            <label
+              className="form-labels"
+              htmlFor="date-title">What should we call this date?</label>
+            <input id="date-title"
+              type="text" value={this.state.title}
+              name="title"
+              onChange={this.updateInput}/>
+            <label
+              className="form-labels"
+              htmlFor="date-description">Tell our users what this date is all about:</label>
+            <textarea id="date-description"
+              value={this.state.description}
+              name="description"
+              onChange={this.updateInput}></textarea>
             <NeighborhoodSelect
+              labelText="What neighborhood of DC is this date in?"
               neighborhoods={this.props.options.neighborhoods}
               selectedNeighborhood={this.state.neighborhood}
               updateNeighborhood={this.updateInput.bind(this)}/>
-            {this.generateSpotForms()}
-            <button onClick={this.addAdditionalSpot}>Add Spot</button>
+            <div className="curated-date-spots">
+              {this.generateSpotForms()}
+            </div>
+            <button
+              id="add-spot-button"
+              onClick={this.addAdditionalSpot}>Add Spot</button>
             <input type="submit" />
         </form>
       </div>

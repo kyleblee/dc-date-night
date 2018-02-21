@@ -11,7 +11,7 @@ export const NeighborhoodSelect = props => {
 
   return (
     <div className="neighborhood-select">
-      <label className="main-labels">Pick a Neighborhood:</label>
+      <label className="form-labels">{props.labelText}</label>
       <select
         name="neighborhood"
         value={props.selectedNeighborhood}

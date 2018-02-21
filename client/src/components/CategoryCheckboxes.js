@@ -19,7 +19,7 @@ export const CategoryCheckboxes = props => {
 
   return (
     <div className="category-selects">
-      <label className="main-labels">Choose a few activities:</label>
+      <label className="form-labels">Choose a few activities:</label>
       <div className="category-options">
         {categoryCheckboxes}
       </div>

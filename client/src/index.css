@@ -144,7 +144,7 @@ body {
   margin-top: 20px;
 }
 
-.generate-date-form form label.main-labels {
+.form-labels {
   display: block;
   font-size: 1.25em;
   margin-bottom: 10px;
@@ -154,7 +154,8 @@ body {
   margin-bottom: 50px;
 }
 
-.generate-date-form form div.neighborhood-select select {
+.generate-date-form form div.neighborhood-select select,
+.curated-date-form form select {
   width: 225px;
   height: 40px;
   cursor: pointer;
@@ -186,7 +187,9 @@ body {
 }
 
 .generate-date-form form input[type="submit"],
-.custom-date button.start-over-button {
+.custom-date button.start-over-button,
+.curated-date-form form input[type="submit"],
+button#add-spot-button {
   width: 225px;
   height: 40px;
   cursor: pointer;
@@ -258,4 +261,63 @@ body {
   margin-top: 0;
   margin-bottom: 30px;
   font-size: 2.5em;
+}
+
+.curated-date-form form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.curated-date-form form .curated-date-spots h4 {
+  font-size: 1.20em;
+  font-style: italic;
+}
+
+.curated-date-form form .curated-date-spots {
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.curated-date-form form .curated-date-spots .spot-form {
+  margin: 0 20px;
+}
+
+.curated-date-form form .curated-date-spots .spot-form .category-select {
+  margin-bottom: 30px;
+}
+
+.curated-date-form form input[type="text"] {
+  width: 300px;
+  height: 30px;
+  font-size: 1.15em;
+  margin: 0 auto 30px;
+  background-color: rgba(232, 230, 230, 0.35);
+  border: 0px solid rgba(18, 18, 18, 1);
+}
+
+.curated-date-form textarea {
+  width: 400px;
+  height: 150px;
+  margin: 0 auto 30px;
+  font-size: 1.15em;
+  background-color: rgba(232, 230, 230, 0.35);
+  border: 0px solid rgba(18, 18, 18, 1);
+  resize: none;
+}
+
+.curated-date-form form input[type="submit"] {
+  margin: 0 auto;
+}
+
+.curated-date-form .neighborhood-select select {
+  margin-bottom: 50px;
+}
+
+.curated-date-form .curated-date-spots button#add-spot-button {
+  margin: 0 auto 50px;
 }

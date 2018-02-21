@@ -17,7 +17,7 @@ export const CategorySelect = props => {
 
   return (
     <div className="category-select">
-      <label className="main-labels">Which category is this spot in?</label>
+      <label className="form-labels">Which category is this spot in?</label>
       <select
         name="category"
         value={props.selectedCategory}

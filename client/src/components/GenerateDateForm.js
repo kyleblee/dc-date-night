@@ -70,6 +70,7 @@ class GenerateDateForm extends React.Component {
           <Errors errors={this.state.error}/>
           <form onSubmit={(event) => this.handleSubmit(event)}>
             <NeighborhoodSelect
+              labelText="Pick a Neighborhood:"
               neighborhoods={this.props.options.neighborhoods}
               selectedNeighborhood={this.state.neighborhood}
               updateNeighborhood={this.updateNeighborhood.bind(this)} />
