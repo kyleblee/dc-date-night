@@ -48,7 +48,7 @@ class CuratedDateForm extends React.Component {
   };
 
   deleteSpot = (spotIndex, event) => {
-    if (spotIndex > 0) {
+    if (this.state.spots.length > 1) {
       this.setState({
         spots: [
           ...this.state.spots.slice(0, spotIndex),
