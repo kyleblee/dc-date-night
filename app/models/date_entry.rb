@@ -8,11 +8,13 @@ class DateEntry < ApplicationRecord
 
   def self.browse_dates(neighborhood)
     if neighborhood.empty?
-      DateEntry.all
+      DateEntry.all.order('created_at DESC')
     else
-      DateEntry.all.select do |date|
+      dates = DateEntry.all.select do |date|
         date.neighborhood.name == neighborhood
       end
+      neighborhood_id = Neighborhood.find_by(name: neighborhood).id
+      DateEntry.all.where(neighborhood_id: neighborhood_id).order('created_at DESC')
     end
   end
 
