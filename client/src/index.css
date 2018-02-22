@@ -164,7 +164,7 @@ body {
   margin-bottom: 50px;
 }
 
-.generate-date-form form div.neighborhood-select select,
+div.neighborhood-select select,
 .curated-date-form form select {
   width: 225px;
   height: 40px;
@@ -175,6 +175,8 @@ body {
   font-size: 1.15em;
   text-align-last: center;
 }
+
+/* .generate-date-form form  */
 
 .generate-date-form form div.category-selects {
   margin-bottom: 50px;

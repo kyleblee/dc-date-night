@@ -8,11 +8,19 @@ class BrowseDates extends React.Component {
   constructor() {
     super();
 
-    this.state = {}
+    this.state = {
+      neighborhood: ""
+    }
   }
 
   componentDidMount() {
     this.props.collectNeighborhoodOptions();
+  }
+
+  updateNeighborhood = e => {
+    this.setState({
+      neighborhood: e.target.value
+    });
   }
 
   render() {
@@ -20,7 +28,9 @@ class BrowseDates extends React.Component {
       <div className="browse-dates">
         <NeighborhoodSelect
           labelText="Choose a neighborhood to filter results."
-          neighborhoods={this.props.neighborhoods}/>
+          neighborhoods={this.props.neighborhoods}
+          selectedNeighborhood={this.state.neighborhood}
+          updateNeighborhood={this.updateNeighborhood.bind(this)}/>
       </div>
     )
   }
