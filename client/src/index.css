@@ -346,3 +346,9 @@ button#add-spot-button {
   width: 24px;
   height: 24px;
 }
+
+/* BROWSE DATES */
+
+.browse-dates .neighborhood-select select {
+  margin-bottom: 50px;
+}

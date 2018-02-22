@@ -14,6 +14,7 @@ export function fetchDates(neighborhood) {
     })
       .then(response => response.json())
       .then(responseJSON => {
+        debugger;
         dispatch({type: 'FETCH_DATES', payload: responseJSON})
       })
   }

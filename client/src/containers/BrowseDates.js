@@ -22,11 +22,12 @@ class BrowseDates extends React.Component {
   updateNeighborhood = e => {
     this.setState({
       neighborhood: e.target.value
+    }, function() {
+      this.props.fetchDates(this.state.neighborhood);
     });
   }
 
   render() {
-    debugger;
     return (
       <div className="browse-dates">
         <NeighborhoodSelect
