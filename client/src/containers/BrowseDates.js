@@ -3,6 +3,7 @@ import { NeighborhoodSelect } from '../components/NeighborhoodSelect';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { collectNeighborhoodOptions, fetchDates } from '../actions/dateActions';
+import DateList from '../components/DatesList';
 
 class BrowseDates extends React.Component {
   constructor() {
@@ -15,17 +16,17 @@ class BrowseDates extends React.Component {
 
   componentDidMount() {
     this.props.collectNeighborhoodOptions();
+    this.props.fetchDates(this.state.neighborhood);
   }
 
   updateNeighborhood = e => {
     this.setState({
       neighborhood: e.target.value
-    }, function() {
-      this.props.fetchDates(this.state.neighborhood);
     });
   }
 
   render() {
+    debugger;
     return (
       <div className="browse-dates">
         <NeighborhoodSelect
@@ -33,6 +34,7 @@ class BrowseDates extends React.Component {
           neighborhoods={this.props.neighborhoods}
           selectedNeighborhood={this.state.neighborhood}
           updateNeighborhood={this.updateNeighborhood.bind(this)}/>
+        <DateList dates={this.props.dates} />
       </div>
     )
   }
@@ -47,7 +49,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    neighborhoods: state.dates.options.neighborhoods
+    neighborhoods: state.dates.options.neighborhoods,
+    dates: state.dates.curatedDates
   }
 }
 
