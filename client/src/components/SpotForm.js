@@ -42,7 +42,8 @@ export const SpotForm = props => {
         <img
           className="delete-button"
           src="https://i.imgur.com/rdvbV7K.png"
-          onClick={handleDelete(props.index)} />
+          onClick={handleDelete(props.index)}
+          alt="delete button"/>
     </div>
   )
 }

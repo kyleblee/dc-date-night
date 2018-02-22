@@ -6,6 +6,16 @@ class DateEntry < ApplicationRecord
 
   validates :title, :neighborhood_id, presence: true
 
+  def self.browse_dates(neighborhood)
+    if neighborhood.empty?
+      DateEntry.all
+    else
+      DateEntry.all.select do |date|
+        date.neighborhood.name == neighborhood
+      end
+    end
+  end
+
   def self.create_curated_date(params)
     neighborhood_id = Neighborhood.find_or_create_by(name: params[:neighborhood]).id
 

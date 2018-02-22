@@ -2,7 +2,7 @@ import React from 'react';
 import { NeighborhoodSelect } from '../components/NeighborhoodSelect';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { generateDate, collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';
+import { collectNeighborhoodOptions, fetchDates } from '../actions/dateActions';
 
 class BrowseDates extends React.Component {
   constructor() {
@@ -20,6 +20,8 @@ class BrowseDates extends React.Component {
   updateNeighborhood = e => {
     this.setState({
       neighborhood: e.target.value
+    }, function() {
+      this.props.fetchDates(this.state.neighborhood);
     });
   }
 
@@ -38,7 +40,8 @@ class BrowseDates extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    collectNeighborhoodOptions: collectNeighborhoodOptions
+    collectNeighborhoodOptions: collectNeighborhoodOptions,
+    fetchDates: fetchDates
   }, dispatch);
 }
 

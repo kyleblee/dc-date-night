@@ -6,8 +6,18 @@ import DateList from '../components/DatesList';
 import QuickAbout from '../components/homepage/QuickAbout';
 
 class Homepage extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      neighborhood: ""
+    }
+  }
+
   componentDidMount() {
-    this.props.fetchDates();
+    if (this.state.neighborhood || this.state.neighborhood === "") {
+      this.props.fetchDates(this.state.neighborhood);
+    }
   }
 
   render() {

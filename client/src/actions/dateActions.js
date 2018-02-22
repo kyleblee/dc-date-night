@@ -1,8 +1,17 @@
 import fetch from 'isomorphic-fetch';
 
-export function fetchDates() {
+export function fetchDates(neighborhood) {
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
   return (dispatch) => {
-    return fetch('/date_entries')
+    const reqNeighborhood = JSON.stringify({neighborhood: neighborhood});
+
+    return fetch('/date_entries/browse', {
+      method: 'POST',
+      headers: headers,
+      body: reqNeighborhood
+    })
       .then(response => response.json())
       .then(responseJSON => {
         dispatch({type: 'FETCH_DATES', payload: responseJSON})
