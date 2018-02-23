@@ -4,7 +4,7 @@ class DateEntry < ApplicationRecord
   has_many :date_entry_spots
   has_many :spots, through: :date_entry_spots
 
-  has_attached_file :cover_photo
+  has_attached_file :cover_photo, styles: {thumb: "100x100>"}, default_url: '/system/images/:style/default_date.png'
   validates_attachment_content_type :cover_photo, content_type: /\Aimage\/.*\z/
 
   validates :title, :neighborhood_id, presence: true
