@@ -84,10 +84,25 @@ export function createCuratedDate(curatedDate) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
+    const dateImage = curatedDate.coverPhoto;
+    delete curatedDate.coverPhoto;
+
     return fetch('/date_entries', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({date: curatedDate})
-    });
+    })
+    .then(response => response.json())
+    .then(responseJSON => {
+      let photoForm = new FormData();
+      
+      photoForm.append('id', responseJSON.id);
+      photoForm.append('cover_photo', dateImage);
+
+      fetch('/upload', {
+        method: 'POST',
+        body: photoForm
+      })
+    })
   }
 }

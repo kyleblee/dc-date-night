@@ -28,6 +28,7 @@ class BrowseDates extends React.Component {
   }
 
   render() {
+    debugger;
     return (
       <div className="browse-dates">
         <NeighborhoodSelect

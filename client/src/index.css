@@ -339,7 +339,12 @@ button#add-spot-button {
   margin: 0 auto 20px;
 }
 
+/* .curated-date-form form .upload-photo-label {
+  display: inline-block;
+} */
+
 .curated-date-form input[type="file"] {
+  /* display: inline-block; */
   margin-bottom: 15px;
 }
 

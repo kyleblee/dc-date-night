@@ -89,6 +89,14 @@ class CuratedDateForm extends React.Component {
     })
   }
 
+  updateCoverPhoto = e => {
+    const coverPhoto = this.coverPhotoField.files[0];
+
+    this.setState({
+      coverPhoto: coverPhoto
+    });
+  }
+
   handleSubmit = e => {
     e.preventDefault();
 
@@ -140,9 +148,15 @@ class CuratedDateForm extends React.Component {
               selectedNeighborhood={this.state.neighborhood}
               updateNeighborhood={this.updateInput.bind(this)}/>
             <label
-              className="form-labels"
+              className="form-labels upload-photo-label"
               htmlFor="cover-photo">Upload a photo for this date:</label>
-            <input id="cover-photo" name="coverPhoto" type="file" onChange={this.updateInput} />
+            <input
+              id="cover-photo"
+              name="coverPhoto"
+              type="file"
+              ref={field => (this.coverPhotoField = field)}
+              multiple={true}
+              onChange={e => this.updateCoverPhoto(e)} />
             <div className="curated-date-spots">
               {this.generateSpotForms()}
             </div>

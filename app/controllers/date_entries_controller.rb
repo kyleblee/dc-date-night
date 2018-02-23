@@ -5,7 +5,6 @@ class DateEntriesController < ApplicationController
   end
 
   def create
-    binding.pry
     @date = DateEntry.create_curated_date(date_params)
     render json: @date, status: 200
   end
@@ -15,6 +14,12 @@ class DateEntriesController < ApplicationController
     categories = params[:activities]
     @spots = Spot.collect_date_spots(neighborhood, categories)
     render json: @spots, status: 200
+  end
+
+  def upload
+    date_id = params[:id].to_i
+    @date = DateEntry.find_by(id: date_id)
+    @date.update(cover_photo: params[:cover_photo])
   end
 
   private
