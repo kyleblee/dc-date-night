@@ -157,6 +157,7 @@ class CuratedDateForm extends React.Component {
               ref={field => (this.coverPhotoField = field)}
               multiple={true}
               onChange={e => this.updateCoverPhoto(e)} />
+            <p id="image-disclaimer">(square orientation photos work best, for now!)</p>
             <div className="curated-date-spots">
               {this.generateSpotForms()}
             </div>

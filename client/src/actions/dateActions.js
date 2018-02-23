@@ -94,15 +94,17 @@ export function createCuratedDate(curatedDate) {
     })
     .then(response => response.json())
     .then(responseJSON => {
-      let photoForm = new FormData();
-      
-      photoForm.append('id', responseJSON.id);
-      photoForm.append('cover_photo', dateImage);
+      if (dateImage) {
+        let photoForm = new FormData();
 
-      fetch('/upload', {
-        method: 'POST',
-        body: photoForm
-      })
+        photoForm.append('id', responseJSON.id);
+        photoForm.append('cover_photo', dateImage);
+
+        fetch('/upload', {
+          method: 'POST',
+          body: photoForm
+        });
+      }
     })
   }
 }
