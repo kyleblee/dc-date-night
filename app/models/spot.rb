@@ -4,6 +4,9 @@ class Spot < ApplicationRecord
   has_many :date_entry_spots
   has_many :date_entries, through: :date_entry_spots
 
+  has_attached_file :photo1, styles: {thumb: "100x100>"}, default_url: '/system/images/:style/spot_default.png'
+  validates_attachment_content_type :photo1, content_type: /\Aimage\/.*\z/
+
   validates :name, :category_id, :neighborhood_id, presence: true
 
   def self.collect_date_spots(neighborhood, categories)

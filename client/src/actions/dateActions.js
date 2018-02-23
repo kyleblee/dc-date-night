@@ -64,6 +64,7 @@ export function generateDate(dateChoices) {
         return {
           name: spot.name,
           description: spot.description,
+          photo1: spot.photo1,
           category: spot.category.name,
           neighborhood: spot.neighborhood.name
         }
