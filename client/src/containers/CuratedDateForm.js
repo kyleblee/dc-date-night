@@ -14,6 +14,7 @@ class CuratedDateForm extends React.Component {
       title: "",
       description: "",
       neighborhood: "",
+      coverPhoto: undefined,
       spots: [{
         title: "",
         description: "",
@@ -138,6 +139,10 @@ class CuratedDateForm extends React.Component {
               neighborhoods={this.props.options.neighborhoods}
               selectedNeighborhood={this.state.neighborhood}
               updateNeighborhood={this.updateInput.bind(this)}/>
+            <label
+              className="form-labels"
+              htmlFor="cover-photo">Upload a photo for this date:</label>
+            <input id="cover-photo" name="coverPhoto" type="file" onChange={this.updateInput} />
             <div className="curated-date-spots">
               {this.generateSpotForms()}
             </div>

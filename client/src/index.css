@@ -320,7 +320,7 @@ button#add-spot-button {
 .curated-date-form textarea {
   width: 400px;
   height: 150px;
-  margin: 0 auto 10px;
+  margin: 0 auto 20px;
   font-size: 1.15em;
   background-color: rgba(232, 230, 230, 0.35);
   border: 0px solid rgba(18, 18, 18, 1);
@@ -332,11 +332,15 @@ button#add-spot-button {
 }
 
 .curated-date-form .neighborhood-select select {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .curated-date-form button#add-spot-button {
   margin: 0 auto 20px;
+}
+
+.curated-date-form input[type="file"] {
+  margin-bottom: 15px;
 }
 
 .delete-button {

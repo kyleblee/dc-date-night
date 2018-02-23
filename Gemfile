@@ -30,6 +30,7 @@ gem 'validates_email_format_of'
 gem 'dotenv-rails'
 gem 'active_model_serializers'
 gem 'foreman', '~> 0.82.0'
+gem 'paperclip'
 
 
 group :development, :test do

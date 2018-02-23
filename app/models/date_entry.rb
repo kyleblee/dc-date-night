@@ -4,6 +4,9 @@ class DateEntry < ApplicationRecord
   has_many :date_entry_spots
   has_many :spots, through: :date_entry_spots
 
+  has_attached_file :cover_photo
+  validates_attachment_content_type :cover_photo, content_type: /\Aimage\/.*\z/
+
   validates :title, :neighborhood_id, presence: true
 
   def self.browse_dates(neighborhood)

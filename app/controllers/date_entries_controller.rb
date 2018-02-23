@@ -5,6 +5,7 @@ class DateEntriesController < ApplicationController
   end
 
   def create
+    binding.pry
     @date = DateEntry.create_curated_date(date_params)
     render json: @date, status: 200
   end
