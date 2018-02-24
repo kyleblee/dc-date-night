@@ -1,17 +1,34 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { SpotCard } from '../components/SpotCard';
 
 const ShowDate = props => {
+  const spotsHTML = props.date.spots.map((spot, index) => {
+    return (
+      <SpotCard index={index} name={spot.name} description={spot.description} photo={spot.photo1} />
+    )
+  })
+
+  debugger;
+
   return (
-    <p>congrats, you've made it to ShowDate</p>
+    <div className="date-show">
+      <h2>{props.date.title}</h2>
+      <img src={props.date.cover_photo} />
+      <p>{props.date.description}</p>
+      {spotsHTML}
+    </div>
   )
 }
 
 const mapStateToProps = (state, ownProps) => {
-  debugger;
-  return {
-    dateId: ownProps.match.params.id
+  let date = state.dates.curatedDates.find(date => date.id === parseInt(ownProps.match.params.id))
+
+  if (date) {
+    return { date }
+  } else {
+    return {date: {}}
   }
 }
 
