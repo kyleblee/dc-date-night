@@ -16,14 +16,14 @@ class BrowseDates extends React.Component {
 
   componentDidMount() {
     this.props.collectNeighborhoodOptions();
-    this.props.fetchDates(this.state.neighborhood);
+    this.props.fetchDates(this.state.neighborhood, undefined);
   }
 
   updateNeighborhood = e => {
     this.setState({
       neighborhood: e.target.value
     }, function() {
-      this.props.fetchDates(this.state.neighborhood);
+      this.props.fetchDates(this.state.neighborhood, undefined);
     });
   }
 

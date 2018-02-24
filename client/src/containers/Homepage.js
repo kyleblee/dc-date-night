@@ -16,7 +16,7 @@ class Homepage extends React.Component {
 
   componentDidMount() {
     if (this.state.neighborhood || this.state.neighborhood === "") {
-      this.props.fetchDates(this.state.neighborhood);
+      this.props.fetchDates(this.state.neighborhood, 20);
     }
   }
 

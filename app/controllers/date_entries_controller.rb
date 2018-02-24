@@ -1,6 +1,6 @@
 class DateEntriesController < ApplicationController
   def index
-    @dates = DateEntry.browse_dates(params[:neighborhood])
+    @dates = DateEntry.browse_dates(params[:neighborhood], params[:cap])
     render json: @dates, status: 200
   end
 

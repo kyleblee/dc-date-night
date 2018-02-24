@@ -9,15 +9,20 @@ class DateEntry < ApplicationRecord
 
   validates :title, :neighborhood_id, presence: true
 
-  def self.browse_dates(neighborhood)
+  def self.browse_dates(neighborhood, cap)
     if neighborhood.empty?
-      DateEntry.all.order('created_at DESC')
-    else
-      dates = DateEntry.all.select do |date|
-        date.neighborhood.name == neighborhood
+      if cap
+        DateEntry.all.order('created_at DESC').limit(cap)
+      else
+        DateEntry.all.order('created_at DESC')
       end
+    else
       neighborhood_id = Neighborhood.find_by(name: neighborhood).id
-      DateEntry.all.where(neighborhood_id: neighborhood_id).order('created_at DESC')
+      if cap
+        DateEntry.all.where(neighborhood_id: neighborhood_id).order('created_at DESC').limit(cap)
+      else
+        DateEntry.all.where(neighborhood_id: neighborhood_id).order('created_at DESC')
+      end
     end
   end
 
