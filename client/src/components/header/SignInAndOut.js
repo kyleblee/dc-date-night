@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SignInAndOut = props => {
   return (
     <div className="sign-in-and-out">
-      <a href="#">Sign In / Sign Up</a>
+      <Link to='/sign-in'>Sign In / Sign Up</Link>
     </div>
   )
 }

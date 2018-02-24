@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../components/header/navbar';
+import NavBar from '../components/header/NavBar';
 import LogoDiv from '../components/LogoDiv';
 import SignInAndOut from '../components/header/SignInAndOut';
 
