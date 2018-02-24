@@ -4,13 +4,17 @@ import { connect } from 'react-redux';
 import { SpotCard } from '../components/SpotCard';
 
 const ShowDate = props => {
-  const spotsHTML = props.date.spots.map((spot, index) => {
-    return (
-      <SpotCard index={index} name={spot.name} description={spot.description} photo={spot.photo1} />
-    )
-  })
+  let spotsHTML;
 
-  debugger;
+  if (Object.keys(props.date).length > 0) {
+    spotsHTML = props.date.spots.map((spot, index) => {
+      return (
+        <SpotCard index={index} name={spot.name} description={spot.description} photo={spot.photo1} />
+      )
+    })
+  } else {
+    props.history.push('/dates');
+  }
 
   return (
     <div className="date-show">
@@ -28,7 +32,7 @@ const mapStateToProps = (state, ownProps) => {
   if (date) {
     return { date }
   } else {
-    return {date: {}}
+    return { date: {} }
   }
 }
 
