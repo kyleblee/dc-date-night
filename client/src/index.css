@@ -7,6 +7,12 @@ body {
   padding: 0;
 }
 
+input[type="text"],
+textarea,
+input[type="password"] {
+  padding: 5px 10px;
+}
+
 /* HEADER */
 
 .header {
@@ -313,7 +319,8 @@ button#add-spot-button {
   margin-bottom: 20px;
 }
 
-.curated-date-form form input[type="text"] {
+.curated-date-form form input[type="text"],
+#sign-in-form input {
   width: 300px;
   height: 30px;
   font-size: 1.15em;
@@ -360,4 +367,24 @@ button#add-spot-button {
 
 .browse-dates .neighborhood-select select {
   margin-bottom: 50px;
+}
+
+/* SIGN IN */
+
+#sign-in-form .form-labels {
+  display: inline;
+  margin-right: 10px;
+}
+
+#sign-in-form div {
+  margin-bottom: 20px;
+}
+
+#sign-in-form {
+  text-align: right;
+}
+
+#sign-in-div {
+  width: 35%;
+  margin: 20px auto;
 }
