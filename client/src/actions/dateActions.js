@@ -91,6 +91,10 @@ export function createCuratedDate(curatedDate) {
     const dateImage = curatedDate.coverPhoto;
     delete curatedDate.coverPhoto;
 
+    let spotPhotos = curatedDate.spots.map(spot => {
+	     return spot.photo
+     })
+
     return fetch('/date_entries', {
       method: 'POST',
       headers: headers,
@@ -98,17 +102,20 @@ export function createCuratedDate(curatedDate) {
     })
     .then(response => response.json())
     .then(responseJSON => {
-      if (dateImage) {
-        let photoForm = new FormData();
 
-        photoForm.append('id', responseJSON.id);
-        photoForm.append('cover_photo', dateImage);
+      let photoForm = new FormData();
 
-        fetch('/upload', {
-          method: 'POST',
-          body: photoForm
-        });
+      photoForm.append('id', responseJSON.id);
+      photoForm.append('cover_photo', dateImage);
+
+      for (let i = 0; i < spotPhotos.length; i++) {
+        photoForm.append(`spotPhoto${i}`, spotPhotos[i])
       }
+
+      fetch('/upload', {
+        method: 'POST',
+        body: photoForm
+      });
     })
   }
 }

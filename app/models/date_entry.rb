@@ -39,7 +39,7 @@ class DateEntry < ApplicationRecord
 
   def spots=(spots)
     spots.each do |spot|
-      if !spot["title"].empty? && !spot["description"].empty? && !spot["category"].empty?
+      if !spot["title"].empty? && !spot["category"].empty?
         category = Category.find_by(name: spot["category"])
         @spot = Spot.find_or_create_by(
           name: spot["title"],
@@ -48,6 +48,20 @@ class DateEntry < ApplicationRecord
           neighborhood_id: self.neighborhood_id
         )
         self.spots << @spot
+      end
+    end
+  end
+
+  def self.attach_photos(params)
+    @date = DateEntry.find_by(id: params[:id].to_i)
+
+    if params[:cover_photo] != "undefined"
+      @date.update(cover_photo: params[:cover_photo])
+    end
+
+    @date.spots.each_with_index do |spot, index|
+      if params["spotPhoto" + index.to_s] != "undefined"
+        spot.update(photo1: params["spotPhoto" + index.to_s])
       end
     end
   end

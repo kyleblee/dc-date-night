@@ -17,9 +17,7 @@ class DateEntriesController < ApplicationController
   end
 
   def upload
-    date_id = params[:id].to_i
-    @date = DateEntry.find_by(id: date_id)
-    @date.update(cover_photo: params[:cover_photo])
+    DateEntry.attach_photos(params)
   end
 
   private

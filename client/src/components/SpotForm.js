@@ -15,6 +15,12 @@ export const SpotForm = props => {
     }
   }
 
+  let handlePhotoUpload = function(index) {
+    return function(event) {
+      props.updateSpotPhoto(index, event)
+    }
+  }
+
   return (
     <div className="spot-form">
       <h4>Spot #{props.index + 1}</h4>
@@ -39,6 +45,13 @@ export const SpotForm = props => {
         value={props.description}
         name="description"
         onChange={handleChange(props.index)}></textarea>
+      <input
+        id={`spotPhoto${props.index}`}
+        name={`spotPhoto${props.index}`}
+        type="file"
+        ref={props.photoRef}
+        multiple={true}
+        onChange={handlePhotoUpload(props.index)} />
         <img
           className="delete-button"
           src="https://i.imgur.com/rdvbV7K.png"

@@ -18,7 +18,8 @@ class CuratedDateForm extends React.Component {
       spots: [{
         title: "",
         description: "",
-        category: ""
+        category: "",
+        photo: undefined
       }],
       error: undefined
     }
@@ -37,7 +38,7 @@ class CuratedDateForm extends React.Component {
   }
 
   updateSpotAttributes = (spotIndex, event) => {
-    let updatedSpot = this.state.spots[spotIndex]
+    let updatedSpot = this.state.spots[spotIndex];
     updatedSpot[event.target.name] = event.target.value;
     this.setState({
       spots: [
@@ -47,6 +48,20 @@ class CuratedDateForm extends React.Component {
       ]
     })
   };
+
+  updateSpotPhoto = (spotIndex, event) => {
+    const coverPhoto = this.spotPhotoField.files[0];
+    let updatedSpot = this.state.spots[spotIndex];
+    updatedSpot.photo = coverPhoto;
+
+    this.setState({
+      spots: [
+        ...this.state.spots.slice(0, spotIndex),
+        updatedSpot,
+        ...this.state.spots.slice(spotIndex + 1, this.state.spots.length)
+      ]
+    });
+  }
 
   deleteSpot = (spotIndex, event) => {
     if (this.state.spots.length > 1) {
@@ -71,7 +86,9 @@ class CuratedDateForm extends React.Component {
          categories={categories}
          index={index}
          selectedCategory={spot.category}
-         deleteSpot={this.deleteSpot.bind(this)} />
+         deleteSpot={this.deleteSpot.bind(this)}
+         updateSpotPhoto={this.updateSpotPhoto.bind(this)}
+         photoRef={(field => (this.spotPhotoField = field)).bind(this)}/>
       )
     })
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './containers/Header';
 import Footer from './containers/Footer';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Homepage from './containers/Homepage';
 import SignIn from './containers/SignIn';
 import GenerateDate from './containers/GenerateDate';
@@ -18,12 +18,14 @@ class App extends Component {
         <Router>
           <div>
             <Header />
-            <Route exact path="/" component={Homepage} />
-            <Route path="/sign-in" component={SignIn} />
-            <Route path="/plan-my-date" component={GenerateDate} />
-            <Route exact path="/dates" component={BrowseDates} />
-            <Route exact path="/dates/new" component={CuratedDateForm} />
-            <Route exact path="/dates/:id" component={ShowDate} />
+            <Switch>
+              <Route exact path="/" component={Homepage} />
+              <Route path="/sign-in" component={SignIn} />
+              <Route path="/plan-my-date" component={GenerateDate} />
+              <Route exact path="/dates" component={BrowseDates} />
+              <Route exact path="/dates/new" component={CuratedDateForm} />
+              <Route exact path="/dates/:id" component={ShowDate} />
+            </Switch>
             <Footer />
           </div>
         </Router>
