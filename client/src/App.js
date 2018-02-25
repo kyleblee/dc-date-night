@@ -22,9 +22,10 @@ class App extends Component {
               <Route exact path="/" component={Homepage} />
               <Route path="/sign-in" component={SignIn} />
               <Route path="/plan-my-date" component={GenerateDate} />
-              <Route exact path="/dates" component={BrowseDates} />
-              <Route exact path="/dates/new" component={CuratedDateForm} />
-              <Route exact path="/dates/:id" component={ShowDate} />
+              <Route path="/dates/:id/edit" component={CuratedDateForm}/>
+              <Route path="/dates/new" component={CuratedDateForm} />
+              <Route path="/dates/:id" component={ShowDate} />
+              <Route path="/dates" component={BrowseDates} />
             </Switch>
             <Footer />
           </div>

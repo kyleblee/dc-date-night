@@ -16,12 +16,17 @@ const ShowDate = props => {
     props.history.push('/dates');
   }
 
+  let handleEditButton = function() {
+    props.history.push(`/dates/${props.date.id}/edit`);
+  }
+
   return (
     <div className="date-show">
       <h2>{props.date.title}</h2>
       <img src={props.date.cover_photo} />
       <p>{props.date.description}</p>
       {spotsHTML}
+      <button onClick={handleEditButton}>Edit Date</button>
     </div>
   )
 }

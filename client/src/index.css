@@ -214,7 +214,8 @@ div.neighborhood-select select,
 .generate-date-form form input[type="submit"],
 .custom-date button.start-over-button,
 .curated-date-form form input[type="submit"],
-button#add-spot-button {
+button#add-spot-button,
+.date-show button {
   width: 225px;
   height: 40px;
   cursor: pointer;
@@ -355,6 +356,12 @@ button#add-spot-button {
   margin: 0 auto 20px;
 }
 
+.curated-date-form .spot-form input[type="file"] {
+  display: block;
+  margin-bottom: 15px;
+  margin-left: 30%;
+}
+
 #image-disclaimer {
   font-size: 0.75em;
 }
@@ -437,4 +444,8 @@ button#add-spot-button {
 .spot-card p {
   font-size: 1.25em;
   line-height: 2;
+}
+
+.date-show button {
+  margin-top: 30px;
 }
