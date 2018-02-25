@@ -4,13 +4,27 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { collectNeighborhoodOptions, fetchDates } from '../actions/dateActions';
 import DateList from '../components/DatesList';
+import Errors from '../components/Errors';
 
 class BrowseDates extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      neighborhood: ""
+      neighborhood: "",
+      errors: undefined
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.dates.length === 0) {
+      this.setState({
+        errors: "Oops! There aren't any curated dates for this neighborhood. Try generating a new one, instead!"
+      })
+    } else {
+      this.setState({
+        errors: undefined
+      })
     }
   }
 
@@ -35,6 +49,7 @@ class BrowseDates extends React.Component {
           neighborhoods={this.props.neighborhoods}
           selectedNeighborhood={this.state.neighborhood}
           updateNeighborhood={this.updateNeighborhood.bind(this)}/>
+        <Errors errors={this.state.errors}/>
         <DateList dates={this.props.dates} />
       </div>
     )

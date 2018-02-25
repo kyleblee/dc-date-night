@@ -373,6 +373,15 @@ button#add-spot-button {
   margin-bottom: 50px;
 }
 
+.browse-dates .form-labels {
+  margin-bottom: 15px;
+}
+
+.browse-dates .errors {
+  margin-top: -25px;
+  color: rgb(18, 18, 18);
+}
+
 /* SIGN IN */
 
 #sign-in-form .form-labels {
