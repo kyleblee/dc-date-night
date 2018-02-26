@@ -14,6 +14,10 @@ class DateEntriesController < ApplicationController
     render json: @date, include: 'spots.category,neighborhood', status: 200
   end
 
+  def update
+    binding.pry
+  end
+
   def generate
     neighborhood = params[:neighborhood]
     categories = params[:activities]

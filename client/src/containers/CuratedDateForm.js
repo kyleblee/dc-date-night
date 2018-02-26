@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SpotForm } from '../components/SpotForm';
-import { collectNeighborhoodOptions, collectCategoryOptions, createCuratedDate, fetchExistingDate } from '../actions/dateActions';
+import { collectNeighborhoodOptions, collectCategoryOptions, createCuratedDate, fetchExistingDate, updateCuratedDate } from '../actions/dateActions';
 import { NeighborhoodSelect } from '../components/NeighborhoodSelect';
 import Errors from '../components/Errors';
 
@@ -11,6 +11,7 @@ class CuratedDateForm extends React.Component {
     super();
 
     this.state = {
+      id: undefined,
       title: "",
       description: "",
       neighborhood: "",
@@ -47,6 +48,7 @@ class CuratedDateForm extends React.Component {
       })
 
       this.setState({
+        id: parseInt(nextProps.match.params.id),
         title: nextProps.editDate.title,
         description: nextProps.editDate.description ? nextProps.editDate.description : "",
         neighborhood: nextProps.editDate.neighborhood.name,
@@ -159,8 +161,13 @@ class CuratedDateForm extends React.Component {
         error: "Please make sure that all spots have a title and category."
       });
     } else {
-      this.props.createCuratedDate(this.state);
-      this.props.history.push('/');
+      if (this.props.editId) {
+        this.props.updateCuratedDate(this.state);
+        this.props.history.push(`/dates/${parseInt(this.props.editId)}`);
+      } else {
+        this.props.createCuratedDate(this.state);
+        this.props.history.push('/');
+      }
     }
   }
 
@@ -226,7 +233,8 @@ const mapDispatchToProps = (dispatch) => {
     collectNeighborhoodOptions: collectNeighborhoodOptions,
     collectCategoryOptions: collectCategoryOptions,
     createCuratedDate: createCuratedDate,
-    fetchExistingDate: fetchExistingDate
+    fetchExistingDate: fetchExistingDate,
+    updateCuratedDate: updateCuratedDate
   }, dispatch);
 }
 

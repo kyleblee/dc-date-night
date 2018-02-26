@@ -85,15 +85,15 @@ export function resetGenerate() {
 
 export function createCuratedDate(curatedDate) {
   return (dispatch) => {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
     const dateImage = curatedDate.coverPhoto;
     delete curatedDate.coverPhoto;
 
     let spotPhotos = curatedDate.spots.map(spot => {
 	     return spot.photo
      })
+
+     let headers = new Headers();
+     headers.append('Content-Type', 'application/json');
 
     return fetch('/date_entries', {
       method: 'POST',
@@ -126,6 +126,45 @@ export function fetchExistingDate(dateId) {
     .then(response => response.json())
     .then(responseJSON => {
       dispatch({type: 'SET_EDITCURATEDDATE', payload: responseJSON});
+    })
+  }
+}
+
+export function updateCuratedDate(date) {
+  return (dispatch) => {
+    const dateImage = date.coverPhoto;
+    delete date.coverPhoto;
+
+    let spotPhotos = date.spots.map(spot => {
+	     return spot.photo
+     })
+
+     let headers = new Headers();
+     headers.append('Content-Type', 'application/json');
+
+    return fetch(`/date_entries/${date.id}`, {
+      method: 'PUT',
+      headers: headers,
+      body: JSON.stringify({date: date})
+    })
+    .then(response => response.json())
+    .then(responseJSON => {
+
+      debugger;
+      // need to customize all of this logic below for the update route.
+      let photoForm = new FormData();
+
+      photoForm.append('id', responseJSON.id);
+      photoForm.append('cover_photo', dateImage);
+
+      for (let i = 0; i < spotPhotos.length; i++) {
+        photoForm.append(`spotPhoto${i}`, spotPhotos[i])
+      }
+
+      fetch('/upload', {
+        method: 'POST',
+        body: photoForm
+      });
     })
   }
 }
