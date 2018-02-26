@@ -9,6 +9,11 @@ class DateEntriesController < ApplicationController
     render json: @date, status: 200
   end
 
+  def edit
+    @date = DateEntry.find_by(id: params[:id])
+    render json: @date, include: 'spots.category,neighborhood', status: 200
+  end
+
   def generate
     neighborhood = params[:neighborhood]
     categories = params[:activities]

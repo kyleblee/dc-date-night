@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SpotForm } from '../components/SpotForm';
-import { collectNeighborhoodOptions, collectCategoryOptions, createCuratedDate } from '../actions/dateActions';
+import { collectNeighborhoodOptions, collectCategoryOptions, createCuratedDate, fetchExistingDate } from '../actions/dateActions';
 import { NeighborhoodSelect } from '../components/NeighborhoodSelect';
 import Errors from '../components/Errors';
 
@@ -29,6 +29,30 @@ class CuratedDateForm extends React.Component {
     this.props.collectNeighborhoodOptions();
     // passing in hard-coded empty string so that all categories are retrieved
     this.props.collectCategoryOptions({neighborhood: ""})
+
+    if (this.props.editId && (this.props.editDate === undefined || parseInt(this.props.editId) !== this.props.editDate.id)) {
+      this.props.fetchExistingDate(parseInt(this.props.editId));
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+
+    if (nextProps.editDate) {
+      const existingDateSpots = nextProps.editDate.spots.map(spot => {
+        return {
+          title: spot.name,
+          description: spot.description,
+          category: spot.category.name
+        }
+      })
+
+      this.setState({
+        title: nextProps.editDate.title,
+        description: nextProps.editDate.description ? nextProps.editDate.description : "",
+        neighborhood: nextProps.editDate.neighborhood.name,
+        spots: existingDateSpots
+      });
+    }
   }
 
   updateInput = e => {
@@ -82,6 +106,7 @@ class CuratedDateForm extends React.Component {
        <SpotForm
          key={index}
          title={spot.title}
+         description={spot.description}
          updateSpotAttributes={this.updateSpotAttributes.bind(this)}
          categories={categories}
          index={index}
@@ -188,18 +213,21 @@ class CuratedDateForm extends React.Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    options: state.dates.options,
+    editId: ownProps.match.params.id,
+    editDate: state.dates.editCuratedDate
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     collectNeighborhoodOptions: collectNeighborhoodOptions,
     collectCategoryOptions: collectCategoryOptions,
-    createCuratedDate: createCuratedDate
+    createCuratedDate: createCuratedDate,
+    fetchExistingDate: fetchExistingDate
   }, dispatch);
-}
-
-const mapStateToProps = (state) => {
-  return {
-    options: state.dates.options
-  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CuratedDateForm);

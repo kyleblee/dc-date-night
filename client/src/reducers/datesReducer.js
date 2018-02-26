@@ -1,7 +1,8 @@
 export default function datesReducer(state = {
   curatedDates: [],
   customDate: undefined,
-  options: {}
+  options: {},
+  editCuratedDate: undefined
 }, action) {
   switch(action.type) {
     case 'FETCH_DATES':
@@ -25,6 +26,10 @@ export default function datesReducer(state = {
     case 'RESET_CUSTOM_DATE':
       return Object.assign({}, state, {
         customDate: undefined
+      })
+    case 'SET_EDITCURATEDDATE':
+      return Object.assign({}, state, {
+        editCuratedDate: action.payload
       })
     default:
       return state;

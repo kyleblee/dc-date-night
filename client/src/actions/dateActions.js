@@ -119,3 +119,13 @@ export function createCuratedDate(curatedDate) {
     })
   }
 }
+
+export function fetchExistingDate(dateId) {
+  return (dispatch) => {
+    return fetch(`/date_entries/${dateId}/edit`)
+    .then(response => response.json())
+    .then(responseJSON => {
+      dispatch({type: 'SET_EDITCURATEDDATE', payload: responseJSON});
+    })
+  }
+}
