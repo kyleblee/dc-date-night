@@ -19,6 +19,11 @@ class DateEntriesController < ApplicationController
     render json: @date, status: 200
   end
 
+  def destroy
+    @date = DateEntry.find_by(id: params[:id].to_i)
+    @date.delete
+  end
+
   def generate
     neighborhood = params[:neighborhood]
     categories = params[:activities]

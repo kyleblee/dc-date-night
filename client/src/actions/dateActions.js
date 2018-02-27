@@ -192,8 +192,13 @@ export function clearEditCuratedDate() {
 }
 
 export function deleteCuratedDate(dateId) {
+  let headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
   return (dispatch) => {
-    const testIndex = dateId;
-    debugger;
+    fetch(`/date_entries/${dateId}`, {
+      method: 'DELETE',
+      headers: headers
+    })
   }
 }

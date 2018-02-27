@@ -25,6 +25,9 @@ const ShowDate = props => {
     let deleteDate = window.confirm(`Are you sure you want to delete ${props.date.title}?`);
     if (deleteDate) {
       props.deleteCuratedDate(props.date.id);
+      setTimeout(() => {
+        props.history.push('/dates');
+      }, 500)
     }
   }
 
