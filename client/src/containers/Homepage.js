@@ -21,6 +21,18 @@ class Homepage extends React.Component {
   }
 
   render() {
+    const { hash } = window.location;
+
+    if (hash === "#about") {
+      setTimeout(() => {
+        const element = document.getElementById('quick-about');
+        const datesLoaded = document.getElementsByClassName('date-card').length > 0;
+        if (datesLoaded) {
+          element.scrollIntoView({behavior: 'smooth', block: "start", inline: "nearest"});
+        }
+      }, 250);
+    }
+    
     return (
       <div>
         <DateList dates={this.props.dates}/>
