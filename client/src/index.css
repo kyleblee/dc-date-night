@@ -113,6 +113,7 @@ input[type="password"] {
 }
 
 .date-list .date-card img {
+  object-fit: cover;
   width: 350px;
   height: 350px;
 }
@@ -356,14 +357,14 @@ button#add-spot-button,
   margin: 0 auto 20px;
 }
 
+.curated-date-form input[type="file"] {
+  margin-left: 10%;
+}
+
 .curated-date-form .spot-form input[type="file"] {
   display: block;
   margin-bottom: 15px;
   margin-left: 30%;
-}
-
-#image-disclaimer {
-  font-size: 0.75em;
 }
 
 .delete-button {
@@ -448,4 +449,11 @@ button#add-spot-button,
 
 .date-show button {
   margin-top: 30px;
+}
+
+.date-show .option-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 48%;
+  margin: 0 auto;
 }

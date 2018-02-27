@@ -37,8 +37,10 @@ const ShowDate = props => {
       <img src={props.date.cover_photo} alt={props.date.title}/>
       <p>{props.date.description}</p>
       {spotsHTML}
-      <button onClick={handleEditButton}>Edit Date</button>
-      <button onClick={handleDeleteButton}>Delete Date</button>
+      <div className="option-buttons">
+        <button onClick={handleEditButton}>Edit Date</button>
+        <button onClick={handleDeleteButton}>Delete Date</button>
+      </div>
     </div>
   )
 }
