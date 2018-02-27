@@ -88,8 +88,12 @@ export function createCuratedDate(curatedDate) {
     const dateImage = curatedDate.coverPhoto;
     delete curatedDate.coverPhoto;
 
-    let spotPhotos = curatedDate.spots.map(spot => {
-	     return spot.photo
+     let spotPhotos = curatedDate.spots.map(spot => {
+       if (spot.id) {
+         return {[spot.id]: spot.photo}
+       } else {
+         return {[spot.title]: spot.photo}
+       }
      })
 
      let headers = new Headers();
@@ -109,7 +113,12 @@ export function createCuratedDate(curatedDate) {
       photoForm.append('cover_photo', dateImage);
 
       for (let i = 0; i < spotPhotos.length; i++) {
-        photoForm.append(`spotPhoto${i}`, spotPhotos[i])
+        for (let spot of responseJSON.spots) {
+          if (Object.keys(spotPhotos[i])[0] === spot.name) {
+            photoForm.append(spot.id.toString(), Object.values(spotPhotos[i])[0])
+          }
+        }
+        photoForm.append(Object.keys(spotPhotos[i])[0], Object.values(spotPhotos[i])[0])
       }
 
       fetch('/upload', {
