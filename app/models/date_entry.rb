@@ -52,6 +52,39 @@ class DateEntry < ApplicationRecord
     end
   end
 
+  def self.update_curated_date(params)
+    @date = DateEntry.find_by(id: params[:id])
+    neighborhood_id = Neighborhood.find_by(name: params[:neighborhood]).id
+    @date.update(title: params[:title], description: params[:description], neighborhood_id: neighborhood_id)
+    @date.update_date_spots(params[:spots], neighborhood_id)
+    @date
+  end
+
+  def update_date_spots(spots, neighborhood_id)
+    # delete spots that have been removed via this form submission
+    request_spot_ids = spots.collect {|spot| spot[:id]}
+    request_spot_ids.delete(nil)
+    self.spots.each do |spot|
+      if !request_spot_ids.include?(spot.id)
+        spot.destroy
+      end
+    end
+
+    spots.each do |spot|
+      if spot[:id]
+        # make sure existing spots are updated
+        category_id = Category.find_by(name: spot[:category]).id
+        existing_spot = Spot.find_by(id: spot[:id])
+        existing_spot.update(name: spot[:title], description: spot[:description], category_id: category_id, neighborhood_id: neighborhood_id)
+      else
+        # make sure new spots are created and pushed into date's spots
+        category_id = Category.find_by(name: spot[:category]).id
+        new_spot = Spot.create(name: spot[:title], description: spot[:description], category_id: category_id, neighborhood_id: neighborhood_id)
+        self.spots << new_spot
+      end
+    end
+  end
+
   def self.attach_photos(params)
     @date = DateEntry.find_by(id: params[:id].to_i)
 

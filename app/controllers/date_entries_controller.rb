@@ -15,6 +15,7 @@ class DateEntriesController < ApplicationController
   end
 
   def update
+    @date = DateEntry.update_curated_date(date_params)
     binding.pry
   end
 
@@ -32,6 +33,6 @@ class DateEntriesController < ApplicationController
   private
 
   def date_params
-    params.require(:date).permit(:title, :description, :neighborhood, spots: [:title, :description, :category])
+    params.require(:date).permit(:id, :title, :description, :neighborhood, {spots: [:id, :title, :description, :category]})
   end
 end

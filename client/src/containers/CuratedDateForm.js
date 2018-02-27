@@ -17,6 +17,7 @@ class CuratedDateForm extends React.Component {
       neighborhood: "",
       coverPhoto: undefined,
       spots: [{
+        id: undefined,
         title: "",
         description: "",
         category: "",
@@ -41,6 +42,7 @@ class CuratedDateForm extends React.Component {
     if (nextProps.editDate) {
       const existingDateSpots = nextProps.editDate.spots.map(spot => {
         return {
+          id: spot.id,
           title: spot.name,
           description: spot.description,
           category: spot.category.name
