@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const CategoryCheckboxes = props => {
   let categoryCheckboxes = []
@@ -25,4 +26,10 @@ export const CategoryCheckboxes = props => {
       </div>
     </div>
   )
+}
+
+CategoryCheckboxes.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string),
+  activities: PropTypes.arrayOf(PropTypes.string),
+  addOrRemoveActivity: PropTypes.func
 }

@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const CategorySelect = props => {
+
   let categoryOptions = [];
 
   if (props.categories) {
@@ -27,4 +29,11 @@ export const CategorySelect = props => {
       </select>
     </div>
   )
+}
+
+CategorySelect.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string),
+  spotIndex: PropTypes.number,
+  selectedCategory: PropTypes.string,
+  updateSpotAttributes: PropTypes.func
 }
