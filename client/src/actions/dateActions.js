@@ -190,3 +190,10 @@ export function clearEditCuratedDate() {
     dispatch({type: 'CLEAR_EDITCURATEDDATE'});
   }
 }
+
+export function deleteCuratedDate(dateId) {
+  return (dispatch) => {
+    const testIndex = dateId;
+    debugger;
+  }
+}

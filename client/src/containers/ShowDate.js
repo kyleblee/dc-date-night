@@ -1,7 +1,8 @@
 import React from 'react';
-// import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SpotCard } from '../components/SpotCard';
+import { deleteCuratedDate } from '../actions/dateActions';
 
 const ShowDate = props => {
   let spotsHTML;
@@ -20,6 +21,13 @@ const ShowDate = props => {
     props.history.push(`/dates/${props.date.id}/edit`);
   }
 
+  let handleDeleteButton = function() {
+    let deleteDate = window.confirm(`Are you sure you want to delete ${props.date.title}?`);
+    if (deleteDate) {
+      props.deleteCuratedDate(props.date.id);
+    }
+  }
+
   return (
     <div className="date-show">
       <h2>{props.date.title}</h2>
@@ -27,6 +35,7 @@ const ShowDate = props => {
       <p>{props.date.description}</p>
       {spotsHTML}
       <button onClick={handleEditButton}>Edit Date</button>
+      <button onClick={handleDeleteButton}>Delete Date</button>
     </div>
   )
 }
@@ -41,8 +50,10 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({}, dispatch);
-// }
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    deleteCuratedDate: deleteCuratedDate
+  }, dispatch);
+}
 
-export default connect(mapStateToProps, null)(ShowDate);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowDate);
