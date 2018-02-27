@@ -175,3 +175,9 @@ export function updateCuratedDate(date) {
     })
   }
 }
+
+export function clearEditCuratedDate() {
+  return (dispatch) => {
+    dispatch({type: 'CLEAR_EDITCURATEDDATE'});
+  }
+}

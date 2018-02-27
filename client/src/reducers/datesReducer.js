@@ -31,6 +31,10 @@ export default function datesReducer(state = {
       return Object.assign({}, state, {
         editCuratedDate: action.payload
       })
+    case 'CLEAR_EDITCURATEDDATE':
+      return Object.assign({}, state, {
+        editCuratedDate: undefined
+      })
     default:
       return state;
   }

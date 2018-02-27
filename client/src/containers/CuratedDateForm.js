@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SpotForm } from '../components/SpotForm';
-import { collectNeighborhoodOptions, collectCategoryOptions, createCuratedDate, fetchExistingDate, updateCuratedDate } from '../actions/dateActions';
+import { collectNeighborhoodOptions, collectCategoryOptions, createCuratedDate, fetchExistingDate, updateCuratedDate, clearEditCuratedDate } from '../actions/dateActions';
 import { NeighborhoodSelect } from '../components/NeighborhoodSelect';
 import Errors from '../components/Errors';
 
@@ -31,10 +31,8 @@ class CuratedDateForm extends React.Component {
     this.props.collectNeighborhoodOptions();
     // passing in hard-coded empty string so that all categories are retrieved
     this.props.collectCategoryOptions({neighborhood: ""})
-
-    if (this.props.editId && (this.props.editDate === undefined || parseInt(this.props.editId) !== this.props.editDate.id)) {
-      this.props.fetchExistingDate(parseInt(this.props.editId));
-    }
+    this.props.clearEditCuratedDate();
+    this.props.fetchExistingDate(parseInt(this.props.editId));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -237,7 +235,8 @@ const mapDispatchToProps = (dispatch) => {
     collectCategoryOptions: collectCategoryOptions,
     createCuratedDate: createCuratedDate,
     fetchExistingDate: fetchExistingDate,
-    updateCuratedDate: updateCuratedDate
+    updateCuratedDate: updateCuratedDate,
+    clearEditCuratedDate: clearEditCuratedDate
   }, dispatch);
 }
 
