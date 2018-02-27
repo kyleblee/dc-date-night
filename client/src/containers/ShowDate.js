@@ -1,5 +1,5 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SpotCard } from '../components/SpotCard';
 
@@ -23,7 +23,7 @@ const ShowDate = props => {
   return (
     <div className="date-show">
       <h2>{props.date.title}</h2>
-      <img src={props.date.cover_photo} />
+      <img src={props.date.cover_photo} alt={props.date.title}/>
       <p>{props.date.description}</p>
       {spotsHTML}
       <button onClick={handleEditButton}>Edit Date</button>
@@ -41,8 +41,8 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({}, dispatch);
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators({}, dispatch);
+// }
 
 export default connect(mapStateToProps, null)(ShowDate);
