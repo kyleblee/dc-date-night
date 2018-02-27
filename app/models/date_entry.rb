@@ -93,6 +93,7 @@ class DateEntry < ApplicationRecord
     end
 
     @date.spots.each_with_index do |spot, index|
+      binding.pry
       if params["spotPhoto" + index.to_s] != "undefined"
         spot.update(photo1: params["spotPhoto" + index.to_s])
       end

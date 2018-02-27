@@ -16,7 +16,7 @@ class DateEntriesController < ApplicationController
 
   def update
     @date = DateEntry.update_curated_date(date_params)
-    binding.pry
+    render json: @date, status: 200
   end
 
   def generate

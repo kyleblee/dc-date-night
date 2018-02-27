@@ -136,7 +136,7 @@ export function updateCuratedDate(date) {
     delete date.coverPhoto;
 
     let spotPhotos = date.spots.map(spot => {
-	     return spot.photo
+      return {[spot.id]: spot.photo}
      })
 
      let headers = new Headers();
@@ -150,15 +150,13 @@ export function updateCuratedDate(date) {
     .then(response => response.json())
     .then(responseJSON => {
 
-      debugger;
-      // need to customize all of this logic below for the update route.
       let photoForm = new FormData();
 
       photoForm.append('id', responseJSON.id);
       photoForm.append('cover_photo', dateImage);
 
       for (let i = 0; i < spotPhotos.length; i++) {
-        photoForm.append(`spotPhoto${i}`, spotPhotos[i])
+        photoForm.append(Object.keys(spotPhotos[i])[0], Object.values(spotPhotos[i])[0])
       }
 
       fetch('/upload', {

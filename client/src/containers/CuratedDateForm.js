@@ -78,7 +78,7 @@ class CuratedDateForm extends React.Component {
   };
 
   updateSpotPhoto = (spotIndex, event) => {
-    const coverPhoto = this.spotPhotoField.files[0];
+    const coverPhoto = this[`spotPhotoField${spotIndex}`].files[0];
     let updatedSpot = this.state.spots[spotIndex];
     updatedSpot.photo = coverPhoto;
 
@@ -106,6 +106,7 @@ class CuratedDateForm extends React.Component {
     const categories = this.props.options.categories;
 
     const spotForms = this.state.spots.map((spot, index) => {
+      let uniquePhotoVar = `spotPhotoField${index}`;
       return (
        <SpotForm
          key={index}
@@ -117,7 +118,7 @@ class CuratedDateForm extends React.Component {
          selectedCategory={spot.category}
          deleteSpot={this.deleteSpot.bind(this)}
          updateSpotPhoto={this.updateSpotPhoto.bind(this)}
-         photoRef={(field => (this.spotPhotoField = field)).bind(this)}/>
+         photoRef={(field => (this[uniquePhotoVar] = field)).bind(this)}/>
       )
     })
 
