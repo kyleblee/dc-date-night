@@ -93,9 +93,13 @@ class DateEntry < ApplicationRecord
     end
 
     @date.spots.each_with_index do |spot, index|
-      binding.pry
-      if params["spotPhoto" + index.to_s] != "undefined"
+      # THIS NEEDS TO BE REMOVED ONCE YOU HAVE SET UP THE 'CREATE' UPLOAD LOGIC IN A SIMILAR FASHION TO THE 'UPDATE' UPLOAD LOGIC
+      if params["spotPhoto" + index.to_s] && params["spotPhoto" + index.to_s] != "undefined"
         spot.update(photo1: params["spotPhoto" + index.to_s])
+      end
+
+      if params[spot.id.to_s] && params[spot.id.to_s] != "undefined"
+        spot.update(photo1: params[spot.id.to_s])
       end
     end
   end

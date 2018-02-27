@@ -136,8 +136,12 @@ export function updateCuratedDate(date) {
     delete date.coverPhoto;
 
     let spotPhotos = date.spots.map(spot => {
-      return {[spot.id]: spot.photo}
-     })
+      if (spot.id) {
+        return {[spot.id]: spot.photo}
+      } else {
+        return {[spot.title]: spot.photo}
+      }
+    })
 
      let headers = new Headers();
      headers.append('Content-Type', 'application/json');
@@ -156,6 +160,11 @@ export function updateCuratedDate(date) {
       photoForm.append('cover_photo', dateImage);
 
       for (let i = 0; i < spotPhotos.length; i++) {
+        for (let spot of responseJSON.spots) {
+          if (Object.keys(spotPhotos[i])[0] === spot.name) {
+            photoForm.append(spot.id.toString(), Object.values(spotPhotos[i])[0])
+          }
+        }
         photoForm.append(Object.keys(spotPhotos[i])[0], Object.values(spotPhotos[i])[0])
       }
 
