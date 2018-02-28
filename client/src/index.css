@@ -13,6 +13,14 @@ input[type="password"] {
   padding: 5px 10px;
 }
 
+.errors {
+  width: 35%;
+  margin: 20px auto;
+  color: red;
+  font-style: italic;
+  font-size: 1.1em;
+}
+
 /* HEADER */
 
 .header {
@@ -228,9 +236,10 @@ button#add-spot-button,
   margin-bottom: 50px;
 }
 
-.errors {
-  color: red;
-  font-style: italic;
+.generate-date-form form .category-options .errors {
+  width: 50%;
+  color: rgb(18, 18, 18);
+  margin-top: 10px;
 }
 
 /* GENERATED CUSTOM DATE */
@@ -455,13 +464,16 @@ button#add-spot-button,
 }
 
 .date-show > p {
+  width: 90%;
+  margin: 30px auto 100px;
   font-size: 1.75em;
-  line-height: 1.5;
-  margin-bottom: 100px;
+  line-height: 1.75;
 }
 
 .spot-card p {
-  font-size: 1.25em;
+  width: 85%;
+  margin: 30px auto 20px;
+  font-size: 1.5em;
   line-height: 2;
 }
 

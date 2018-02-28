@@ -15,7 +15,7 @@ export const CategoryCheckboxes = props => {
       )
     }
   } else {
-    categoryCheckboxes = <p>Oops... There aren't any activities for this neighborhood. Maybe Netflix and chill?</p>
+    categoryCheckboxes = <p className="errors">Oops... There aren't any activities for this neighborhood. Maybe Netflix and chill?</p>
   }
 
   return (
