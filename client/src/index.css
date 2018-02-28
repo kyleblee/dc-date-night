@@ -247,7 +247,7 @@ button#add-spot-button,
 .custom-date .spot-card {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
   align-items: center;
 }
 
@@ -264,6 +264,10 @@ button#add-spot-button,
 .custom-date .spot-card:nth-child(even) .spot-text {
   margin-left: 0;
   margin-right: 5%;
+}
+
+.custom-date .spot-card:nth-last-child(2) {
+  margin-bottom: 75px;
 }
 
 .custom-date h3 {
@@ -400,6 +404,7 @@ button#add-spot-button,
 
 .browse-dates .errors {
   margin-top: -25px;
+  margin-bottom: 50px;
   color: rgb(18, 18, 18);
 }
 
