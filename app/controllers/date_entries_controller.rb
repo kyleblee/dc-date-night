@@ -32,7 +32,8 @@ class DateEntriesController < ApplicationController
   end
 
   def upload
-    DateEntry.attach_photos(params)
+    @date = DateEntry.attach_photos(params)
+    render json: @date, status: 200
   end
 
   private

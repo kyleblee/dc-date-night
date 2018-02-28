@@ -97,5 +97,6 @@ class DateEntry < ApplicationRecord
         spot.update(photo1: params[spot.id.to_s])
       end
     end
+    @date
   end
 end
