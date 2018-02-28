@@ -31,8 +31,10 @@ class Homepage extends React.Component {
           element.scrollIntoView({behavior: 'smooth', block: "start", inline: "nearest"});
         }
       }, 250);
+    } else {
+      window.scrollTo(0,0);
     }
-    
+
     return (
       <div>
         <DateList dates={this.props.dates}/>

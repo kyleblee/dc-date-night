@@ -31,6 +31,8 @@ const ShowDate = props => {
     }
   }
 
+  window.scrollTo(0,0);
+
   return (
     <div className="date-show">
       <h2>{props.date.title}</h2>
