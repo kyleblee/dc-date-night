@@ -168,14 +168,14 @@ class CuratedDateForm extends React.Component {
         setTimeout(() => {
           this.props.fetchDates(this.state.neighborhood, undefined);
           this.props.history.push(`/dates/${parseInt(this.props.editId)}`);
-        }, 250);
+        }, 500);
       } else {
         this.props.createCuratedDate(this.state);
 
         // brief pause to allow POST requests to complete
         setTimeout(() => {
           this.props.history.push('/');
-        }, 250);
+        }, 500);
       }
     }
   }
