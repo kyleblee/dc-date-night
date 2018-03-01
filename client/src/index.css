@@ -168,7 +168,7 @@ div#push-footer {
 .footer {
   display: flex;
   justify-content: space-between;
-  padding: 25px 0 25px;
+  padding: 30px 0;
 }
 
 .footer .social-icons {
@@ -304,7 +304,7 @@ button#add-spot-button,
 }
 
 .custom-date .spot-card:nth-last-child(2) {
-  margin-bottom: 75px;
+  margin-bottom: 50px;
 }
 
 .custom-date h3 {
@@ -335,6 +335,7 @@ button#add-spot-button,
 
 .custom-date button.start-over-button {
   margin-top: 30px;
+  margin-bottom: 15px;
 }
 
 .custom-date img {
@@ -353,7 +354,7 @@ button#add-spot-button,
   display: flex;
   flex-direction: column;
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   align-items: center;
 }
 
