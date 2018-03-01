@@ -25,6 +25,24 @@ input[type="password"] {
   font-style: italic;
 }
 
+/* STICKY FOOTER IMPLEMENTATION */
+
+body,
+div#root,
+div.App,
+div#containing-div {
+  min-height: 100vh;
+}
+
+div#containing-div {
+  display: flex;
+  flex-direction: column;
+}
+
+div#push-footer {
+  flex: 1;
+}
+
 /* HEADER */
 
 .header {

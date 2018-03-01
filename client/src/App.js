@@ -16,17 +16,19 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <div>
-            <Header />
-            <Switch>
-              <Route exact path="/" component={Homepage} />
-              <Route path="/sign-in" component={SignIn} />
-              <Route path="/plan-my-date" component={GenerateDate} />
-              <Route path="/dates/:id/edit" component={CuratedDateForm}/>
-              <Route path="/dates/new" component={CuratedDateForm} />
-              <Route path="/dates/:id" component={ShowDate} />
-              <Route path="/dates" component={BrowseDates} />
-            </Switch>
+          <div id="containing-div">
+            <div id="push-footer">
+              <Header />
+              <Switch>
+                <Route exact path="/" component={Homepage} />
+                <Route path="/sign-in" component={SignIn} />
+                <Route path="/plan-my-date" component={GenerateDate} />
+                <Route path="/dates/:id/edit" component={CuratedDateForm}/>
+                <Route path="/dates/new" component={CuratedDateForm} />
+                <Route path="/dates/:id" component={ShowDate} />
+                <Route path="/dates" component={BrowseDates} />
+              </Switch>
+            </div>
             <Footer />
           </div>
         </Router>
