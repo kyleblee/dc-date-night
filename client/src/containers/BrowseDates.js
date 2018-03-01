@@ -19,7 +19,7 @@ class BrowseDates extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.dates.length === 0) {
       this.setState({
-        errors: "Oops! There aren't any curated dates for this neighborhood. Try generating a new one, instead!"
+        errors: "Oops! There aren't any curated dates for this neighborhood. Try generating a custom date, instead!"
       })
     } else {
       this.setState({
@@ -45,7 +45,7 @@ class BrowseDates extends React.Component {
     return (
       <div className="browse-dates">
         <NeighborhoodSelect
-          labelText="Choose a neighborhood to filter results."
+          labelText="Choose a neighborhood to filter results:"
           neighborhoods={this.props.neighborhoods}
           selectedNeighborhood={this.state.neighborhood}
           updateNeighborhood={this.updateNeighborhood.bind(this)}/>

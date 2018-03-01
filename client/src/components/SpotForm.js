@@ -39,7 +39,7 @@ export const SpotForm = props => {
         updateSpotAttributes={props.updateSpotAttributes}/>
       <label
         htmlFor="spot-description"
-        className="form-labels">Describe this spot.</label>
+        className="form-labels">Describe this spot and why it's awesome.</label>
       <textarea
         htmlFor="spot-description"
         value={props.description}

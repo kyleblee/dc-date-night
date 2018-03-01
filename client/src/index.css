@@ -216,6 +216,10 @@ div.neighborhood-select select,
   width: 66%;
 }
 
+.generate-date-form form div.category-options label {
+  margin-left: 3px;
+}
+
 .generate-date-form form div.category-options div {
   margin-left: 20px;
 }
@@ -255,6 +259,8 @@ button#add-spot-button,
 
 .custom-date h3 {
   margin-top: 0;
+  font-size: 1.5em;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .custom-date .spot-card {
