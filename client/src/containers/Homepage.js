@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchDates } from '../actions/dateActions';
 import { DatesList } from '../components/DatesList';
 import { QuickAbout } from '../components/homepage/QuickAbout';
+import PropTypes from 'prop-types';
 
 class Homepage extends React.Component {
   constructor() {
@@ -57,3 +58,8 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
+
+Homepage.propTypes = {
+  fetchDates: PropTypes.func.isRequired,
+  dates: PropTypes.arrayOf(PropTypes.object)
+}

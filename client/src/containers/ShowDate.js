@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SpotCard } from '../components/SpotCard';
 import { deleteCuratedDate } from '../actions/dateActions';
+import PropTypes from 'prop-types';
 
 const ShowDate = props => {
   let spotsHTML;
@@ -64,3 +65,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowDate);
+
+ShowDate.propTypes = {
+  deleteCuratedDate: PropTypes.func.isRequired,
+  date: PropTypes.object
+}
