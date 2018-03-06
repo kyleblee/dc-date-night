@@ -25,6 +25,6 @@ export const CustomDate = props => {
 }
 
 CustomDate.propTypes = {
-  customDate: PropTypes.arrayOf(PropTypes.object).isRequired,
+  customDate: PropTypes.arrayOf(PropTypes.object),
   resetGenerate: PropTypes.func.isRequired
 }

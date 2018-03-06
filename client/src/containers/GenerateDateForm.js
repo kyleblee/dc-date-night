@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { generateDate, collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';
 import { NeighborhoodSelect } from '../components/forms/NeighborhoodSelect';
 import { CategoryCheckboxes } from '../components/forms/CategoryCheckboxes';
+import PropTypes from 'prop-types';
 
 class GenerateDateForm extends React.Component {
   constructor() {
@@ -106,3 +107,11 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GenerateDateForm);
+
+GenerateDateForm = {
+  collectNeighborhoodOptions: PropTypes.func.isRequired,
+  collectCategoryOptions: PropTypes.func.isRequired,
+  generateDate: PropTypes.func.isRequired,
+  customDate: PropTypes.arrayOf(PropTypes.object),
+  options: PropTypes.object
+}

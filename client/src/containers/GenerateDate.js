@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { CustomDate } from '../components/CustomDate';
 import GenerateDateForm from './GenerateDateForm';
 import { resetGenerate } from '../actions/dateActions';
+import PropTypes from 'prop-types';
 
 class GenerateDate extends React.Component {
   render() {
@@ -30,3 +31,8 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GenerateDate);
+
+GenerateDate.propTypes = {
+  resetGenerate: PropTypes.func.isRequired,
+  customDate: PropTypes.arrayOf(PropTypes.object)
+}

@@ -29,7 +29,7 @@ export const CategoryCheckboxes = props => {
 }
 
 CategoryCheckboxes.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  categories: PropTypes.arrayOf(PropTypes.string),
   activities: PropTypes.arrayOf(PropTypes.string).isRequired,
   addOrRemoveActivity: PropTypes.func.isRequired
 }
