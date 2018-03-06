@@ -5,6 +5,7 @@ import { SpotForm } from '../components/forms/SpotForm';
 import { collectNeighborhoodOptions, collectCategoryOptions, fetchExistingDate, clearEditCuratedDate, fetchDates, createOrUpdateCuratedDate } from '../actions/dateActions';
 import { NeighborhoodSelect } from '../components/forms/NeighborhoodSelect';
 import { Errors } from '../components/Errors';
+import PropTypes from 'prop-types';
 
 class CuratedDateForm extends React.Component {
   constructor() {
@@ -249,3 +250,14 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CuratedDateForm);
+
+CuratedDateForm.propTypes = {
+  collectNeighborhoodOptions: PropTypes.func.isRequired,
+  collectCategoryOptions: PropTypes.func.isRequired,
+  clearEditCuratedDate: PropTypes.func.isRequired,
+  fetchExistingDate: PropTypes.func.isRequired,
+  createOrUpdateCuratedDate: PropTypes.func.isRequired,
+  fetchDates: PropTypes.func.isRequired,
+  editId: PropTypes.string,
+  options: PropTypes.object.isRequired
+}

@@ -25,7 +25,7 @@ export const NeighborhoodSelect = props => {
 }
 
 NeighborhoodSelect.propTypes = {
-  neighborhoods: PropTypes.arrayOf(PropTypes.string).isRequired,
+  neighborhoods: PropTypes.arrayOf(PropTypes.string),
   labelText: PropTypes.string.isRequired,
   updateNeighborhood: PropTypes.func.isRequired
 }

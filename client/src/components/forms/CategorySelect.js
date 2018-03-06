@@ -32,7 +32,7 @@ export const CategorySelect = props => {
 }
 
 CategorySelect.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  categories: PropTypes.arrayOf(PropTypes.string),
   spotIndex: PropTypes.number.isRequired,
   selectedCategory: PropTypes.string.isRequired,
   updateSpotAttributes: PropTypes.func.isRequired

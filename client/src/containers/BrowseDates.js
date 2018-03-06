@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { collectNeighborhoodOptions, fetchDates } from '../actions/dateActions';
 import { DatesList } from '../components/DatesList';
 import { Errors } from '../components/Errors';
+import PropTypes from 'prop-types';
 
 class BrowseDates extends React.Component {
   constructor() {
@@ -71,3 +72,10 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BrowseDates);
+
+BrowseDates.propTypes = {
+  collectNeighborhoodOptions: PropTypes.func.isRequired,
+  fetchDates: PropTypes.func.isRequired,
+  neighborhoods: PropTypes.arrayOf(PropTypes.string),
+  dates: PropTypes.arrayOf(PropTypes.object)
+}
