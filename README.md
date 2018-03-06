@@ -1,15 +1,18 @@
 # DC Date Night
 
-DC Date Night is really centered around this feeling that: Dating can be pretty stressful. But, when you’re the one who takes on planning the date, it can be even more stressful. Whether you’re making a first impression, or planning something special for a longtime significant other, you want the date to be memorable, fun, and unique—all while having a feeling of spontaneity. Yikes…
+Dating can be pretty stressful. But, when you’re the one who takes on planning the date, it can be even more stressful. Whether you’re making a first impression or planning something special for a longtime significant other, you want the date to be memorable, fun, and unique—all while having a feeling of spontaneity. Yikes…
 
 DC Date Night aims to relieve that stress, by planning the date for you. It basically says, “Hey, you just worry about which outfit to wear. I’ll figure out where you should go.”
+
+Video Demo / Walkthrough of the app:
+- https://youtu.be/Cxj0HSszXgM
 
 Blog post on process / functionality:
 - http://kyleblee.com/dc_date_night_react_redux_final_project
 
 ### Installation Guide
 
-To install and use this project, fork and clone the repo. Change directory to the root directory of the project and run `bundle install` in your command line. Change directory into client and run `npm install`.
+To install and use this project, fork and clone the repo. Change directory to the root directory of the project and run `bundle install` in your command line, followed by `rake db:create`, `rake db:migrate`. and `rake db:seed`. Change directory into 'client' and run `npm install`.
 
 Next, to get the two local servers running, make sure you are in the root directory of the project again, and run: `rake start`
 
