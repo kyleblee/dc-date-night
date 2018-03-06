@@ -1,8 +1,8 @@
 import React from 'react';
-import Errors from './Errors';
+import Errors from '../Errors';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { generateDate, collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';
+import { generateDate, collectNeighborhoodOptions, collectCategoryOptions } from '../../actions/dateActions';
 import { NeighborhoodSelect } from './NeighborhoodSelect';
 import { CategoryCheckboxes } from './CategoryCheckboxes';
 

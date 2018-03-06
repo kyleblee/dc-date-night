@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import CustomDate from '../components/CustomDate';
-import GenerateDateForm from '../components/GenerateDateForm';
+import GenerateDateForm from '../components/forms/GenerateDateForm';
 import { resetGenerate } from '../actions/dateActions';
 
 class GenerateDate extends React.Component {

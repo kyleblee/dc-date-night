@@ -1,9 +1,9 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { SpotForm } from '../components/SpotForm';
+import { SpotForm } from '../components/forms/SpotForm';
 import { collectNeighborhoodOptions, collectCategoryOptions, createCuratedDate, fetchExistingDate, updateCuratedDate, clearEditCuratedDate, fetchDates } from '../actions/dateActions';
-import { NeighborhoodSelect } from '../components/NeighborhoodSelect';
+import { NeighborhoodSelect } from '../components/forms/NeighborhoodSelect';
 import Errors from '../components/Errors';
 
 class CuratedDateForm extends React.Component {

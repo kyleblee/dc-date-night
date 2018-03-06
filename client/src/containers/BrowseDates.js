@@ -1,5 +1,5 @@
 import React from 'react';
-import { NeighborhoodSelect } from '../components/NeighborhoodSelect';
+import { NeighborhoodSelect } from '../components/forms/NeighborhoodSelect';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { collectNeighborhoodOptions, fetchDates } from '../actions/dateActions';
