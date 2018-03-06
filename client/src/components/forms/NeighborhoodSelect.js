@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const NeighborhoodSelect = props => {
   let neighborhoodOptions = [];
@@ -21,4 +22,10 @@ export const NeighborhoodSelect = props => {
       </select>
     </div>
   )
+}
+
+NeighborhoodSelect.propTypes = {
+  neighborhoods: PropTypes.arrayOf(PropTypes.string).isRequired,
+  labelText: PropTypes.string.isRequired,
+  updateNeighborhood: PropTypes.func.isRequired
 }

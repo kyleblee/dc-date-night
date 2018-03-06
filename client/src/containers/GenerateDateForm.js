@@ -1,10 +1,10 @@
 import React from 'react';
-import Errors from '../Errors';
+import Errors from '../components/Errors';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { generateDate, collectNeighborhoodOptions, collectCategoryOptions } from '../../actions/dateActions';
-import { NeighborhoodSelect } from './NeighborhoodSelect';
-import { CategoryCheckboxes } from './CategoryCheckboxes';
+import { generateDate, collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';
+import { NeighborhoodSelect } from '../components/forms/NeighborhoodSelect';
+import { CategoryCheckboxes } from '../components/forms/CategoryCheckboxes';
 
 class GenerateDateForm extends React.Component {
   constructor() {
