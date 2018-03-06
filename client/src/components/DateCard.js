@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const DateCard = props => {
   return (
@@ -8,4 +9,8 @@ export const DateCard = props => {
       <Link to={`/dates/${props.date.id}`}><h4>{props.date.title}</h4></Link>
     </div>
   )
+}
+
+DateCard.propTypes = {
+  date: PropTypes.object.isRequired
 }

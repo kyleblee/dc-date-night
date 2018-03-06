@@ -1,5 +1,6 @@
 import React from 'react';
 import { DateCard } from './DateCard';
+import PropTypes from 'prop-types';
 
 export const DatesList = props => {
   let datesHTML;
@@ -17,4 +18,8 @@ export const DatesList = props => {
       {datesHTML}
     </div>
   );
+}
+
+DatesList.propTypes = {
+  dates: PropTypes.arrayOf(PropTypes.object)
 }

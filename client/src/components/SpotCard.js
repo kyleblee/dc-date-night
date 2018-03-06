@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const SpotCard = props => {
   return (
@@ -8,4 +9,11 @@ export const SpotCard = props => {
       <p>{props.description}</p>
     </div>
   )
+}
+
+SpotCard.propTypes = {
+  index: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  description: PropTypes.string
 }
