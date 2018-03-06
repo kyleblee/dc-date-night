@@ -1,12 +1,11 @@
 import React from 'react';
-import { CustomDateCard } from './CustomDateCard';
+import { CustomDateSpotCard } from './CustomDateCard';
 import PropTypes from 'prop-types';
 
 export const CustomDate = props => {
-
   if (props.customDate) {
     const spotsHTML = props.customDate.map((spot, index) =>
-        <CustomDateCard spot={spot} index={index} />
+        <CustomDateSpotCard spot={spot} index={index} />
       );
 
     return (
@@ -15,7 +14,7 @@ export const CustomDate = props => {
         <h2>{props.customDate[0].neighborhood}</h2>
         {spotsHTML}
         <button className="start-over-button" onClick={props.resetGenerate}>
-          Nah, go back.
+          Try again
         </button>
       </div>
     )

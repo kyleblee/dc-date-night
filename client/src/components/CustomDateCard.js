@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const CustomDateCard = props => {
+export const CustomDateSpotCard = props => {
   return (
     <div className={'spot-card'} key={props.index}>
       <img className='spot-img' src={props.spot.photo1} alt='date spot'/>
@@ -15,7 +15,7 @@ export const CustomDateCard = props => {
   )
 }
 
-CustomDateCard.propTypes = {
+CustomDateSpotCard.propTypes = {
   index: PropTypes.number.isRequired,
   spot: PropTypes.object.isRequired
 }

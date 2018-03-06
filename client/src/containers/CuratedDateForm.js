@@ -33,11 +33,16 @@ class CuratedDateForm extends React.Component {
     // passing in hard-coded empty string so that all categories are retrieved
     this.props.collectCategoryOptions({neighborhood: ""})
     this.props.clearEditCuratedDate();
-    this.props.fetchExistingDate(parseInt(this.props.editId, 10));
+    if (this.props.editId) {
+      this.props.fetchExistingDate(parseInt(this.props.editId, 10));
+    }
   }
 
   componentWillReceiveProps(nextProps) {
 
+    // set initial state to editDate values if it is defined so that fields are auto-filled
+
+    // first, prepare spots on editDate so they match format expected by state
     if (nextProps.editDate) {
       const existingDateSpots = nextProps.editDate.spots.map(spot => {
         return {
@@ -48,6 +53,7 @@ class CuratedDateForm extends React.Component {
         }
       })
 
+      // then, state state to editDate values
       this.setState({
         id: parseInt(nextProps.match.params.id, 10),
         title: nextProps.editDate.title,
