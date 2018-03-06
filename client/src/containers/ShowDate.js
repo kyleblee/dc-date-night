@@ -49,7 +49,7 @@ const ShowDate = props => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let date = state.dates.curatedDates.find(date => date.id === parseInt(ownProps.match.params.id))
+  let date = state.dates.curatedDates.find(date => date.id === parseInt(ownProps.match.params.id, 10))
 
   if (date) {
     return { date }

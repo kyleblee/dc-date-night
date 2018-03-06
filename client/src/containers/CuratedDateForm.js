@@ -33,7 +33,7 @@ class CuratedDateForm extends React.Component {
     // passing in hard-coded empty string so that all categories are retrieved
     this.props.collectCategoryOptions({neighborhood: ""})
     this.props.clearEditCuratedDate();
-    this.props.fetchExistingDate(parseInt(this.props.editId));
+    this.props.fetchExistingDate(parseInt(this.props.editId, 10));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,7 +49,7 @@ class CuratedDateForm extends React.Component {
       })
 
       this.setState({
-        id: parseInt(nextProps.match.params.id),
+        id: parseInt(nextProps.match.params.id, 10),
         title: nextProps.editDate.title,
         description: nextProps.editDate.description ? nextProps.editDate.description : "",
         neighborhood: nextProps.editDate.neighborhood.name,
@@ -117,7 +117,7 @@ class CuratedDateForm extends React.Component {
          selectedCategory={spot.category}
          deleteSpot={this.deleteSpot.bind(this)}
          updateSpotPhoto={this.updateSpotPhoto.bind(this)}
-         photoRef={(field => (this[uniquePhotoVar] = field)).bind(this)}/>
+         photoRef={(field => (this[uniquePhotoVar] = field))}/>
       )
     })
 
@@ -169,7 +169,7 @@ class CuratedDateForm extends React.Component {
         // brief pause to allow PUT requests to complete
         setTimeout(() => {
           this.props.fetchDates(this.state.neighborhood, undefined);
-          this.props.history.push(`/dates/${parseInt(this.props.editId)}`);
+          this.props.history.push(`/dates/${parseInt(this.props.editId, 10)}`);
         }, 500);
       } else {
         this.props.createOrUpdateCuratedDate(this.state);
