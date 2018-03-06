@@ -1,5 +1,5 @@
 import React from 'react';
-import Errors from '../components/Errors';
+import { Errors } from '../components/Errors';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { generateDate, collectNeighborhoodOptions, collectCategoryOptions } from '../actions/dateActions';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const QuickAbout = props => {
+export const QuickAbout = props => {
   return (
     <div className="shady-bg">
       <div id="quick-about" className="quick-about">
@@ -21,5 +21,3 @@ const QuickAbout = props => {
     </div>
   )
 }
-
-export default QuickAbout;

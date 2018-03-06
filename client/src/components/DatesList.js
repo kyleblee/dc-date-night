@@ -1,7 +1,7 @@
 import React from 'react';
-import DateCard from './DateCard';
+import { DateCard } from './DateCard';
 
-const DatesList = props => {
+export const DatesList = props => {
   let datesHTML;
 
   if (props.dates.length > 0) {
@@ -18,5 +18,3 @@ const DatesList = props => {
     </div>
   );
 }
-
-export default DatesList;

@@ -2,8 +2,8 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchDates } from '../actions/dateActions';
-import DateList from '../components/DatesList';
-import QuickAbout from '../components/homepage/QuickAbout';
+import { DatesList } from '../components/DatesList';
+import { QuickAbout } from '../components/homepage/QuickAbout';
 
 class Homepage extends React.Component {
   constructor() {
@@ -37,7 +37,7 @@ class Homepage extends React.Component {
 
     return (
       <div>
-        <DateList dates={this.props.dates}/>
+        <DatesList dates={this.props.dates}/>
         <QuickAbout />
       </div>
     )

@@ -3,8 +3,8 @@ import { NeighborhoodSelect } from '../components/forms/NeighborhoodSelect';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { collectNeighborhoodOptions, fetchDates } from '../actions/dateActions';
-import DateList from '../components/DatesList';
-import Errors from '../components/Errors';
+import { DatesList } from '../components/DatesList';
+import { Errors } from '../components/Errors';
 
 class BrowseDates extends React.Component {
   constructor() {
@@ -50,7 +50,7 @@ class BrowseDates extends React.Component {
           selectedNeighborhood={this.state.neighborhood}
           updateNeighborhood={this.updateNeighborhood.bind(this)}/>
         <Errors errors={this.state.errors}/>
-        <DateList dates={this.props.dates} />
+        <DatesList dates={this.props.dates} />
       </div>
     )
   }

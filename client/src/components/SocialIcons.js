@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SocialIcons = props => {
+export const SocialIcons = props => {
   return (
     <div className="social-icons">
       <img src="https://i.imgur.com/SnmTgvu.png" alt="facebook icon"/>
@@ -9,5 +9,3 @@ const SocialIcons = props => {
     </div>
   )
 }
-
-export default SocialIcons;

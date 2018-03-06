@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CustomDateCard = props => {
+export const CustomDateCard = props => {
   return (
     <div className={'spot-card'} key={props.index}>
       <img className='spot-img' src={props.spot.photo1} alt='date spot'/>
@@ -13,5 +13,3 @@ const CustomDateCard = props => {
     </div>
   )
 }
-
-export default CustomDateCard;

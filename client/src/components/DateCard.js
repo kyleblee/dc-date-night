@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const DateCard = props => {
+export const DateCard = props => {
   return (
     <div key={props.date.id} className="date-card">
       <img src={props.date.cover_photo} alt="two people on a date over coffee" />
@@ -9,5 +9,3 @@ const DateCard = props => {
     </div>
   )
 }
-
-export default DateCard;

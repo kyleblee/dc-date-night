@@ -1,5 +1,6 @@
 import React from 'react';
 import { CategorySelect } from './CategorySelect';
+import PropTypes from 'prop-types';
 
 export const SpotForm = props => {
 
@@ -59,4 +60,16 @@ export const SpotForm = props => {
           alt="delete button"/>
     </div>
   )
+}
+
+SpotForm.propTypes = {
+  updateSpotAttributes: PropTypes.func.isRequired,
+  deleteSpot: PropTypes.func.isRequired,
+  updateSpotPhoto: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  categories: PropTypes.arrayOf(PropTypes.string),
+  selectedCategory: PropTypes.string,
+  photoRef: PropTypes.func
 }

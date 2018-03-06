@@ -1,8 +1,8 @@
 import React from 'react';
-import CustomDateCard from './CustomDateCard';
+import { CustomDateCard } from './CustomDateCard';
 import PropTypes from 'prop-types';
 
-const CustomDate = props => {
+export const CustomDate = props => {
 
   if (props.customDate) {
     const spotsHTML = props.customDate.map((spot, index) =>
@@ -25,8 +25,6 @@ const CustomDate = props => {
 }
 
 CustomDate.propTypes = {
-  customDate: PropTypes.arrayOf(PropTypes.object),
-  resetGenerate: PropTypes.func
+  customDate: PropTypes.arrayOf(PropTypes.object).isRequired,
+  resetGenerate: PropTypes.func.isRequired
 }
-
-export default CustomDate;

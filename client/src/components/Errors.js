@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Errors = props => {
+export const Errors = props => {
   if (props.errors) {
     return (
       <div className="errors">
@@ -11,5 +11,3 @@ const Errors = props => {
     return null;
   }
 }
-
-export default Errors;

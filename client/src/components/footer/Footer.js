@@ -1,8 +1,8 @@
 import React from 'react';
-import LogoDiv from '../LogoDiv';
-import SocialIcons from '../SocialIcons';
+import { LogoDiv } from '../LogoDiv';
+import { SocialIcons } from '../SocialIcons';
 
-const Footer = props => {
+export const Footer = props => {
   return (
     <div className="footer">
       <LogoDiv />
@@ -10,5 +10,3 @@ const Footer = props => {
     </div>
   )
 }
-
-export default Footer;
