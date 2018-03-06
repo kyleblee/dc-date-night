@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Errors } from '../Errors';
+
 
 export const CategoryCheckboxes = props => {
   let categoryCheckboxes = []
 
   if (props.categories && props.categories.length > 0) {
-
     for (let c of props.categories) {
       categoryCheckboxes.push(
         <div>
@@ -15,7 +16,7 @@ export const CategoryCheckboxes = props => {
       )
     }
   } else {
-    categoryCheckboxes = <p className="errors">Oops... There aren't any activities for this neighborhood. Maybe Netflix and chill?</p>
+    categoryCheckboxes = <Errors errors="Oops... There aren't any activities for this neighborhood. Maybe Netflix and chill?" />
   }
 
   return (

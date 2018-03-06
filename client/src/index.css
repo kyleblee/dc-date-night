@@ -262,10 +262,10 @@ button#add-spot-button,
   margin-bottom: 50px;
 }
 
-.generate-date-form form .category-options .errors {
+.generate-date-form form .category-selects .category-options div.errors {
   width: 50%;
   color: rgb(18, 18, 18);
-  margin-top: 10px;
+  margin: 0 auto;
 }
 
 /* GENERATED CUSTOM DATE */
