@@ -11,7 +11,7 @@ const ShowDate = props => {
   if (Object.keys(props.date).length > 0) {
     spotsHTML = props.date.spots.map((spot, index) => {
       return (
-        <SpotCard index={index} name={spot.name} description={spot.description} photo={spot.photo1} />
+        <SpotCard key={"spot-" + index} index={index} name={spot.name} description={spot.description} photo={spot.photo1} />
       )
     })
   } else {

@@ -1,11 +1,11 @@
 import React from 'react';
-import { CustomDateSpotCard } from './CustomDateCard';
+import { CustomDateSpotCard } from './CustomDateSpotCard';
 import PropTypes from 'prop-types';
 
 export const CustomDate = props => {
   if (props.customDate) {
     const spotsHTML = props.customDate.map((spot, index) =>
-        <CustomDateSpotCard spot={spot} index={index} />
+        <CustomDateSpotCard spot={spot} key={index} />
       );
 
     return (
