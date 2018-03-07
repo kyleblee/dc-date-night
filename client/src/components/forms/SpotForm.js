@@ -6,7 +6,8 @@ export const SpotForm = props => {
 
   let handleChange = function(index) {
     return function(event) {
-      props.updateSpotAttributes(index, event);
+      // props.updateSpotAttributes(index, event);
+      props.updateSpot(index, event);
     }
   }
 
@@ -18,7 +19,8 @@ export const SpotForm = props => {
 
   let handlePhotoUpload = function(index) {
     return function(event) {
-      props.updateSpotPhoto(index, event)
+      // props.updateSpotPhoto(index, event)
+      props.updateSpot(index, event);
     }
   }
 
@@ -37,7 +39,7 @@ export const SpotForm = props => {
         categories={props.categories}
         spotIndex={props.index}
         selectedCategory={props.selectedCategory}
-        updateSpotAttributes={props.updateSpotAttributes}/>
+        updateSpot={props.updateSpot} />
       <label
         htmlFor="spot-description"
         className="form-labels">Describe this spot and why it's awesome.</label>
@@ -48,7 +50,7 @@ export const SpotForm = props => {
         onChange={handleChange(props.index)}></textarea>
       <input
         id={`spotPhoto${props.index}`}
-        name={`spotPhoto${props.index}`}
+        name="photo"
         type="file"
         ref={props.photoRef}
         multiple={true}
@@ -63,9 +65,10 @@ export const SpotForm = props => {
 }
 
 SpotForm.propTypes = {
-  updateSpotAttributes: PropTypes.func.isRequired,
+  // updateSpotAttributes: PropTypes.func.isRequired,
   deleteSpot: PropTypes.func.isRequired,
-  updateSpotPhoto: PropTypes.func.isRequired,
+  // updateSpotPhoto: PropTypes.func.isRequired,
+  updateSpot: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
   title: PropTypes.string,
   description: PropTypes.string,

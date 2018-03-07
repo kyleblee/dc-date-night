@@ -13,7 +13,7 @@ export const CategorySelect = props => {
 
   let handleChange = function(index) {
     return function(event) {
-      props.updateSpotAttributes(index, event);
+      props.updateSpot(index, event);
     }
   }
 
@@ -35,5 +35,5 @@ CategorySelect.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.string),
   spotIndex: PropTypes.number.isRequired,
   selectedCategory: PropTypes.string.isRequired,
-  updateSpotAttributes: PropTypes.func.isRequired
+  updateSpot: PropTypes.func.isRequired
 }

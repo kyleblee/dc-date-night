@@ -70,9 +70,19 @@ class CuratedDateForm extends React.Component {
     })
   }
 
-  updateSpotAttributes = (spotIndex, event) => {
+  updateSpot = (spotIndex, event) => {
+    const photoUpdate = event.target.name === "photo";
+    let updatedValue;
     let updatedSpot = this.state.spots[spotIndex];
-    updatedSpot[event.target.name] = event.target.value;
+
+    if (photoUpdate) {
+      updatedValue = this[`spotPhotoField${spotIndex}`].files[0];
+    } else {
+      updatedValue = event.target.value;
+    }
+
+    updatedSpot[event.target.name] = updatedValue;
+
     this.setState({
       spots: [
         ...this.state.spots.slice(0, spotIndex),
@@ -80,20 +90,6 @@ class CuratedDateForm extends React.Component {
         ...this.state.spots.slice(spotIndex + 1, this.state.spots.length)
       ]
     })
-  };
-
-  updateSpotPhoto = (spotIndex, event) => {
-    const coverPhoto = this[`spotPhotoField${spotIndex}`].files[0];
-    let updatedSpot = this.state.spots[spotIndex];
-    updatedSpot.photo = coverPhoto;
-
-    this.setState({
-      spots: [
-        ...this.state.spots.slice(0, spotIndex),
-        updatedSpot,
-        ...this.state.spots.slice(spotIndex + 1, this.state.spots.length)
-      ]
-    });
   }
 
   deleteSpot = (spotIndex, event) => {
@@ -117,12 +113,11 @@ class CuratedDateForm extends React.Component {
          key={index}
          title={spot.title}
          description={spot.description}
-         updateSpotAttributes={this.updateSpotAttributes.bind(this)}
          categories={categories}
          index={index}
          selectedCategory={spot.category}
          deleteSpot={this.deleteSpot.bind(this)}
-         updateSpotPhoto={this.updateSpotPhoto.bind(this)}
+         updateSpot={this.updateSpot}
          photoRef={(field => (this[uniquePhotoVar] = field))}/>
       )
     })
