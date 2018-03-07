@@ -65,8 +65,17 @@ class CuratedDateForm extends React.Component {
   }
 
   updateInput = e => {
+    const photoUpdate = e.target.name === "coverPhoto";
+    let updatedValue;
+
+    if (photoUpdate) {
+      updatedValue = this.coverPhotoField.files[0];
+    } else {
+      updatedValue = e.target.value;
+    }
+
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: updatedValue
     })
   }
 
@@ -134,14 +143,6 @@ class CuratedDateForm extends React.Component {
         category: ""
       })
     })
-  }
-
-  updateCoverPhoto = e => {
-    const coverPhoto = this.coverPhotoField.files[0];
-
-    this.setState({
-      coverPhoto: coverPhoto
-    });
   }
 
   handleSubmit = e => {
@@ -217,7 +218,7 @@ class CuratedDateForm extends React.Component {
               type="file"
               ref={field => (this.coverPhotoField = field)}
               multiple={true}
-              onChange={e => this.updateCoverPhoto(e)} />
+              onChange={e => this.updateInput(e)} />
             <div className="curated-date-spots">
               {this.generateSpotForms()}
             </div>
@@ -241,12 +242,12 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    collectNeighborhoodOptions: collectNeighborhoodOptions,
-    collectCategoryOptions: collectCategoryOptions,
-    fetchExistingDate: fetchExistingDate,
-    clearEditCuratedDate: clearEditCuratedDate,
-    fetchDates: fetchDates,
-    createOrUpdateCuratedDate: createOrUpdateCuratedDate
+    collectNeighborhoodOptions,
+    collectCategoryOptions,
+    fetchExistingDate,
+    clearEditCuratedDate,
+    fetchDates,
+    createOrUpdateCuratedDate
   }, dispatch);
 }
 

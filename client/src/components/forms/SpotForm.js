@@ -6,7 +6,6 @@ export const SpotForm = props => {
 
   let handleChange = function(index) {
     return function(event) {
-      // props.updateSpotAttributes(index, event);
       props.updateSpot(index, event);
     }
   }
@@ -19,7 +18,6 @@ export const SpotForm = props => {
 
   let handlePhotoUpload = function(index) {
     return function(event) {
-      // props.updateSpotPhoto(index, event)
       props.updateSpot(index, event);
     }
   }
