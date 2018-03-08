@@ -74,12 +74,12 @@ class GenerateDateForm extends React.Component {
               labelText="Pick a Neighborhood:"
               neighborhoods={this.props.options.neighborhoods}
               selectedNeighborhood={this.state.neighborhood}
-              updateNeighborhood={this.updateNeighborhood.bind(this)} />
+              updateNeighborhood={this.updateNeighborhood} />
             {this.state.neighborhood !== "" &&
               <CategoryCheckboxes
                 categories={this.props.options.categories}
                 activities={this.state.activities}
-                addOrRemoveActivity={this.addOrRemoveActivity.bind(this)} />
+                addOrRemoveActivity={this.addOrRemoveActivity} />
             }
             {(this.state.neighborhood !== "" && this.state.activities.length !== 0) &&
               <input type="submit" value="Plan my date!"/>
@@ -93,9 +93,9 @@ class GenerateDateForm extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    generateDate: generateDate,
-    collectNeighborhoodOptions: collectNeighborhoodOptions,
-    collectCategoryOptions: collectCategoryOptions
+    generateDate,
+    collectNeighborhoodOptions,
+    collectCategoryOptions
   }, dispatch);
 }
 

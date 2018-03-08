@@ -125,7 +125,7 @@ class CuratedDateForm extends React.Component {
          categories={categories}
          index={index}
          selectedCategory={spot.category}
-         deleteSpot={this.deleteSpot.bind(this)}
+         deleteSpot={this.deleteSpot}
          updateSpot={this.updateSpot}
          photoRef={(field => (this[uniquePhotoVar] = field))}/>
       )
@@ -208,7 +208,7 @@ class CuratedDateForm extends React.Component {
               labelText="What neighborhood of DC is this date in?"
               neighborhoods={this.props.options.neighborhoods}
               selectedNeighborhood={this.state.neighborhood}
-              updateNeighborhood={this.updateInput.bind(this)}/>
+              updateNeighborhood={this.updateInput}/>
             <label
               className="form-labels upload-photo-label"
               htmlFor="cover-photo">Upload a photo for this date:</label>

@@ -47,7 +47,7 @@ class Homepage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchDates: fetchDates
+    fetchDates
   }, dispatch);
 }
 

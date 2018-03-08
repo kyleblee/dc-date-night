@@ -49,7 +49,7 @@ class BrowseDates extends React.Component {
           labelText="Choose a neighborhood to filter results:"
           neighborhoods={this.props.neighborhoods}
           selectedNeighborhood={this.state.neighborhood}
-          updateNeighborhood={this.updateNeighborhood.bind(this)}/>
+          updateNeighborhood={this.updateNeighborhood}/>
         <Errors errors={this.state.errors}/>
         <DatesList dates={this.props.dates} />
       </div>
@@ -59,8 +59,8 @@ class BrowseDates extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    collectNeighborhoodOptions: collectNeighborhoodOptions,
-    fetchDates: fetchDates
+    collectNeighborhoodOptions,
+    fetchDates
   }, dispatch);
 }
 

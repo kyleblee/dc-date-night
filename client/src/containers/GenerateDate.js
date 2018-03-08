@@ -20,7 +20,7 @@ class GenerateDate extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    resetGenerate: resetGenerate
+    resetGenerate
   }, dispatch);
 }
 
