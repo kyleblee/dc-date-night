@@ -17,7 +17,8 @@ export function fetchDates(neighborhood, cap) {
     })
       .then(response => response.json())
       .then(responseJSON => {
-        dispatch({type: 'FETCH_DATES', payload: responseJSON})
+        const formattedDates = formatSpotDescriptions(responseJSON);
+        dispatch({type: 'FETCH_DATES', payload: formattedDates})
       })
   }
 }
@@ -175,4 +176,16 @@ function uploadPhotos(responseJSON, dateImage, spotPhotos) {
     method: 'POST',
     body: photoForm
   });
+}
+
+function formatSpotDescriptions(response) {
+  return response.map(date => {
+    const descriptions = JSON.parse(date.spots_descriptions);
+    for (let spot of date.spots) {
+      if (descriptions) {
+        spot.description = descriptions[spot.name];
+      }
+    }
+    return date;
+  })
 }

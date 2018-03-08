@@ -149,7 +149,7 @@ class CuratedDateForm extends React.Component {
     e.preventDefault();
 
     const invalidSpot = this.state.spots.find(spot => {
-      return spot.title === "" || spot.category === "";
+      return spot.title === "" || spot.category === "" || spot.description === "";
     })
 
     if (this.state.title === "") {
@@ -162,7 +162,7 @@ class CuratedDateForm extends React.Component {
       })
     } else if (invalidSpot) {
       this.setState({
-        error: "Please make sure that all spots have a title and category."
+        error: "Please make sure that all spots have a title, category, and description."
       });
     } else {
       if (this.props.editId) {

@@ -33,8 +33,10 @@ class DateEntry < ApplicationRecord
       title: params[:title],
       description: params[:description],
       neighborhood_id: neighborhood_id,
-      spots: params[:spots]
+      spots: params[:spots],
+      save_spots_descriptions: params[:spots]
     )
+    binding.pry
   end
 
   def spots=(spots)
@@ -43,13 +45,18 @@ class DateEntry < ApplicationRecord
         category = Category.find_by(name: spot["category"])
         @spot = Spot.find_or_create_by(
           name: spot["title"],
-          description: spot["description"],
           category_id: category.id,
           neighborhood_id: self.neighborhood_id
         )
         self.spots << @spot
       end
     end
+  end
+
+  def save_spots_descriptions=(spots)
+    descriptions = {}
+    spots.each {|spot| descriptions[spot["title"]] = spot["description"]}
+    self.spots_descriptions = descriptions.to_json
   end
 
   def self.update_curated_date(params)
