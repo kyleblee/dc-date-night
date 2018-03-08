@@ -122,10 +122,6 @@ div#push-footer {
   color: rgb(18, 18, 18);
 }
 
-.date-card h4 {
-  color: rgb(18, 18, 18);
-}
-
 
 /* DATE LIST */
 
@@ -140,6 +136,7 @@ div#push-footer {
 
 .date-list .date-card {
   margin-left: 4.3%;
+  width: 350px;
 }
 
 .date-list .date-card img {
@@ -161,6 +158,10 @@ div#push-footer {
 
 .date-card a {
   text-decoration: none;
+}
+
+.date-card h4 {
+  color: rgb(18, 18, 18);
 }
 
 /* FOOTER */
@@ -471,6 +472,10 @@ button#add-spot-button,
 .date-show {
   width: 80%;
   margin: 0 auto;
+}
+
+.date-show p {
+  white-space: pre-wrap;
 }
 
 .date-show h2,
