@@ -89,6 +89,7 @@ export function fetchExistingDate(dateId) {
     return fetch(`/date_entries/${dateId}/edit`)
     .then(response => response.json())
     .then(responseJSON => {
+      formatSpotDescriptions([responseJSON]);
       dispatch({type: 'SET_EDITCURATEDDATE', payload: responseJSON});
     })
   }

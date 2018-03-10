@@ -36,7 +36,6 @@ class DateEntry < ApplicationRecord
       spots: params[:spots],
       save_spots_descriptions: params[:spots]
     )
-    binding.pry
   end
 
   def spots=(spots)
@@ -62,8 +61,19 @@ class DateEntry < ApplicationRecord
   def self.update_curated_date(params)
     @date = DateEntry.find_by(id: params[:id])
     neighborhood_id = Neighborhood.find_by(name: params[:neighborhood]).id
-    @date.update(title: params[:title], description: params[:description], neighborhood_id: neighborhood_id)
-    @date.update_date_spots(params[:spots], neighborhood_id)
+
+    @date.update(
+      title: params[:title],
+      description: params[:description],
+      neighborhood_id: neighborhood_id,
+      save_spots_descriptions: params[:spots]
+    )
+
+    @date.update_date_spots(
+      params[:spots],
+      neighborhood_id
+    )
+
     @date
   end
 
@@ -82,11 +92,22 @@ class DateEntry < ApplicationRecord
         # make sure existing spots are updated
         category_id = Category.find_by(name: spot[:category]).id
         existing_spot = Spot.find_by(id: spot[:id])
-        existing_spot.update(name: spot[:title], description: spot[:description], category_id: category_id, neighborhood_id: neighborhood_id)
+        existing_spot.update(
+          name: spot[:title],
+          category_id: category_id,
+          neighborhood_id: neighborhood_id
+        )
       else
         # make sure new spots are created and pushed into date's spots
         category_id = Category.find_by(name: spot[:category]).id
-        new_spot = Spot.create(name: spot[:title], description: spot[:description], category_id: category_id, neighborhood_id: neighborhood_id)
+
+        new_spot = Spot.create(
+          name: spot[:title],
+          description: spot[:description],
+          category_id: category_id,
+          neighborhood_id: neighborhood_id
+        )
+
         self.spots << new_spot
       end
     end
