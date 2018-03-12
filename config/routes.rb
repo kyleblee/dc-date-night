@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   post '/categories/options', to: 'categories#options'
   post '/date-generate', to: 'date_entries#generate'
   post '/upload', to: 'date_entries#upload'
+  post '/login', to: 'sessions#create'
 end
