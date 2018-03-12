@@ -28,7 +28,7 @@ export function collectNeighborhoodOptions() {
     return fetch('/neighborhoods/options')
       .then(response => response.json())
       .then(responseJSON => {
-        let options = responseJSON.map(n => n.name);
+        let options = responseJSON.map(n => n.name).sort();
         dispatch({type: 'COLLECT_NEIGHBORHOOD_OPTIONS', payload: options})
       })
   }
@@ -46,7 +46,7 @@ export function collectCategoryOptions(neighborhood) {
     })
       .then(response => response.json())
       .then(responseJSON => {
-        let options = responseJSON.map(n => n.name);
+        let options = responseJSON.map(n => n.name).sort();
         dispatch({type: 'COLLECT_CATEGORY_OPTIONS', payload: options});
       })
   }

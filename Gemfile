@@ -31,6 +31,8 @@ gem 'dotenv-rails'
 gem 'active_model_serializers'
 gem 'foreman', '~> 0.82.0'
 gem 'paperclip'
+gem 'jwt'
+gem 'figaro'
 
 
 group :development, :test do
