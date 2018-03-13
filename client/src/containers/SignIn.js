@@ -1,6 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { loginUser } from '../actions/sessionActions';
 
 class SignIn extends React.Component {
   constructor() {
@@ -25,7 +26,7 @@ class SignIn extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     this.props.loginUser(this.state.credentials);
-
+    this.props.history.push('/')
   }
 
   render() {
@@ -46,6 +47,7 @@ class SignIn extends React.Component {
             type="password"
             value={this.state.password}
             onChange={this.updateInput} />
+          <input type="submit" value="Sign in!"/>
         </form>
       </div>
     )
