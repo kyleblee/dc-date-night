@@ -1,5 +1,5 @@
 import React from 'react';
-// import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 class SignIn extends React.Component {
@@ -7,21 +7,31 @@ class SignIn extends React.Component {
     super();
 
     this.state = {
-      email: "",
-      password: ""
+      credentials: {
+        email: "",
+        password: ""
+      }
     }
   }
 
-  updateInput = e => {
+  updateInput = event => {
+    const credentials = this.state.credentials;
+    credentials[event.target.name] = event.target.value;
     this.setState({
-      [e.target.name]: e.target.value
+      credentials: credentials
     })
+  }
+
+  onSubmit = event => {
+    event.preventDefault();
+    this.props.loginUser(this.state.credentials);
+
   }
 
   render() {
     return (
       <div id="sign-in-div">
-        <form id="sign-in-form">
+        <form id="sign-in-form" onSubmit={this.onSubmit}>
           <div>
             <label className="form-labels">Email:</label>
             <input
@@ -42,16 +52,16 @@ class SignIn extends React.Component {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({
-//     fetchDates: fetchDates
-//   }, dispatch);
-// }
-//
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loginUser
+  }, dispatch);
+}
+
 // const mapStateToProps = (state) => {
 //   return {
 //     dates: state.dates.curatedDates
 //   }
 // }
 
-export default connect(null, null)(SignIn);
+export default connect(null, mapDispatchToProps)(SignIn);
