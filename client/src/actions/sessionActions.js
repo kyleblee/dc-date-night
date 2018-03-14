@@ -17,7 +17,6 @@ export function loginUser(credentials) {
     return fetch(request)
       .then(response => response.json())
       .then(responseJSON => {
-        debugger;
         sessionStorage.setItem('jwt', responseJSON.jwt);
         dispatch(loginSuccess());
       })
