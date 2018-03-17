@@ -17,7 +17,11 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate_expert(date)
-    date.expert_id == current_user.id ? true : false
+    if date
+      current_user.expert == 1 && date.expert_id == current_user.id ? true : false
+    else
+      current_user.expert == 1
+    end
   end
 
   private

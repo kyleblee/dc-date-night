@@ -3,7 +3,8 @@ class SessionsController < ApplicationController
     user = User.find_by(email: auth_params[:email])
     if user.authenticate(auth_params[:password])
       jwt = Auth.issue({user: user.id})
-      render json: {jwt: jwt, expert: !!user.expert}
+      expert_boolean = user.expert == 1 ? true : false
+      render json: {jwt: jwt, expert: expert_boolean}
     end
   end
 

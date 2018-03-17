@@ -8,8 +8,13 @@ class DateEntriesController < ApplicationController
   end
 
   def create
-    @date = DateEntry.create_curated_date(date_params)
-    render json: @date, status: 200
+    binding.pry
+    if authenticate_expert(nil)
+      @date = DateEntry.create_curated_date(date_params)
+      render json: @date, status: 200
+    else
+      render json: {error: "unauthorized"}, status: 401
+    end
   end
 
   def edit

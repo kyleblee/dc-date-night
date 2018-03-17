@@ -18,6 +18,10 @@ class App extends Component {
     }
 
     if (props.match.path === "/dates/new") {
+      if (sessionStorage.expert !== "true") {
+        return <Redirect to="/" />;
+      }
+
       return <CuratedDateForm {...props}/>;
     }
     // Other authenticated routes can be added here as else / if statements
