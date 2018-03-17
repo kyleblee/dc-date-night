@@ -1,9 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
 export function fetchDates(neighborhood, cap) {
-  let headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-
   return (dispatch) => {
     const reqNeighborhood = JSON.stringify({
       neighborhood: neighborhood,
@@ -12,7 +9,7 @@ export function fetchDates(neighborhood, cap) {
 
     return fetch('/date_entries/browse', {
       method: 'POST',
-      headers: headers,
+      headers: requestHeaders(),
       body: reqNeighborhood
     })
       .then(response => response.json())
@@ -36,12 +33,9 @@ export function collectNeighborhoodOptions() {
 
 export function collectCategoryOptions(neighborhood) {
   return (dispatch) => {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
     return fetch('/categories/options', {
       method: "POST",
-      headers: headers,
+      headers: requestHeaders(),
       body: JSON.stringify(neighborhood)
     })
       .then(response => response.json())
@@ -54,12 +48,9 @@ export function collectCategoryOptions(neighborhood) {
 
 export function generateDate(dateChoices) {
   return (dispatch) => {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
     return fetch('/date-generate', {
       method: 'POST',
-      headers: headers,
+      headers: requestHeaders(),
       body: JSON.stringify(dateChoices)
     })
     .then(response => response.json())
@@ -102,13 +93,10 @@ export function clearEditCuratedDate() {
 }
 
 export function deleteCuratedDate(dateId) {
-  let headers = new Headers();
-  headers.append('Content-Type', 'application/json');
-
   return (dispatch) => {
     fetch(`/date_entries/${dateId}`, {
       method: 'DELETE',
-      headers: headers
+      headers: requestHeaders()
     })
   }
 }
@@ -126,14 +114,11 @@ export function createOrUpdateCuratedDate(date) {
       }
     })
 
-     let headers = new Headers();
-     headers.append('Content-Type', 'application/json');
-
      if (date.id) {
        // update fetch
        return fetch(`/date_entries/${date.id}`, {
           method: 'PUT',
-          headers: headers,
+          headers: requestHeaders(),
           body: JSON.stringify({date: date})
         })
         .then(response => response.json())
@@ -144,7 +129,7 @@ export function createOrUpdateCuratedDate(date) {
        // create fetch
        return fetch('/date_entries', {
           method: 'POST',
-          headers: headers,
+          headers: requestHeaders(),
           body: JSON.stringify({date: date})
         })
         .then(response => response.json())
@@ -194,6 +179,8 @@ function formatSpotDescriptions(response) {
 function requestHeaders() {
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
-  headers.append('AUTHORIZATION', `Bearer ${sessionStorage.jwt}`);
+  if (sessionStorage.jwt) {
+    headers.append('AUTHORIZATION', `Bearer ${sessionStorage.jwt}`);
+  }
   return headers;
 }
