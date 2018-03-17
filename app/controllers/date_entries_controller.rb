@@ -29,7 +29,11 @@ class DateEntriesController < ApplicationController
 
   def destroy
     @date = DateEntry.find_by(id: params[:id].to_i)
-    @date.delete
+    if authenticate_expert(@date)
+      @date.delete
+    else
+      render json: {error: "unauthorized"}, status: 401
+    end
   end
 
   def generate

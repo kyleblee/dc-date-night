@@ -18,6 +18,7 @@ export function loginUser(credentials) {
       .then(response => response.json())
       .then(responseJSON => {
         sessionStorage.setItem('jwt', responseJSON.jwt);
+        sessionStorage.setItem('expert', responseJSON.expert);
         dispatch(loginSuccess());
       })
   }
@@ -25,5 +26,6 @@ export function loginUser(credentials) {
 
 export function logOutUser() {
   delete sessionStorage.jwt;
+  delete sessionStorage.expert;
   return {type: 'LOG_OUT'}
 }
