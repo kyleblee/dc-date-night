@@ -22,3 +22,8 @@ export function loginUser(credentials) {
       })
   }
 }
+
+export function logOutUser() {
+  delete sessionStorage.jwt;
+  return {type: 'LOG_OUT'}
+}

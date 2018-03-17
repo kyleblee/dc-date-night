@@ -3,7 +3,9 @@ export default function sessionReducer(state = {
 }, action) {
   switch(action.type) {
     case 'LOG_IN_SUCCESS':
-      return !!sessionStorage.jwt;
+      return {session: !!sessionStorage.jwt};
+    case 'LOG_OUT':
+      return {session: !!sessionStorage.jwt};
     default:
       return state;
   }

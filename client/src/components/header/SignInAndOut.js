@@ -5,7 +5,7 @@ export const SignInAndOut = props => {
   if (props.session) {
     return (
       <div className="sign-in-and-out">
-        <Link to='/sign-out'>Sign Out</Link>
+        <Link to='#' onClick={props.logOut}>Sign Out</Link>
       </div>
     )
   } else {
