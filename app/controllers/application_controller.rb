@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-
   def logged_in?
     !!current_user
   end
@@ -15,6 +14,10 @@ class ApplicationController < ActionController::API
 
   def authenticate
     render json: {error: "unauthorized"}, status: 401 unless logged_in?
+  end
+
+  def authenticate_expert(date)
+    date.expert_id == current_user.id ? true : false
   end
 
   private

@@ -1,4 +1,7 @@
 class DateEntriesController < ApplicationController
+  before_action :authenticate
+  skip_before_action :authenticate, only: [:index, :generate]
+
   def index
     @dates = DateEntry.browse_dates(params[:neighborhood], params[:cap])
     render json: @dates, status: 200
@@ -15,8 +18,13 @@ class DateEntriesController < ApplicationController
   end
 
   def update
-    @date = DateEntry.update_curated_date(date_params)
-    render json: @date, status: 200
+    @date = DateEntry.find_by(id: params[:id])
+    if authenticate_expert(@date)
+      @date.update_curated_date(date_params)
+      render json: @date, status: 200
+    else
+      render json: {error: "unauthorized"}, status: 401
+    end
   end
 
   def destroy

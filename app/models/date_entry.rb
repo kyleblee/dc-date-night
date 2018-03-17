@@ -58,23 +58,22 @@ class DateEntry < ApplicationRecord
     self.spots_descriptions = descriptions.to_json
   end
 
-  def self.update_curated_date(params)
-    @date = DateEntry.find_by(id: params[:id])
+  def update_curated_date(params)
     neighborhood_id = Neighborhood.find_by(name: params[:neighborhood]).id
 
-    @date.update(
+    self.update(
       title: params[:title],
       description: params[:description],
       neighborhood_id: neighborhood_id,
       save_spots_descriptions: params[:spots]
     )
 
-    @date.update_date_spots(
+    self.update_date_spots(
       params[:spots],
       neighborhood_id
     )
 
-    @date
+    self
   end
 
   def update_date_spots(spots, neighborhood_id)

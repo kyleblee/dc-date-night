@@ -77,7 +77,9 @@ export function resetGenerate() {
 
 export function fetchExistingDate(dateId) {
   return (dispatch) => {
-    return fetch(`/date_entries/${dateId}/edit`)
+    return fetch(`/date_entries/${dateId}/edit`, {
+      headers: requestHeaders()
+    })
     .then(response => response.json())
     .then(responseJSON => {
       formatSpotDescriptions([responseJSON]);
@@ -179,8 +181,10 @@ function formatSpotDescriptions(response) {
 function requestHeaders() {
   let headers = new Headers();
   headers.append('Content-Type', 'application/json');
+
   if (sessionStorage.jwt) {
     headers.append('AUTHORIZATION', `Bearer ${sessionStorage.jwt}`);
   }
+
   return headers;
 }
