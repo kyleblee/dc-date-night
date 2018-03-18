@@ -162,6 +162,7 @@ function uploadPhotos(responseJSON, dateImage, spotPhotos) {
 
   fetch('/upload', {
     method: 'POST',
+    headers: {'AUTHORIZATION': `Bearer ${sessionStorage.jwt}`},
     body: photoForm
   });
 }

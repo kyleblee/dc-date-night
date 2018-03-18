@@ -26,7 +26,7 @@ class DateEntry < ApplicationRecord
     end
   end
 
-  def self.create_curated_date(params)
+  def self.create_curated_date(params, user)
     neighborhood_id = Neighborhood.find_or_create_by(name: params[:neighborhood]).id
 
     @date = DateEntry.create(
@@ -34,6 +34,7 @@ class DateEntry < ApplicationRecord
       description: params[:description],
       neighborhood_id: neighborhood_id,
       spots: params[:spots],
+      expert_id: user.id,
       save_spots_descriptions: params[:spots]
     )
   end
@@ -124,6 +125,7 @@ class DateEntry < ApplicationRecord
         spot.update(photo1: params[spot.id.to_s])
       end
     end
+
     @date
   end
 end
