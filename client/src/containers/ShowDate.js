@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { SpotCard } from '../components/SpotCard';
 import { deleteCuratedDate } from '../actions/dateActions';
+import { ShowDateOptions } from '../components/ShowDateOptions';
 import PropTypes from 'prop-types';
 
 const ShowDate = props => {
@@ -40,10 +41,10 @@ const ShowDate = props => {
       <img src={props.date.cover_photo} alt={props.date.title}/>
       <p>{props.date.description}</p>
       {spotsHTML}
-      <div className="option-buttons">
-        <button onClick={handleEditButton}>Edit Date</button>
-        <button onClick={handleDeleteButton}>Delete Date</button>
-      </div>
+      <ShowDateOptions
+        date={props.date}
+        handleEditButton={handleEditButton}
+        handleDeleteButton={handleDeleteButton} />
     </div>
   )
 }
