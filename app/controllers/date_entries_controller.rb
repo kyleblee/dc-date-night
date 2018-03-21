@@ -1,6 +1,10 @@
 class DateEntriesController < ApplicationController
-  before_action :authenticate
-  skip_before_action :authenticate, only: [:index, :generate]
+  before_action :authenticate_expert
+  skip_before_action :authenticate_expert, only: [:index, :generate, :upload]
+  before_action :set_date
+  skip_before_action :set_date, only: [:index, :create, :generate, :upload]
+  # you can add back in :authenticate if there are actions that require login,
+  # but not expert users.
 
   def index
     @dates = DateEntry.browse_dates(params[:neighborhood], params[:cap])
@@ -8,42 +12,25 @@ class DateEntriesController < ApplicationController
   end
 
   def create
-    if authenticate_expert(nil)
-      @date = DateEntry.create_curated_date(date_params, current_user)
-      render json: @date, status: 200
-    else
-      render json: {error: "unauthorized"}, status: 401
-    end
+    @date = DateEntry.create_curated_date(date_params, current_user)
+    render json: @date, status: 200
   end
 
   def edit
-    @date = DateEntry.find_by(id: params[:id])
     render json: @date, include: 'spots.category,neighborhood', status: 200
   end
 
   def update
-    @date = DateEntry.find_by(id: params[:id])
-    if authenticate_expert(@date)
-      @date.update_curated_date(date_params)
-      render json: @date, status: 200
-    else
-      render json: {error: "unauthorized"}, status: 401
-    end
+    @date.update_curated_date(date_params)
+    render json: @date, status: 200
   end
 
   def destroy
-    @date = DateEntry.find_by(id: params[:id].to_i)
-    if authenticate_expert(@date)
-      @date.delete
-    else
-      render json: {error: "unauthorized"}, status: 401
-    end
+    @date.delete
   end
 
   def generate
-    neighborhood = params[:neighborhood]
-    categories = params[:activities]
-    @spots = Spot.collect_date_spots(neighborhood, categories)
+    @spots = Spot.collect_date_spots(params[:neighborhood], params[:activities])
     render json: @spots, status: 200
   end
 
@@ -53,6 +40,10 @@ class DateEntriesController < ApplicationController
   end
 
   private
+
+  def set_date
+    @date = DateEntry.find_by(id: params[:id])
+  end
 
   def date_params
     params.require(:date).permit(:id, :title, :description, :neighborhood, {spots: [:id, :title, :description, :category]})

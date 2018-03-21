@@ -16,11 +16,16 @@ class ApplicationController < ActionController::API
     render json: {error: "unauthorized"}, status: 401 unless logged_in?
   end
 
-  def authenticate_expert(date)
-    if date
-      current_user.expert == 1 && date.expert_id == current_user.id ? true : false
+  def authenticate_expert
+    if current_user.expert != 1
+      render json: {error: "unauthorized"}, status: 401
+    elsif ["edit", "update", "destroy"].include?(params[:action])
+      @date = DateEntry.find_by(id: params[:id])
+
+      if @date.expert_id != current_user.id
+        render json: {error: "unauthorized"}, status: 401
+      end
     else
-      current_user.expert == 1
     end
   end
 
