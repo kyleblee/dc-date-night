@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import { requestHeaders } from '../utils/req';
 
 export function loginSuccess() {
   return {type: 'LOG_IN_SUCCESS'};
@@ -8,9 +9,7 @@ export function loginUser(credentials) {
   return function(dispatch) {
     const request = new Request('/login', {
       method: 'POST',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      }),
+      headers: requestHeaders(),
       body: JSON.stringify({auth: credentials})
     })
 

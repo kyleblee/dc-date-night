@@ -9,25 +9,10 @@ import GenerateDate from './containers/GenerateDate';
 import CuratedDateForm from './containers/CuratedDateForm';
 import BrowseDates from './containers/BrowseDates';
 import ShowDate from './containers/ShowDate';
+import { requireAuth } from './utils/auth';
 import './App.css';
 
 class App extends Component {
-  requireAuth = props => {
-    if (!sessionStorage.jwt) {
-      return <Redirect to="/sign-in" />;
-    }
-
-    if (sessionStorage.expert !== "true") {
-      return <Redirect to="/" />;
-    }
-
-    if (props.match.path === "/dates/new" || props.match.path === "/dates/:id/edit") {
-      return <CuratedDateForm {...props}/>;
-    }
-    // Other authenticated routes can be added here as else / if statements
-    // that draw from props.match.path in a similar way.
-  }
-
   render() {
     return (
       <div className="App">
@@ -39,8 +24,8 @@ class App extends Component {
                 <Route exact path="/" component={Homepage} />
                 <Route path="/sign-in" component={SignIn} />
                 <Route path="/plan-my-date" component={GenerateDate} />
-                <Route path="/dates/:id/edit" render={this.requireAuth}/>
-                <Route path="/dates/new" render={this.requireAuth} />
+                <Route path="/dates/:id/edit" render={requireAuth}/>
+                <Route path="/dates/new" render={requireAuth} />
                 <Route path="/dates/:id" component={ShowDate} />
                 <Route path="/dates" component={BrowseDates} />
               </Switch>

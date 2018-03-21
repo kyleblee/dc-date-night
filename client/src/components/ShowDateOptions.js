@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const ShowDateOptions = props => {
-  if (parseInt(sessionStorage.id) === props.date.expert_id) {
+  if (parseInt(sessionStorage.id, 10) === props.date.expert_id) {
     return (
       <div className="option-buttons">
         <button onClick={props.handleEditButton}>Edit Date</button>
