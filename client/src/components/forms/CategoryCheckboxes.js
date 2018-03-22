@@ -10,7 +10,7 @@ export const CategoryCheckboxes = props => {
     for (let c of props.categories) {
       categoryCheckboxes.push(
         <div key={"category-" + c}>
-          <input name={c} type="checkbox" checked={props.activities.includes(c)} onChange={props.addOrRemoveActivity} />
+          <input name={c} id={"category-" + c} type="checkbox" checked={props.activities.includes(c)} onChange={props.addOrRemoveActivity} />
           <label htmlFor={"category-" + c}>{c}</label>
         </div>
       )

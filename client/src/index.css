@@ -1,3 +1,5 @@
+/* GENERAL */
+
 * {
   font-family: 'Cabin', sans-serif;
 }
@@ -79,7 +81,8 @@ div#push-footer {
 }
 
 .navbar {
-  display: flex;
+  /* need to change this back to flex once implementing hamburger menu  */
+  display: none;
   justify-content: space-around;
   width: 35%;
   height: 20px;
@@ -93,15 +96,15 @@ div#push-footer {
 }
 
 
-/* HOMEPAGE */
+/* HOMEPAGE (DONE) */
 
 .shady-bg {
-  padding: 150px 0;
+  padding: 35px 0;
   background-color: rgb(247, 246, 246);
 }
 
 .quick-about {
-  width: 63%;
+  width: 85%;
   margin: 0px auto;
   display: flex;
   flex-direction: column;
@@ -109,92 +112,86 @@ div#push-footer {
 }
 
 .quick-about h2 {
-  margin: 0 0 40px;
-  font-size: 3em;
+  margin: 0 0 30px;
+  font-size: 2.5em;
   color: rgb(18, 18, 18);
 }
 
 .quick-about p {
   margin: 0;
-  font-size: 1.75em;
+  font-size: 1.4em;
   font-weight: 400;
-  line-height: 2;
+  line-height: 1.8;
   color: rgb(18, 18, 18);
 }
 
 
-/* DATE LIST */
+/* DATE LIST (DONE) */
 
 .date-list {
-  margin-top: 0;
-  margin-left: 5%;
-  margin-right: 5%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-}
-
-.date-list .date-card {
-  margin-left: 4.3%;
-  width: 350px;
+  width: 90%;
+  margin: 20px auto;
 }
 
 .date-list .date-card img {
   object-fit: cover;
-  width: 350px;
-  height: 350px;
-}
-
-.date-list .date-card:first-child,
-.date-list .date-card:nth-child(3n+1) {
-  margin-left: 0;
+  width: 100%;
+  height: 275px;
 }
 
 .date-card h4 {
   margin-top: 15px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
   font-size: 1.25em;
+  color: rgb(18, 18, 18);
 }
 
 .date-card a {
   text-decoration: none;
 }
 
-.date-card h4 {
-  color: rgb(18, 18, 18);
-}
-
-/* FOOTER */
+/* FOOTER (DONE) */
 
 .footer {
   display: flex;
   justify-content: space-between;
   padding: 30px 0;
+  width: 100%;
 }
 
 .footer .social-icons {
   display: flex;
-  justify-content: space-between;
-  margin-right: 5%;
+  margin: 0 auto;
   align-items: center;
 }
 
 .footer .social-icons img {
   height: 35px;
   width: 35px;
-  margin-right: 10px;
+  margin-right: 35px;
+}
+
+.footer .logo-div {
+  margin: 0;
+}
+
+.footer .logo-div #logo {
+  display: none;
 }
 
 .footer .social-icons img:last-child {
   margin-right: 0;
 }
 
-/* GENERATE DATE FORM */
+/* GENERATE DATE FORM (DONE) */
 
 .generate-date-form h3 {
-  margin-top: 0;
+  margin-top: 20px;
   margin-bottom: 30px;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 
 .generate-date-form form {
@@ -229,10 +226,10 @@ div.neighborhood-select select,
 
 .generate-date-form form div.category-options {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin: 0 auto;
-  width: 66%;
+  width: 85%;
 }
 
 .generate-date-form form div.category-options label {
@@ -240,14 +237,15 @@ div.neighborhood-select select,
 }
 
 .generate-date-form form div.category-options div {
-  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 5px;
 }
 
 .generate-date-form form div.category-options div:first-child {
   margin-left: 0;
 }
 
-.generate-date-form form input[type="submit"],
+.generate-date-form input[type="submit"],
 .custom-date button.start-over-button,
 .curated-date-form form input[type="submit"],
 button#add-spot-button,
@@ -263,17 +261,29 @@ button#add-spot-button,
   margin-bottom: 50px;
 }
 
+.generate-date-form form input[type="submit"] {
+  margin-bottom: 30px;
+}
+
 .generate-date-form form .category-selects .category-options div.errors {
-  width: 50%;
+  width: 100%;
   color: rgb(18, 18, 18);
   margin: 0 auto;
 }
 
-/* GENERATED CUSTOM DATE */
+/* GENERATED CUSTOM DATE (DONE) */
 
 .custom-date {
   width: 90%;
-  margin: 0 auto;
+  margin: 20px auto 0;
+}
+
+.custom-date h2 {
+  margin-top: 0px;
+  margin-bottom: 50px;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 4em;
+  line-height: 1.1;
 }
 
 .custom-date h3 {
@@ -284,24 +294,19 @@ button#add-spot-button,
 
 .custom-date .spot-card {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 150px;
+  flex-direction: column;
+  margin-bottom: 75px;
   align-items: center;
 }
 
-.custom-date .spot-card:nth-child(even) {
-  flex-direction: row-reverse;
+.custom-date img {
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .custom-date .spot-card .spot-text {
   width: 100%;
   text-align: center;
-  margin-left: 5%;
-}
-
-.custom-date .spot-card:nth-child(even) .spot-text {
-  margin-left: 0;
-  margin-right: 5%;
 }
 
 .custom-date .spot-card:nth-last-child(2) {
@@ -312,15 +317,14 @@ button#add-spot-button,
   margin-bottom: 0;
 }
 
-.custom-date h2 {
-  margin-top: -10px;
-  margin-bottom: 70px;
-  font-family: 'Permanent Marker', cursive;
-  font-size: 5em;
-}
-
 .spot-card .spot-text h4 {
   margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.spot-text h4 span {
+  display: block;
+  margin-bottom: 5px;
 }
 
 .spot-card .spot-text h4 span.spot-title {
@@ -332,23 +336,21 @@ button#add-spot-button,
 .spot-card .spot-text p {
   font-size: 1.05em;
   line-height: 1.75;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .custom-date button.start-over-button {
-  margin-top: 30px;
+  margin-top: 15px;
   margin-bottom: 15px;
 }
 
-.custom-date img {
-  max-width: 750px;
-}
-
-/* CURATE DATE FORM */
+/* CURATE DATE FORM (DONE) */
 
 .curated-date-form h3 {
-  margin-top: 0;
+  margin-top: 50;
   margin-bottom: 30px;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 
 .curated-date-form form {
@@ -366,35 +368,37 @@ button#add-spot-button,
 
 .curated-date-form form .curated-date-spots {
   display: flex;
-  margin: 0 auto 30px;
+  margin: 0 auto 40px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .curated-date-form form .curated-date-spots .spot-form {
-  margin: 35px 20px 0;
+  margin: 35px auto 0;
   border: 1px solid black;
-  padding: 0 20px;
+  padding: 0 5px;
 }
 
 .curated-date-form form .curated-date-spots .spot-form .category-select {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .curated-date-form form input[type="text"],
 #sign-in-form input {
-  width: 300px;
+  /* width: 300px; */
+  width: 90%;
   height: 30px;
   font-size: 1.15em;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
   background-color: rgba(232, 230, 230, 0.35);
   border: 0px solid rgba(18, 18, 18, 1);
 }
 
 .curated-date-form textarea {
-  width: 400px;
+  /* width: 400px; */
+  width: 90%;
   height: 150px;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
   font-size: 1.15em;
   background-color: rgba(232, 230, 230, 0.35);
   border: 0px solid rgba(18, 18, 18, 1);
@@ -406,7 +410,7 @@ button#add-spot-button,
 }
 
 .curated-date-form .neighborhood-select select {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .curated-date-form button#add-spot-button {
@@ -414,13 +418,13 @@ button#add-spot-button,
 }
 
 .curated-date-form input[type="file"] {
-  margin-left: 10%;
+  margin-left: 20%;
 }
 
 .curated-date-form .spot-form input[type="file"] {
   display: block;
   margin-bottom: 15px;
-  margin-left: 30%;
+  max-width: 80%;
 }
 
 .delete-button {
@@ -520,4 +524,184 @@ button#add-spot-button,
   justify-content: space-between;
   width: 48%;
   margin: 0 auto;
+}
+
+
+/**** MEDIA QUERIES ****/
+
+@media screen and (min-width: 1277px) {
+
+  /* GENERAL */
+
+  /* HEADER */
+
+  .navbar {
+    display: flex;
+  }
+
+  /* HOMEPAGE (CLEANED) */
+
+  .shady-bg {
+    padding: 85px 0;
+  }
+
+  .quick-about {
+    width: 63%;
+  }
+
+  /* DATE LIST (CLEANED) */
+
+  .date-list .date-card {
+    margin-left: 4.3%;
+    width: 350px;
+  }
+
+  .date-list .date-card img {
+    width: 350px;
+    height: 350px;
+  }
+
+  .date-list .date-card:first-child,
+  .date-list .date-card:nth-child(3n+1) {
+    margin-left: 0;
+  }
+
+  .date-list {
+    margin-top: 0;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .date-card h4 {
+    margin-bottom: 80px;
+  }
+
+  .quick-about h2 {
+    margin: 0 0 40px;
+    font-size: 3em;
+  }
+
+  .quick-about p {
+    font-size: 1.75em;
+    line-height: 2;
+  }
+
+  /* FOOTER (CLEANED) */
+
+  .footer .logo-div #logo {
+    display: block;
+  }
+
+  .footer .social-icons {
+    justify-content: space-between;
+    margin-right: 5%;
+  }
+
+  .footer .social-icons img {
+    margin-right: 10px;
+  }
+
+  .footer .logo-div {
+    margin-left: 5%;
+  }
+
+  /* GENERATE DATE FORM (CLEANED) */
+
+  .generate-date-form h3 {
+    margin-top: 0;
+    font-size: 2.5em;
+  }
+
+  .generate-date-form form div.category-options {
+    justify-content: center;
+    width: 66%;
+  }
+
+  .generate-date-form form .category-selects .category-options div.errors {
+    width: 50%;
+  }
+
+  /* GENERATED CUSTOM DATE (CLEANED) */
+
+  .custom-date {
+    margin: 0 auto;
+  }
+
+  .custom-date h2 {
+    margin-top: -10px;
+    margin-bottom: 70px;
+    font-size: 5em;
+  }
+
+  .custom-date .spot-card {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 150px;
+  }
+
+  .custom-date img {
+    max-width: 750px;
+    margin-bottom: 0;
+  }
+
+  .custom-date .spot-card:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .custom-date .spot-card .spot-text {
+    margin-left: 5%;
+  }
+
+  .custom-date .spot-card:nth-child(even) .spot-text {
+    margin-left: 0;
+    margin-right: 5%;
+  }
+
+  .custom-date button.start-over-button {
+    margin-top: 30px;
+  }
+
+  /* CURATE DATE FORM (CLEANED) */
+
+  .curated-date-form h3 {
+    margin-top: 0;
+    font-size: 2.5em;
+  }
+
+  .curated-date-form form .curated-date-spots {
+    margin: 0 auto 30px;
+  }
+
+  .curated-date-form form .curated-date-spots .spot-form {
+    margin: 35px 20px 0;
+    padding: 0 20px;
+  }
+
+  .curated-date-form form .curated-date-spots .spot-form .category-select {
+    margin-bottom: 20px;
+  }
+
+  .curated-date-form form input[type="text"],
+  #sign-in-form input {
+    width: 300px;
+    margin: 0 auto 20px;
+  }
+
+  .curated-date-form textarea {
+    width: 400px;
+    margin: 0 auto 20px;
+  }
+
+  .curated-date-form .neighborhood-select select {
+    margin-bottom: 20px;
+  }
+
+  .curated-date-form input[type="file"] {
+    margin-left: 10%;
+  }
+
+  .curated-date-form .spot-form input[type="file"] {
+    margin-bottom: 15px;
+    margin-left: 30%;
+  }
 }
