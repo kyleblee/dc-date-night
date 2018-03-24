@@ -279,7 +279,7 @@ button#add-spot-button,
 }
 
 .custom-date h2 {
-  margin-top: 0px;
+  margin-top: 0;
   margin-bottom: 50px;
   font-family: 'Permanent Marker', cursive;
   font-size: 4em;
@@ -295,7 +295,7 @@ button#add-spot-button,
 .custom-date .spot-card {
   display: flex;
   flex-direction: column;
-  margin-bottom: 75px;
+  margin-bottom: 50px;
   align-items: center;
 }
 
@@ -348,7 +348,7 @@ button#add-spot-button,
 /* CURATE DATE FORM (DONE) */
 
 .curated-date-form h3 {
-  margin-top: 50;
+  margin-top: 20px;
   margin-bottom: 30px;
   font-size: 2em;
 }
@@ -435,46 +435,45 @@ button#add-spot-button,
   height: 24px;
 }
 
-/* BROWSE DATES */
+/* BROWSE DATES (DONE) */
 
 .browse-dates .neighborhood-select select {
   margin-bottom: 50px;
 }
 
 .browse-dates .form-labels {
+  margin-top: 20px;
   margin-bottom: 15px;
 }
 
 .browse-dates .errors {
+  width: 80%;
   margin-top: -25px;
   margin-bottom: 50px;
   color: rgb(18, 18, 18);
 }
 
-/* SIGN IN */
+/* SIGN IN (DONE) */
 
 #sign-in-form .form-labels {
-  display: inline;
+  display: block;
   margin-right: 10px;
 }
 
-#sign-in-form div {
-  margin-bottom: 20px;
-}
-
-#sign-in-form {
-  text-align: right;
-}
-
 #sign-in-div {
-  width: 35%;
+  width: 75%;
   margin: 20px auto;
 }
 
-/* DATE SHOW VIEW */
+#sign-in-form input[type="submit"] {
+  height: 45px;
+  width: 40%;
+}
+
+/* DATE SHOW VIEW (DONE) */
 
 .date-show {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -489,11 +488,16 @@ button#add-spot-button,
 
 .date-show h2 {
   font-size: 4em;
-  margin-top: 30px;
+  margin-top: 0;
+  margin-bottom: 50px;
+  line-height: 1.2;
+  hyphens: auto;
 }
 
 .date-show h4 {
-  font-size: 3em;
+  font-size: 2em;
+  line-height: 1.25;
+  margin-top: 50px;
   margin-bottom: 20px;
 }
 
@@ -503,16 +507,16 @@ button#add-spot-button,
 
 .date-show > p {
   width: 90%;
-  margin: 30px auto 100px;
-  font-size: 1.75em;
+  margin: 30px auto 50px;
+  font-size: 1.25em;
   line-height: 1.75;
 }
 
 .spot-card p {
-  width: 85%;
-  margin: 30px auto 20px;
-  font-size: 1.5em;
-  line-height: 2;
+  width: 100%;
+  margin: 20px auto 20px;
+  font-size: 1.05em;
+  line-height: 1.75;
 }
 
 .date-show button {
@@ -521,9 +525,14 @@ button#add-spot-button,
 
 .date-show .option-buttons {
   display: flex;
-  justify-content: space-between;
-  width: 48%;
+  align-items: center;
+  flex-direction: column;
+  width: 85%;
   margin: 0 auto;
+}
+
+.date-show .option-buttons button {
+  margin: 20px 0 10px;
 }
 
 
@@ -703,5 +712,69 @@ button#add-spot-button,
   .curated-date-form .spot-form input[type="file"] {
     margin-bottom: 15px;
     margin-left: 30%;
+  }
+
+  /* BROWSE DATES (CLEANED) */
+
+  .browse-dates .errors {
+    width: 35%;
+  }
+
+  /* SIGN IN (CLEANED) */
+
+  #sign-in-div {
+    margin-top: 30px;
+    width: 35%;
+  }
+
+  #sign-in-form label {
+    margin-bottom: 5px;
+  }
+
+  #sign-in-form input[type="text"] {
+    margin-bottom: 15px;
+  }
+
+  #sign-in-form div {
+    display: inline-block;
+    text-align: left;
+  }
+
+  #sign-in-form input[type="submit"] {
+    margin-top: 10px;
+  }
+
+  /* DATE SHOW VIEW (CLEANED) */
+
+  .date-show {
+    width: 80%;
+  }
+
+  .date-show h2 {
+    margin-top: 30px;
+  }
+
+  .date-show h4 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+
+  .date-show > p {
+    margin: 30px auto 100px;
+    font-size: 1.75em;
+  }
+
+  .spot-card p {
+    width: 85%;
+    margin: 30px auto 20px;
+    font-size: 1.5em;
+    line-height: 2;
+  }
+
+  .date-show .option-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 48%;
   }
 }

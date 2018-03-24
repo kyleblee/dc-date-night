@@ -40,13 +40,13 @@ class SignIn extends React.Component {
               type="text"
               value={this.state.email}
               onChange={this.updateInput} /><br />
+            <label className="form-labels">Password:</label>
+            <input
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.updateInput} />
           </div>
-          <label className="form-labels">Password:</label>
-          <input
-            name="password"
-            type="password"
-            value={this.state.password}
-            onChange={this.updateInput} />
           <input type="submit" value="Sign in!"/>
         </form>
       </div>
