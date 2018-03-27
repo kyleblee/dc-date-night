@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CuratedDateForm from '../containers/CuratedDateForm';
 
 export const requireAuth = props => {
@@ -16,4 +17,12 @@ export const requireAuth = props => {
   }
   // Other authenticated routes can be added here as else / if statements
   // that draw from props.match.path in a similar way.
+}
+
+export const renderCurate = () => {
+  if (sessionStorage.expert === "true") {
+    return (
+      <Link to='/dates/new'>Curate</Link>
+    )
+  }
 }

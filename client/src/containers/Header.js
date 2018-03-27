@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { logOutUser } from '../actions/sessionActions';
 import { withRouter } from 'react-router';
+import MobileMenuIcon from '../components/header/MobileMenuIcon';
 
 class Header extends React.Component {
   logOut = event => {
@@ -20,6 +21,7 @@ class Header extends React.Component {
         <LogoDiv />
         <NavBar />
         <SignInAndOut session={this.props.session} logOut={this.logOut}/>
+        <MobileMenuIcon />
       </div>
     )
   }

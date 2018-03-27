@@ -8,6 +8,7 @@ import SignIn from './containers/SignIn';
 import GenerateDate from './containers/GenerateDate';
 import BrowseDates from './containers/BrowseDates';
 import ShowDate from './containers/ShowDate';
+import MobileMenuList from './components/header/MobileMenuList';
 import { requireAuth } from './utils/auth';
 import './App.css';
 
@@ -19,6 +20,7 @@ class App extends Component {
           <div id="containing-div">
             <div id="push-footer">
               <Header />
+              <MobileMenuList />
               <Switch>
                 <Route exact path="/" component={Homepage} />
                 <Route path="/sign-in" component={SignIn} />
