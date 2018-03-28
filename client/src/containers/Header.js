@@ -21,7 +21,7 @@ class Header extends React.Component {
         <LogoDiv />
         <NavBar />
         <SignInAndOut session={this.props.session} logOut={this.logOut}/>
-        <MobileMenuIcon />
+        {/* <MobileMenuIcon /> */}
       </div>
     )
   }

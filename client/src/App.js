@@ -20,7 +20,7 @@ class App extends Component {
           <div id="containing-div">
             <div id="push-footer">
               <Header />
-              <MobileMenuList />
+              {/* <MobileMenuList /> */}
               <Switch>
                 <Route exact path="/" component={Homepage} />
                 <Route path="/sign-in" component={SignIn} />

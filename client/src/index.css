@@ -1,18 +1,33 @@
 /* GENERAL */
 
 * {
-  font-family: 'Cabin', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  font-family: 'Cabin', sans-serif;
+  color: rgb(18, 18, 18);
+}
+
+.marker-font {
+  font-family: 'Permanent Marker', cursive;
+}
+
+input,
+textarea {
+  font-family: inherit;
 }
 
 input[type="text"],
 textarea,
 input[type="password"] {
-  padding: 5px 10px;
+  padding: 20px 10px;
+}
+
+select {
+  font-family: inherit;
 }
 
 .errors {
@@ -74,6 +89,8 @@ div#push-footer {
   color: rgb(18, 18, 18);
   text-align: left;
   line-height: 1;
+
+  animation: moveInRight 0.5s ease-out;
 }
 
 .logo-div a:link {
@@ -183,8 +200,12 @@ div#push-footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  width: 90%;
+  width: 91%;
   margin: 20px auto;
+}
+
+.date-card {
+  transition: all 0.2s;
 }
 
 .date-list .date-card img {
@@ -203,6 +224,15 @@ div#push-footer {
 .date-card a {
   text-decoration: none;
 }
+
+.date-card:hover {
+  transform: translateY(-3px);
+}
+
+.date-card:active {
+  transform: translateY(-1px);
+}
+
 
 /* FOOTER (DONE) */
 
@@ -273,7 +303,10 @@ div.neighborhood-select select,
 
 .generate-date-form form div.category-selects {
   margin-bottom: 50px;
+  animation: fallIn 0.5s ease-out;
 }
+
+
 
 .generate-date-form form div.category-options {
   display: flex;
@@ -310,6 +343,7 @@ button#add-spot-button,
   font-size: 1.15em;
   text-align-last: center;
   margin-bottom: 50px;
+  font-family: 'Cabin', sans-serif;
 }
 
 .generate-date-form form input[type="submit"] {
@@ -332,7 +366,6 @@ button#add-spot-button,
 .custom-date h2 {
   margin-top: 0;
   margin-bottom: 50px;
-  font-family: 'Permanent Marker', cursive;
   font-size: 4em;
   line-height: 1.1;
 }
@@ -340,7 +373,6 @@ button#add-spot-button,
 .custom-date h3 {
   margin-top: 0;
   font-size: 1.5em;
-  font-family: 'Permanent Marker', cursive;
 }
 
 .custom-date .spot-card {
@@ -402,6 +434,11 @@ button#add-spot-button,
   margin-top: 20px;
   margin-bottom: 30px;
   font-size: 2em;
+}
+
+.curated-date-form h4 {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .curated-date-form form {
@@ -532,11 +569,6 @@ button#add-spot-button,
   white-space: pre-wrap;
 }
 
-.date-show h2,
-.date-show h4 {
-  font-family: 'Permanent Marker', cursive;
-}
-
 .date-show h2 {
   font-size: 4em;
   margin-top: 0;
@@ -584,6 +616,41 @@ button#add-spot-button,
 
 .date-show .option-buttons button {
   margin: 20px 0 10px;
+}
+
+
+/**** ANIMATIONS ****/
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes fallIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 

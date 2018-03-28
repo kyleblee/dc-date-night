@@ -10,8 +10,8 @@ export const CustomDate = props => {
 
     return (
       <div className="custom-date">
-        <h3>Your date in:</h3>
-        <h2>{props.customDate[0].neighborhood}</h2>
+        <h3 className="marker-font">Your date in:</h3>
+        <h2 className="marker-font">{props.customDate[0].neighborhood}</h2>
         {spotsHTML}
         <button className="start-over-button" onClick={props.resetGenerate}>
           Try again

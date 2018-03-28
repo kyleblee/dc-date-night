@@ -37,7 +37,7 @@ const ShowDate = props => {
 
   return (
     <div className="date-show">
-      <h2>{props.date.title}</h2>
+      <h2 className="marker-font">{props.date.title}</h2>
       <img src={props.date.cover_photo} alt={props.date.title}/>
       <p>{props.date.description}</p>
       {spotsHTML}
