@@ -1,9 +1,7 @@
+import React from 'react';
 import fetch from 'isomorphic-fetch';
 import { requestHeaders } from '../utils/req';
-
-export function loginSuccess() {
-  return {type: 'LOG_IN_SUCCESS'};
-}
+import { Redirect } from 'react-router-dom';
 
 export function loginUser(credentials) {
   return function(dispatch) {
@@ -16,10 +14,14 @@ export function loginUser(credentials) {
     return fetch(request)
       .then(response => response.json())
       .then(responseJSON => {
-        sessionStorage.setItem('jwt', responseJSON.jwt);
-        sessionStorage.setItem('id', parseJwt(responseJSON.jwt))
-        sessionStorage.setItem('expert', responseJSON.expert)
-        dispatch(loginSuccess());
+        if (responseJSON.jwt) {
+          sessionStorage.setItem('jwt', responseJSON.jwt);
+          sessionStorage.setItem('id', parseJwt(responseJSON.jwt))
+          sessionStorage.setItem('expert', responseJSON.expert)
+          dispatch({type: 'LOG_IN_SUCCESS'});
+        } else {
+          dispatch({type: 'LOG_IN_ERROR'});
+        }
       })
   }
 }
@@ -27,6 +29,7 @@ export function loginUser(credentials) {
 export function logOutUser() {
   delete sessionStorage.jwt;
   delete sessionStorage.expert;
+  delete sessionStorage.id;
   return {type: 'LOG_OUT'}
 }
 

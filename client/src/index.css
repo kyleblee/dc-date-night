@@ -74,6 +74,15 @@ div#push-footer {
   color: rgb(18, 18, 18);
   font-weight: 600;
   font-size: 1.1em;
+  transition: all 0.2;
+}
+
+.header a:hover {
+  transform: translateY(-1px);
+}
+
+.header a:active {
+  transform: translate(0);
 }
 
 .logo-div {
@@ -303,10 +312,8 @@ div.neighborhood-select select,
 
 .generate-date-form form div.category-selects {
   margin-bottom: 50px;
-  animation: fallIn 0.5s ease-out;
+  animation: fallIn 0.75s ease-out;
 }
-
-
 
 .generate-date-form form div.category-options {
   display: flex;
@@ -640,7 +647,7 @@ button#add-spot-button,
 @keyframes fallIn {
   0% {
     opacity: 0;
-    transform: translateY(-50px);
+    transform: translateY(-75px);
   }
 
   25% {

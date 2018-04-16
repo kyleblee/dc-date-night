@@ -2,6 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/sessionActions';
+import { Errors } from '../components/Errors';
 
 class SignIn extends React.Component {
   constructor() {
@@ -25,13 +26,18 @@ class SignIn extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-    this.props.loginUser(this.state.credentials);
-    this.props.history.push('/')
+    this.props.loginUser(this.state.credentials)
+      .then(() => {
+        if (sessionStorage.id) {
+          this.props.history.push('/');
+        }
+      });
   }
 
   render() {
     return (
       <div id="sign-in-div">
+        <Errors errors={this.props.error} />
         <form id="sign-in-form" onSubmit={this.onSubmit}>
           <div>
             <label className="form-labels">Email:</label>
@@ -60,10 +66,10 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     dates: state.dates.curatedDates
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    error: state.session.error
+  }
+}
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
